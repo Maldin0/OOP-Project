@@ -22,7 +22,9 @@ public class GameBoard extends JPanel implements CardListener {
         this.cols = cols;
         this.cards = generateCards(colors);
 //        initBoard(rows, cols);
-        setLayout(new GridLayout(rows, cols));
+        setBackground(Color.GRAY);
+
+        setLayout(new GridLayout(rows, cols, 2, 2));
         List<ColorCard> cards = generateCards(colors);
 
         for (ColorCard card : cards) {

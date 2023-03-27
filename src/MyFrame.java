@@ -1,18 +1,32 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-
 public class MyFrame extends JFrame implements ActionListener{
     JButton btn1, btn2, btn3, btn4, btn5, btn6;
     JLabel label;
     MyFrame() {
-        // Set Buttons
-        btn1 = new JButton("Start");
-        btn2 = new JButton("Leaderboard");
+        // Set All Buttons
+
+            // Start Button;
+        ImageIcon button1 = new ImageIcon(getClass().getResource("/Start_button.png"));
+        btn1 = new JButton(button1);
+
+            // ScoreBoard;
+        ImageIcon button2 = new ImageIcon(getClass().getResource("/Scoreboard_button.png"));
+        btn2 = new JButton(button2);
+
+            // Credit;
         btn3 = new JButton("Credit");
+
+            // Exit;
         btn4 = new JButton("Exit");
+
+            // How to Play;
         btn5 = new JButton("?");
+
+            // Sound Setting;
         btn6 = new JButton("<))");
+
 
         // Set No Focus to Buttons
         btn1.setFocusPainted(false);
@@ -33,14 +47,13 @@ public class MyFrame extends JFrame implements ActionListener{
         // Insert Image
         label = new JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("image3.png"));
-
         // Resize Image
 //        Image img = icon.getImage().getScaledInstance(494, 258, Image.SCALE_SMOOTH);
         label.setIcon(icon);
         label.setBounds(0, 50, 500, 258);
 
         // Insert Icon Image
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("image.png"));
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/image.png"));
         this.setIconImage(icon2.getImage());
 
         // JFrame
@@ -63,6 +76,7 @@ public class MyFrame extends JFrame implements ActionListener{
 
         // Click Action
         btn1.addActionListener(this);
+        btn4.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -71,6 +85,9 @@ public class MyFrame extends JFrame implements ActionListener{
             GameFrame gameFrame = new GameFrame();
             gameFrame.setVisible(true);
             this.dispose(); // close the current frame
+        }
+        if (e.getSource() == btn4) {
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     }
     public static void main(String[] args) {

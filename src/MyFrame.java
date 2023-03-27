@@ -1,21 +1,24 @@
 import javax.swing.*;
-public class MyFrame extends JFrame{
+public class MyFrame extends JFrame {
     JButton btn1, btn2, btn3, btn4, btn5, btn6;
-
+    JLabel label;
     MyFrame() {
 
         // Image insert + Resize
         ImageIcon img = new ImageIcon(getClass().getResource("image3.png"));
-        JLabel label = new JLabel();
-        label.setIcon(img);
+        ImageIcon RedSlime = new ImageIcon(getClass().getResource("Red_Slime.png"));
 
         // Position image
-        label.setBounds(0, 50, img.getIconWidth(), img.getIconHeight());
-        this.getContentPane().add(label);
+        label = new JLabel();
+        label.setIcon(img);
+        label.setHorizontalAlignment(JLabel.LEFT);
+        label.setVerticalAlignment(JLabel.NORTH);
+        label.setLocation(0, 0);
+        this.add(label);
 
 
         // All Button
-        btn1 = new JButton("Start");
+        btn1 = new JButton(RedSlime);
         btn2 = new JButton("Leaderboard");
         btn3 = new JButton("Credit");
         btn4 = new JButton("Exit");
@@ -39,7 +42,7 @@ public class MyFrame extends JFrame{
         btn6.setBounds(80, 15, 50, 50);
 
         // Icon Image
-        this.setIconImage(img.getImage());
+        this.setIconImage(RedSlime.getImage());
 
         // All about JFrame
         this.setTitle("Slime Connector");
@@ -57,5 +60,9 @@ public class MyFrame extends JFrame{
         this.add(btn4);
         this.add(btn5);
         this.add(btn6);
+    }
+
+    public static void main(String[] args) {
+        new MyFrame();
     }
 }

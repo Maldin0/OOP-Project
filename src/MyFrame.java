@@ -8,11 +8,11 @@ public class MyFrame extends JFrame implements ActionListener{
         // Set All Buttons
 
             // Start Button;
-        ImageIcon button1 = new ImageIcon(getClass().getResource("/Start_button.png"));
+        ImageIcon button1 = new ImageIcon(getClass().getResource("img/Start_button.png"));
         btn1 = new JButton(button1);
 
             // ScoreBoard;
-        ImageIcon button2 = new ImageIcon(getClass().getResource("/Scoreboard_button.png"));
+        ImageIcon button2 = new ImageIcon(getClass().getResource("img/Scoreboard_button.png"));
         btn2 = new JButton(button2);
 
             // Credit;
@@ -46,14 +46,14 @@ public class MyFrame extends JFrame implements ActionListener{
 
         // Insert Image
         label = new JLabel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("image3.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("img/image3.png"));
         // Resize Image
 //        Image img = icon.getImage().getScaledInstance(494, 258, Image.SCALE_SMOOTH);
         label.setIcon(icon);
         label.setBounds(0, 50, 500, 258);
 
         // Insert Icon Image
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/image.png"));
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("img/image.png"));
         this.setIconImage(icon2.getImage());
 
         // JFrame

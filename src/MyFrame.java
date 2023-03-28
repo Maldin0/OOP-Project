@@ -37,10 +37,10 @@ public class MyFrame extends JFrame implements ActionListener{
         btn6.setFocusPainted(false);
 
         // Positioning Buttons
-        btn1.setBounds(100, 300, 110, 40);
-        btn2.setBounds(100, 350, 110, 40);
-        btn3.setBounds(100, 400, 110, 40);
-        btn4.setBounds(100, 450, 110, 40);
+        btn1.setBounds(100, 300, 128, 64);
+        btn2.setBounds(100, 370, 128, 64);
+        btn3.setBounds(100, 440, 110, 40);
+        btn4.setBounds(100, 490, 110, 40);
         btn5.setBounds(10, 15, 50, 50);
         btn6.setBounds(80, 15, 50, 50);
 

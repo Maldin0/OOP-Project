@@ -74,15 +74,20 @@ public class GameBoard extends JPanel implements CardListener {
 
     @Override
     public void onCardFlip(CardPanel cardPanel) {
-        if (selectedCards.size() < 2 && !cardPanel.card.isMatched()) {
-            cardPanel.card.setRevealed(true);
-            cardPanel.repaint();
-            selectedCards.add(cardPanel);
-            if (selectedCards.size() == 2) {
-                SwingUtilities.invokeLater(() -> checkForMatch());
-            }
+        if (selectedCards.contains(cardPanel)) {
+            // Do not process the same card if it's already in the selectedCards list
+            return;
+        }
+
+        cardPanel.card.setRevealed(true);
+        cardPanel.repaint();
+        selectedCards.add(cardPanel);
+
+        if (selectedCards.size() == 2) {
+            SwingUtilities.invokeLater(() -> checkForMatch());
         }
     }
+
 
     private void checkForMatch() {
         CardPanel card1 = selectedCards.get(0);

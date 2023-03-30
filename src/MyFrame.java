@@ -1,68 +1,84 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-
 public class MyFrame extends JFrame implements ActionListener{
-    JButton btn1, btn2, btn3, btn4, btn5, btn6;
+    private JButton btn1, btn2, btn3, btn4, btn5, btn6;
     JLabel label;
+    JPanel menuPanel;
     MyFrame() {
-        // Set Buttons
-        btn1 = new JButton("Start");
-        btn2 = new JButton("Leaderboard");
-        btn3 = new JButton("Credit");
-        btn4 = new JButton("Exit");
-        btn5 = new JButton("?");
-        btn6 = new JButton("<))");
 
-        // Set No Focus to Buttons
-        btn1.setFocusPainted(false);
-        btn2.setFocusPainted(false);
-        btn3.setFocusPainted(false);
-        btn4.setFocusPainted(false);
-        btn5.setFocusPainted(false);
-        btn6.setFocusPainted(false);
+//        ImageIcon i = new ImageIcon("image/Start_button.png");
+//        JButton b = new JButton();
+//        p = new JPanel();
+//        b.setIcon(i);
+//        p.add(b);
+//        this.add(p);
 
-        // Positioning Buttons
-        btn1.setBounds(100, 300, 110, 40);
-        btn2.setBounds(100, 350, 110, 40);
-        btn3.setBounds(100, 400, 110, 40);
-        btn4.setBounds(100, 450, 110, 40);
-        btn5.setBounds(10, 15, 50, 50);
-        btn6.setBounds(80, 15, 50, 50);
+    // Menu Panel
+    menuPanel = new JPanel();
+    menuPanel.setLayout(null);
 
-        // Insert Image
-        label = new JLabel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("image3.png"));
+    // Logo
+    label = new JLabel(new ImageIcon("image/image3.png"));
+    label.setBounds(0, 50, 500, 258);
+    menuPanel.add(label);
 
-        // Resize Image
-//        Image img = icon.getImage().getScaledInstance(494, 258, Image.SCALE_SMOOTH);
-        label.setIcon(icon);
-        label.setBounds(0, 50, 500, 258);
+    // Start Button;
+    ImageIcon button1 = new ImageIcon("image/Start_button.png");
+    btn1 = new JButton();
+    btn1.setIcon(button1);
+    btn1.setBounds(100, 300, 128, 64);
+    menuPanel.add(btn1);
 
-        // Insert Icon Image
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("image.png"));
-        this.setIconImage(icon2.getImage());
+    // ScoreBoard;
+    ImageIcon button2 = new ImageIcon("image/Scoreboard_button.png");
+    btn2 = new JButton();
+    btn2.setIcon(button2);
+    btn2.setBounds(100, 370, 128, 64);
+    menuPanel.add(btn2);
 
-        // JFrame
-        this.setTitle("Slime Connector");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
-        this.setResizable(false);
-        this.setSize(800, 600); // size frame
-        this.setVisible(true);
-        this.setLayout(null);
-        this.setLocationRelativeTo(null);
+    // Credit;
+    btn3 = new JButton("Credit");
+//    btn3.setIcon();
+    btn3.setBounds(100, 440, 110, 40);
+    menuPanel.add(btn3);
 
-        // Add Button
-        this.add(btn1);
-        this.add(btn2);
-        this.add(btn3);
-        this.add(btn4);
-        this.add(btn5);
-        this.add(btn6);
-        this.add(label);
+    // Exit;
+    btn4 = new JButton("Exit");
+//    btn4.setIcon();
+    btn4.setBounds(100, 490, 110, 40);
+    menuPanel.add(btn4);
 
-        // Click Action
-        btn1.addActionListener(this);
+    // How to Play;
+    btn5 = new JButton("?");
+//    btn5.setIcon();
+    btn5.setBounds(10, 15, 50, 50);
+    menuPanel.add(btn5);
+
+    // Sound Setting;
+    btn6 = new JButton("<))");
+//    btn6.setIcon();
+    btn6.setBounds(80, 15, 50, 50);
+    menuPanel.add(btn6);
+
+    // Insert Icon Image
+    ImageIcon icon2 = new ImageIcon("image/image.png");
+    this.setIconImage(icon2.getImage());
+
+    // Add menuPanel in JFrame
+    this.add(menuPanel);
+
+    // JFrame
+    this.setTitle("Slime Connector");
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
+    this.setResizable(false);
+    this.setSize(800, 600); // size frame
+    this.setVisible(true);
+    this.setLayout(null);
+    this.setLocationRelativeTo(null);
+
+    btn1.addActionListener(this);
+    btn4.addActionListener(this);
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -71,6 +87,9 @@ public class MyFrame extends JFrame implements ActionListener{
             GameFrame gameFrame = new GameFrame();
             gameFrame.setVisible(true);
             this.dispose(); // close the current frame
+        }
+        if (e.getSource() == btn4) {
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     }
     public static void main(String[] args) {

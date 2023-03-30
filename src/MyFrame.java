@@ -82,9 +82,9 @@ public class MyFrame extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        // if Click Start Button goes to GameFrame
+        // if Click Start Button goes to GamePanel
         if (e.getSource() == btn1) {
-            GameFrame gameFrame = new GameFrame();
+            GamePanel gameFrame = new GamePanel();
             gameFrame.setVisible(true);
             this.dispose(); // close the current frame
         }

@@ -1,17 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 public class MyFrame extends JFrame implements ActionListener{
     private JButton btn1, btn2, btn3, btn4, btn5, btn6;
-    JLabel label;
-    JPanel menuPanel;
+    private JLabel label;
+    private JPanel menuPanel;
     MyFrame() {
-
-//        ImageIcon i = new ImageIcon("image/Start_button.png");
-//        JButton b = new JButton();
-//        p = new JPanel();
-//        b.setIcon(i);
-//        p.add(b);
-//        this.add(p);
 
     // Menu Panel
     menuPanel = new JPanel();
@@ -63,7 +57,6 @@ public class MyFrame extends JFrame implements ActionListener{
     // Insert Icon Image
     ImageIcon icon2 = new ImageIcon("image/image.png");
     this.setIconImage(icon2.getImage());
-
     // Add menuPanel in JFrame
     this.add(menuPanel);
 
@@ -84,12 +77,17 @@ public class MyFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
         if (e.getSource() == btn1) {
-            GamePanel gameFrame = new GamePanel();
-            gameFrame.setVisible(true);
-            this.dispose(); // close the current frame
+            GamePanel newPanel = new GamePanel();
+            newPanel.setSize(800, 400);
+            this.remove(menuPanel);
+            this.add(newPanel);
+            this.revalidate();
+            this.repaint();
         }
+
+        // if Click Exit Button Exit game or Close JFrame
         if (e.getSource() == btn4) {
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
         }
     }
     public static void main(String[] args) {

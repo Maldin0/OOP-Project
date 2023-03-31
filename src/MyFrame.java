@@ -78,7 +78,7 @@ public class MyFrame extends JFrame implements ActionListener{
         // if Click Start Button goes to GamePanel
         if (e.getSource() == btn1) {
             GamePanel newPanel = new GamePanel();
-            newPanel.setSize(800, 400);
+            newPanel.setSize(800, 600);
             this.remove(menuPanel);
             this.add(newPanel);
             this.revalidate();

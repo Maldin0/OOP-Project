@@ -17,18 +17,18 @@ public class GameBoard extends JPanel implements CardListener {
     private List<CardPanel> selectedCards = new ArrayList<>();
     private List<CardPanel> cardPanels = new ArrayList<>();
 
-    public GameBoard(int rows, int cols, List<Color> colors) {
+    public GameBoard(int rows, int cols, int cardSize, List<Color> colors) {
         this.rows = rows;
         this.cols = cols;
         this.cards = generateCards(colors);
-//        initBoard(rows, cols);
         setBackground(Color.GRAY);
 
-        setLayout(new GridLayout(rows, cols, 2, 2));
-        List<ColorCard> cards = generateCards(colors);
+        setLayout(new GridLayout(rows, cols, 0, 0));
+
+//        List<ColorCard> cards = generateCards(colors);
 
         for (ColorCard card : cards) {
-            CardPanel cardPanel = new CardPanel(card);
+            CardPanel cardPanel = new CardPanel(card, cardSize);
 
             cardPanel.addMouseListener(new MouseAdapter() {
                 @Override
@@ -45,28 +45,11 @@ public class GameBoard extends JPanel implements CardListener {
     }
 
 
-//    private void initBoard(int rows, int cols) {
-//        setLayout(new GridLayout(rows, cols));
-//
-//        for (ColorCard card : cards) {
-//            CardPanel cardPanel = new CardPanel(card);
-//
-//            cardPanel.addMouseListener(new MouseAdapter() {
-//                @Override
-//                public void mouseClicked(MouseEvent e) {
-//                    onCardFlip(cardPanel);
-//                }
-//            });
-//
-//            add(cardPanel);
-//        }
-//    }
-
     private List<ColorCard> generateCards(List<Color> colors) {
         List<ColorCard> cards = new ArrayList<>();
         for (Color color : colors) {
             cards.add(new ColorCard(color));
-            cards.add(new ColorCard(color));
+//            cards.add(new ColorCard(color));
         }
         Collections.shuffle(cards);
         return cards;

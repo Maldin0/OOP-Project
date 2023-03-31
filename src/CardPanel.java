@@ -9,24 +9,27 @@ public class CardPanel extends JPanel {
      ColorCard card;
      private static final Color HIDDEN_COLOR = Color.GRAY;
 
-     public CardPanel(ColorCard card) {
+     public CardPanel(ColorCard card, int cardSize) {
          this.card = card;
-         setPreferredSize(new Dimension(23, 23));
+         setPreferredSize(new Dimension(cardSize, cardSize));
+         setOpaque(false);
      }
 
      @Override
      protected void paintComponent(Graphics g) {
          super.paintComponent(g);
+         int margin = 2;
+
          if (card.isRevealed() || card.isMatched()) {
              g.setColor(card.getColor());
          } else {
              g.setColor(HIDDEN_COLOR);
          }
-         g.fillRect(0, 0, getWidth(), getHeight());
+         g.fillRect(margin, margin, getWidth() - 2 * margin, getHeight() - 2 * margin);
 
          if (!card.isRevealed() && !card.isMatched()) {
              g.setColor(Color.BLACK);
-             g.fillRect(1, 1, getWidth() - 2, getHeight() - 2);
+             g.fillRect(margin + 1, margin + 1, getWidth() - 2 * margin - 2, getHeight() - 2 * margin - 2);
          }
      }
 }

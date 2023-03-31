@@ -1,7 +1,24 @@
 import javax.swing.*;
-public class Main {
-    public static void main(String[] args) {
-        new MyFrame();
-    }
+import java.awt.*;
 
+public class Main extends JFrame{
+    public Main() {
+        setTitle("Slime Connector");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(800, 600));
+        setResizable(true);
+
+        GamePanel gamePanel = new GamePanel();
+        add(gamePanel);
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(()-> {
+            new Main();
+        });
+    }
 }

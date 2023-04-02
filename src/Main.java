@@ -5,7 +5,7 @@ public class Main extends JFrame{
     public Main() {
         setTitle("Slime Connector");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(800, 600));
+        getContentPane().setPreferredSize(new Dimension(800, 600));
         setResizable(true);
 
         GamePanel gamePanel = new GamePanel();

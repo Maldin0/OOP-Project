@@ -27,9 +27,10 @@ public class GamePanel extends JPanel {
         // Calculate card size based on the frame size and number of rows and columns
 //        int cardWidth = (windowWidth - (cols + 1) * gapSize * 2) / cols;
 //        int cardHeight = (windowHeight - (rows + 1) * gapSize * 2) / rows;
-        int cardWidth = (windowWidth - (cols * gapSize)) / cols;
-        int cardHeight = (windowHeight - (rows * gapSize + 1) - 50) / rows;
-        int cardSize = Math.min(cardWidth, cardHeight);
+//        int cardWidth = (windowWidth - (cols * gapSize)) / cols;
+//        int cardHeight = (windowHeight - (rows * gapSize + 1) - 50) / rows;
+        int cardSize = (windowHeight/8)-1;
+        System.out.println(cardSize);
 
         List<Color> uniqueColors = Arrays.asList(
                 Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN,

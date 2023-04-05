@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 public class MyFrame extends JFrame implements ActionListener{
     private JButton btn1, btn2, btn3, btn4, btn5, btn6;
-    private JLabel label;
+    private JLabel label, label1;
     private JPanel menuPanel;
-    private MyFrame() {
+    public MyFrame() {
 
     this.getContentPane().setPreferredSize(new Dimension(800, 600));
 
@@ -54,9 +54,15 @@ public class MyFrame extends JFrame implements ActionListener{
     menuPanel.add(btn6);
 
     // Logo
-    label = new JLabel(new ImageIcon("image/image3.png"));
-    label.setBounds(0, 50, 500, 258);
-    menuPanel.add(label);
+//    label = new JLabel(new ImageIcon("image/image3.png"));
+//    label.setBounds(0, 50, 500, 258);
+//    menuPanel.add(label);
+
+    // Background
+    label1 = new JLabel(new ImageIcon("image/BG01.png"));
+//    label1.setSize(new Dimension(800, 600));
+    label1.setBounds(0, 0, 800, 600);
+    menuPanel.add(label1);
 
     // Insert Icon Image
     ImageIcon icon2 = new ImageIcon("image/image.png");

@@ -5,6 +5,7 @@ public class MyFrame extends JFrame implements ActionListener{
     private JButton btn1, btn2, btn3, btn4, btn5, btn6;
     private JLabel label, label1;
     private JPanel menuPanel;
+    private boolean soundOn = true;
     public MyFrame() {
 
     this.getContentPane().setPreferredSize(new Dimension(800, 600));
@@ -42,14 +43,14 @@ public class MyFrame extends JFrame implements ActionListener{
     menuPanel.add(btn4);
 
     // How to Play;
-    btn5 = new JButton("?");
-//    btn5.setIcon();
+    ImageIcon button5 = new ImageIcon("image/Help button.png");
+    btn5 = new JButton();
+    btn5.setIcon(button5);
     btn5.setBounds(10, 15, 50, 50);
     menuPanel.add(btn5);
 
     // Sound Setting;
-    btn6 = new JButton("<))");
-//    btn6.setIcon();
+    btn6 = new JButton(new ImageIcon("image/Sound button.png"));
     btn6.setBounds(80, 15, 50, 50);
     menuPanel.add(btn6);
 
@@ -82,7 +83,7 @@ public class MyFrame extends JFrame implements ActionListener{
 
     btn1.addActionListener(this);
     btn4.addActionListener(this);
-
+    btn6.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -99,6 +100,17 @@ public class MyFrame extends JFrame implements ActionListener{
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource() == btn4) {
             this.dispose();
+        }
+        if (e.getSource() == btn6) {
+            if (soundOn) {
+                ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
+                btn6.setIcon(button6_2);
+                soundOn = false;
+            } else {
+                ImageIcon button6 = new ImageIcon("image/Sound button.png");
+                btn6.setIcon(button6);
+                soundOn = true;
+            }
         }
     }
     public static void main(String[] args) {

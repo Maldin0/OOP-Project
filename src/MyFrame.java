@@ -54,10 +54,10 @@ public class MyFrame extends JFrame implements ActionListener{
     btn6.setBounds(80, 15, 50, 50);
     menuPanel.add(btn6);
 
-    // Logo
-//    label = new JLabel(new ImageIcon("image/image3.png"));
-//    label.setBounds(0, 50, 500, 258);
-//    menuPanel.add(label);
+    //  Logo
+    label = new JLabel(new ImageIcon("image/Finished logo.png"));
+    label.setBounds(40, 110, 250, 150);
+    menuPanel.add(label);
 
     // Background
     label1 = new JLabel(new ImageIcon("image/BG01.png"));
@@ -99,7 +99,7 @@ public class MyFrame extends JFrame implements ActionListener{
 
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource() == btn4) {
-            this.dispose();
+            System.exit(0);
         }
         if (e.getSource() == btn6) {
             if (soundOn) {

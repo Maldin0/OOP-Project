@@ -18,6 +18,9 @@ public class MyFrame extends JFrame implements ActionListener{
                 // Background
                 Image bgImage = new ImageIcon("image/BG01.png").getImage();
                 g.drawImage(bgImage, 0, 0, null);
+
+                Image slimeFront = new ImageIcon("image/Slime front.png").getImage();
+                g.drawImage(slimeFront, 225, 80, 600, 500, null);
             }
         };
         menuPanel.setLayout(null);

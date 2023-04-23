@@ -11,25 +11,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-    public GamePanel() {
+    public GamePanel(int rows, int cols) {
         setPreferredSize(new Dimension(800, 600));
         setSize(new Dimension(800, 600));
-
-        int rows = 8;
-        int cols = 8;
 
         int windowWidth = this.getWidth();
         int windowHeight = this.getHeight();
         System.out.println(windowWidth);
         System.out.println(windowHeight);
-        int gapSize = 2;
 
         // Calculate card size based on the frame size and number of rows and columns
-//        int cardWidth = (windowWidth - (cols + 1) * gapSize * 2) / cols;
-//        int cardHeight = (windowHeight - (rows + 1) * gapSize * 2) / rows;
-//        int cardWidth = (windowWidth - (cols * gapSize)) / cols;
-//        int cardHeight = (windowHeight - (rows * gapSize + 1) - 50) / rows;
-        int cardSize = (windowHeight/8)-1;
+        int cardSize = (windowHeight/rows)-1;
         System.out.println(cardSize);
 
         List<Color> uniqueColors = Arrays.asList(

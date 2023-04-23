@@ -96,7 +96,7 @@ public class MyFrame extends JFrame implements ActionListener{
         if (e.getSource() == btn1) {
             // if Click Start Button Change to GamePanel
             this.remove(menuPanel);
-            this.add(new GamePanel());
+            this.add(new GamePanel(4,4));
             this.revalidate();
             this.repaint();
             this.pack();

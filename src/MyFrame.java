@@ -72,7 +72,7 @@ public class MyFrame extends JFrame implements ActionListener{
 
         // Insert Icon Image
         ImageIcon icon2 = new ImageIcon("image/image.png");
-        this.setIconImage(icon2.getImage());
+        this.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
         // Add menuPanel in JFrame
         this.add(menuPanel);
 

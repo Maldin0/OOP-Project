@@ -93,7 +93,7 @@ public class MyFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
-        if (e.getSource() == btn1) {
+        if (e.getSource().equals(btn1)) {
             // if Click Start Button Change to GamePanel
             this.remove(menuPanel);
             this.add(new GamePanel(4,4));
@@ -102,10 +102,10 @@ public class MyFrame extends JFrame implements ActionListener{
             this.pack();
         }
         // if Click Exit Button Exit game or Close JFrame
-        if (e.getSource() == btn4) {
+        if (e.getSource().equals(btn4)) {
             System.exit(0);
         }
-        if (e.getSource() == btn6) {
+        if (e.getSource().equals(btn6)) {
             if (soundOn) {
                 ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
                 btn6.setIcon(button6_2);

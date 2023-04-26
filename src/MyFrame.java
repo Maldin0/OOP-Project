@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 public class MyFrame extends JFrame implements ActionListener{
-    private JButton btn1, btn2, btn3, btn4, btn5, btn6;
+    private JButton btn1, btn2, btn3, btn4, btn5, btn6, pauseButton;
     private JLabel label;
     private JPanel menuPanel;
     private boolean soundOn = true;
@@ -92,10 +92,13 @@ public class MyFrame extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        pauseButton = new JButton("Pause");
+        pauseButton.setBounds(10, 10 , 50, 50);
         // if Click Start Button goes to GamePanel
         if (e.getSource().equals(btn1)) {
             // if Click Start Button Change to GamePanel
             this.remove(menuPanel);
+            this.add(pauseButton);
             this.add(new GamePanel(4,4));
             this.revalidate();
             this.repaint();

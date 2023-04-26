@@ -6,8 +6,10 @@ public class MyFrame extends JFrame implements ActionListener{
     private JLabel label;
     private JPanel menuPanel;
     private boolean soundOn = true;
-    private ChooseFrame ch;
+    private MusicPlayer p;
     public MyFrame() {
+        p = new MusicPlayer();
+        p.play("sound/Slimeconnector Music.wav");
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
 
         // Menu Panel
@@ -94,16 +96,13 @@ public class MyFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
-        ch = new ChooseFrame();
         pauseButton = new JButton("");
         pauseButton.setBounds(10, 10, 50, 50);
         if (e.getSource().equals(btn1)) {
             this.remove(getMenuPanel());
             this.revalidate();
             this.add(pauseButton);
-            if (ch.getX() == 1) {
-                new GamePanel(4, 4);
-            }
+            this.add(new GamePanel(4, 4));
             this.repaint();
             this.pack();
         }
@@ -116,10 +115,13 @@ public class MyFrame extends JFrame implements ActionListener{
                 ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
                 btn6.setIcon(button6_2);
                 soundOn = false;
+                p.mute();
+
             } else {
                 ImageIcon button6 = new ImageIcon("image/Sound button.png");
                 btn6.setIcon(button6);
                 soundOn = true;
+                p.unmute();
             }
         }
     }

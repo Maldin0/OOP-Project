@@ -6,8 +6,8 @@ public class MyFrame extends JFrame implements ActionListener{
     private JLabel label;
     private JPanel menuPanel;
     private boolean soundOn = true;
+    private ChooseFrame ch;
     public MyFrame() {
-
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
 
         // Menu Panel
@@ -86,6 +86,7 @@ public class MyFrame extends JFrame implements ActionListener{
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
+
         btn1.addActionListener(this);
         btn4.addActionListener(this);
         btn6.addActionListener(this);
@@ -93,11 +94,13 @@ public class MyFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
+        ch = new ChooseFrame();
         if (e.getSource().equals(btn1)) {
-            // if Click Start Button Change to GamePanel
             this.remove(menuPanel);
-            this.add(new GamePanel(4,4));
             this.revalidate();
+            if (ch.getX() == 1) {
+                new GamePanel(4, 4);
+            }
             this.repaint();
             this.pack();
         }

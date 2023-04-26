@@ -1,13 +1,11 @@
 import javax.swing.*;
 
 public class PausePanel extends JFrame{
-    private JFrame frame;
     private JPanel pausePanel;
     private JButton continueButton, retryButton, backToMenuButton;
     private JLabel PauseWord;
 
     public PausePanel() {
-        frame = new JFrame("test");
         pausePanel = new JPanel();
         continueButton = new JButton("Continue");
         retryButton = new JButton("retry");
@@ -33,14 +31,12 @@ public class PausePanel extends JFrame{
         backToMenuButton.setBounds(330, 350, 128, 64);
         pausePanel.add(backToMenuButton);
 
-        frame.add(pausePanel);
-
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setVisible(true);
+        this.add(pausePanel);
+        this.setTitle("Test");
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(800, 600);
+        this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new PausePanel();
-    }
+    public static void main(String[] args) { new PausePanel(); }
 }

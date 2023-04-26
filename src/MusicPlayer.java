@@ -3,7 +3,6 @@ import javax.sound.sampled.*;
 
 public class MusicPlayer {
     private Clip clip;
-    private boolean mute = false;
     private FloatControl volumeControl;
 
     public void play(String filename) {

@@ -99,10 +99,17 @@ public class MyFrame extends JFrame implements ActionListener{
         pauseButton = new JButton("");
         pauseButton.setBounds(10, 10, 50, 50);
         if (e.getSource().equals(btn1)) {
+            ChoosePanel c = new ChoosePanel();
             this.remove(getMenuPanel());
             this.revalidate();
             this.add(pauseButton);
-            this.add(new GamePanel(4, 4));
+            if (c.difficulty == 0) {
+                this.add(new GamePanel(4, 4));
+            } else if (c.difficulty == 1) {
+                this.add(new GamePanel(6, 6));
+            } else if (c.difficulty == 2) {
+                this.add(new GamePanel(8, 8));
+            }
             this.repaint();
             this.pack();
         }

@@ -13,7 +13,7 @@ public class MyFrame extends JFrame implements ActionListener{
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
 
         // Menu Panel
-        setMenuPanel(new JPanel() {
+        menuPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -24,59 +24,59 @@ public class MyFrame extends JFrame implements ActionListener{
                 Image slimeFront = new ImageIcon("image/Slime front.png").getImage();
                 g.drawImage(slimeFront, 225, 80, 600, 500, null);
             }
-        });
-        getMenuPanel().setLayout(null);
+        };
+        menuPanel.setLayout(null);
 
         // Start Button;
         ImageIcon button1 = new ImageIcon("image/Start button.png");
         btn1 = new JButton();
         btn1.setIcon(button1);
         btn1.setBounds(100, 290, 128, 64);
-        getMenuPanel().add(btn1);
+        menuPanel.add(btn1);
 
         // ScoreBoard;
         ImageIcon button2 = new ImageIcon("image/Scoreboard button.png");
         btn2 = new JButton();
         btn2.setIcon(button2);
         btn2.setBounds(100, 365, 128, 64);
-        getMenuPanel().add(btn2);
+        menuPanel.add(btn2);
 
         // Credit;
         ImageIcon button3 = new ImageIcon("image/Credit button.png");
         btn3 = new JButton();
         btn3.setIcon(button3);
         btn3.setBounds(100, 440, 128, 64);
-        getMenuPanel().add(btn3);
+        menuPanel.add(btn3);
 
         // Exit;
         ImageIcon button4 = new ImageIcon("image/Exit button.png");
         btn4 = new JButton();
         btn4.setIcon(button4);
         btn4.setBounds(100, 515, 128, 64);
-        getMenuPanel().add(btn4);
+        menuPanel.add(btn4);
 
         // How to Play;
         ImageIcon button5 = new ImageIcon("image/Help button.png");
         btn5 = new JButton();
         btn5.setIcon(button5);
         btn5.setBounds(10, 15, 50, 50);
-        getMenuPanel().add(btn5);
+        menuPanel.add(btn5);
 
         // Sound Setting;
         btn6 = new JButton(new ImageIcon("image/Sound button.png"));
         btn6.setBounds(80, 15, 50, 50);
-        getMenuPanel().add(btn6);
+        menuPanel.add(btn6);
 
         //  Logo
         label = new JLabel(new ImageIcon("image/Finished logo.png"));
         label.setBounds(40, 110, 250, 150);
-        getMenuPanel().add(label);
+        menuPanel.add(label);
 
         // Insert Icon Image
         ImageIcon icon2 = new ImageIcon("image/Slimeconnector_icon.png");
         this.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
         // Add menuPanel in JFrame
-        this.add(getMenuPanel());
+        this.add(menuPanel);
 
         // JFrame
         this.setTitle("Slime Connector");
@@ -100,7 +100,7 @@ public class MyFrame extends JFrame implements ActionListener{
         pauseButton.setBounds(10, 10, 50, 50);
         if (e.getSource().equals(btn1)) {
             ChoosePanel c = new ChoosePanel();
-            this.remove(getMenuPanel());
+            this.remove(menuPanel);
             this.revalidate();
             this.add(pauseButton);
             if (c.difficulty == 0) {
@@ -136,11 +136,7 @@ public class MyFrame extends JFrame implements ActionListener{
         new MyFrame();
     }
 
-    public JPanel getMenuPanel() {
+    public JPanel menuPanel() {
         return menuPanel;
-    }
-
-    public void setMenuPanel(JPanel menuPanel) {
-        this.menuPanel = menuPanel;
     }
 }

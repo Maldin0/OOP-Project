@@ -12,8 +12,15 @@ public class CreditPanel {
         fr = new JFrame("Credit");
         Font thaiFont = new Font("Tahoma", Font.BOLD, 14);
 
-        panel1 = new JPanel();
-        panel2 = new JPanel();
+        panel1 = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Image creditimg = new ImageIcon("image/Credit Sprite.png").getImage();
+                g.drawImage(creditimg, 0, 0, null);
+            }
+        };
+        panel1.setLayout(null);
+
         devName1 = new JLabel("นายก้องภพ สินสังข์ 65070015");
         devName2 = new JLabel("นายจิรกิตต์ มราชชาลี 65070034");
         devName3 = new JLabel("นายจุนบอม คิม 65070040");
@@ -33,7 +40,9 @@ public class CreditPanel {
         backBtn.setIcon(imgBtn);
         backBtn.setBounds(10, 15, 50, 50);
         panel1.add(backBtn);
+
         /*
+        Image bgcredit = new ImageIcon("image/Credit Sprite.png");
         panel1.add(devName1);//Klong
         panel1.add(artName4);//Mean
         panel1.add(devName2);//Smol Boz
@@ -41,10 +50,10 @@ public class CreditPanel {
         panel1.add(devName3);//Junbom
         panel1.add(artName6);//Big Boz
          */
-        fr.add(backBtn);
+        fr.add(panel1);
         fr.setLayout(null);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setSize(700, 500);
+        fr.setSize(400, 300);
         fr.setVisible(true);
     }
     /*public void actionPerformed(ActionEvent ac) {

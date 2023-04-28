@@ -96,13 +96,24 @@ public class MyFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
+
         pauseButton = new JButton("");
         pauseButton.setBounds(10, 10, 50, 50);
+        pauseButton.addActionListener(ee -> {
+            if (ee.getSource() == pauseButton) {
+                pausePanel2 pp = new pausePanel2();
+                if (pp.bb == 1) {
+
+                }
+            }
+        });
+
         if (e.getSource().equals(btn1)) {
             ChoosePanel c = new ChoosePanel();
             this.remove(menuPanel);
             this.revalidate();
             this.add(pauseButton);
+
             if (c.difficulty == 0) {
                 this.add(new GamePanel(4, 4));
             } else if (c.difficulty == 1) {
@@ -110,6 +121,7 @@ public class MyFrame extends JFrame implements ActionListener{
             } else if (c.difficulty == 2) {
                 this.add(new GamePanel(8, 8));
             }
+
             this.repaint();
             this.pack();
         }

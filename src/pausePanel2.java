@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 public class pausePanel2{
-    public int difficulty;
+    public int bb;
     private JButton con, retry, exits;
     public pausePanel2() {
 
@@ -15,26 +15,25 @@ public class pausePanel2{
 
         con.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
-            difficulty = 0;
+            bb = 0;
         });
 
         retry.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
-            difficulty = 1;
+            bb = 1;
         });
 
         exits.addActionListener(e -> {
+            bb = 2;
             JOptionPane.getRootFrame().dispose();
-            difficulty = 2;
         });
 
         JLabel label = new JLabel("Pause");
 
-        JPanel mainPanel = new JPanel(new GridLayout(0, 4));
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel mainPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
 
         mainPanel.add(label);
-
         buttonPanel.add(con);
         buttonPanel.add(retry);
         buttonPanel.add(exits);
@@ -42,11 +41,10 @@ public class pausePanel2{
         mainPanel.add(buttonPanel);
 
 
-
         JDialog dialog = new JDialog();
         dialog.setUndecorated(true);
         dialog.setModal(true);
-        dialog.setPreferredSize(new Dimension(400, 80));
+        dialog.setPreferredSize(new Dimension(420, 120));
         dialog.setContentPane(mainPanel);
         dialog.pack();
         dialog.setLocationRelativeTo(null);

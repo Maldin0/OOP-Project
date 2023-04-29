@@ -127,7 +127,7 @@ public class MyFrame extends JFrame implements ActionListener{
         }
         //Credit Button
         if (e.getSource().equals((btn3))) {
-            CreditPanel cr = new CreditPanel();
+            new CreditPanel();
         }
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource().equals(btn4)) {

@@ -88,8 +88,8 @@ public class MyFrame extends JFrame implements ActionListener{
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-
         btn1.addActionListener(this);
+        btn3.addActionListener(this);
         btn4.addActionListener(this);
         btn6.addActionListener(this);
     }
@@ -124,6 +124,10 @@ public class MyFrame extends JFrame implements ActionListener{
 
             this.repaint();
             this.pack();
+        }
+        //Credit Button
+        if (e.getSource().equals((btn3))) {
+            CreditPanel cr = new CreditPanel();
         }
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource().equals(btn4)) {

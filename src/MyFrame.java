@@ -97,7 +97,7 @@ public class MyFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
 
-        pauseButton = new JButton("");
+        pauseButton = new JButton(new ImageIcon("image/Pause button.png"));
         pauseButton.setBounds(10, 10, 50, 50);
         pauseButton.addActionListener(ee -> {
             if (ee.getSource() == pauseButton) {

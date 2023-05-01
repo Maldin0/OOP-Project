@@ -149,7 +149,7 @@ public class MyFrame extends JFrame implements ActionListener{
         new MyFrame();
     }
 
-    public JPanel menuPanel() {
+    public JPanel getMenuPanel() {
         return menuPanel;
     }
 }

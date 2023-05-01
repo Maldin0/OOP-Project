@@ -15,16 +15,13 @@ public class pausePanel2{
 
         con.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
-            bb = 0;
         });
 
         retry.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
-            bb = 1;
         });
 
         exits.addActionListener(e -> {
-            bb = 2;
             JOptionPane.getRootFrame().dispose();
         });
 
@@ -34,6 +31,7 @@ public class pausePanel2{
         JPanel buttonPanel = new JPanel();
 
         mainPanel.add(label);
+        buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(con);
         buttonPanel.add(retry);
         buttonPanel.add(exits);

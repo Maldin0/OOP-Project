@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class MyFrame extends JFrame implements ActionListener{
+public class MyFrame extends JFrame {
     private JButton btn1, btn2, btn3, btn4, btn5, btn6, pauseButton;
     private JLabel label;
     private JPanel menuPanel;
@@ -86,70 +86,111 @@ public class MyFrame extends JFrame implements ActionListener{
         this.setTitle("Slime Connector");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
         this.setResizable(false);
-    //    this.setSize(800, 600);
+        //    this.setSize(800, 600);
         this.pack();
         this.setVisible(true);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-        btn1.addActionListener(this);
-        btn3.addActionListener(this);
-        btn4.addActionListener(this);
-        btn6.addActionListener(this);
+        btn1.addActionListener(new MyFrameEvent());
+        btn3.addActionListener(new MyFrameEvent());
+        btn4.addActionListener(new MyFrameEvent());
+        btn6.addActionListener(new MyFrameEvent());
         pauseButton.addActionListener(ee -> {
-            if (ee.getSource() == pauseButton) {
-                pausePanel2 pp = new pausePanel2();
-            }
+            new pausePanel2();
         });
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // if Click Start Button goes to GamePanel
-        if (e.getSource().equals(btn1)) {
-            ChoosePanel c = new ChoosePanel();
-            this.remove(menuPanel);
-            this.revalidate();
-            this.add(pauseButton);
 
-            if (c.difficulty == 0) {
-                this.add(new GamePanel(4, 4));
-            } else if (c.difficulty == 1) {
-                this.add(new GamePanel(6, 6));
-            } else if (c.difficulty == 2) {
-                this.add(new GamePanel(8, 8));
-            }
 
-            this.repaint();
-            this.pack();
-        }
-        //Credit Button
-        if (e.getSource().equals((btn3))) {
-            new CreditPanel();
-        }
-        // if Click Exit Button Exit game or Close JFrame
-        if (e.getSource().equals(btn4)) {
-            System.exit(0);
-        }
-        if (e.getSource().equals(btn6)) {
-            if (soundOn) {
-                ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
-                btn6.setIcon(button6_2);
-                soundOn = false;
-                p.mute();
-
-            } else {
-                ImageIcon button6 = new ImageIcon("image/Sound button.png");
-                btn6.setIcon(button6);
-                soundOn = true;
-                p.unmute();
-            }
-        }
-    }
     public static void main(String[] args) {
         new MyFrame();
     }
 
     public JPanel getMenuPanel() {
         return menuPanel;
+    }
+
+    public JButton getBtn1() {
+        return btn1;
+    }
+
+    public void setBtn1(JButton btn1) {
+        this.btn1 = btn1;
+    }
+
+    public JButton getBtn2() {
+        return btn2;
+    }
+
+    public void setBtn2(JButton btn2) {
+        this.btn2 = btn2;
+    }
+
+    public JButton getBtn3() {
+        return btn3;
+    }
+
+    public void setBtn3(JButton btn3) {
+        this.btn3 = btn3;
+    }
+
+    public JButton getBtn4() {
+        return btn4;
+    }
+
+    public void setBtn4(JButton btn4) {
+        this.btn4 = btn4;
+    }
+
+    public JButton getBtn5() {
+        return btn5;
+    }
+
+    public void setBtn5(JButton btn5) {
+        this.btn5 = btn5;
+    }
+
+    public JButton getBtn6() {
+        return btn6;
+    }
+
+    public void setBtn6(JButton btn6) {
+        this.btn6 = btn6;
+    }
+
+    public JButton getPauseButton() {
+        return pauseButton;
+    }
+
+    public void setPauseButton(JButton pauseButton) {
+        this.pauseButton = pauseButton;
+    }
+
+    public JLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
+
+    public void setMenuPanel(JPanel menuPanel) {
+        this.menuPanel = menuPanel;
+    }
+
+    public boolean isSoundOn() {
+        return soundOn;
+    }
+
+    public void setSoundOn(boolean soundOn) {
+        this.soundOn = soundOn;
+    }
+
+    public MusicPlayer getP() {
+        return p;
+    }
+
+    public void setP(MusicPlayer p) {
+        this.p = p;
     }
 }

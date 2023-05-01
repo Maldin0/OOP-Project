@@ -72,6 +72,10 @@ public class MyFrame extends JFrame implements ActionListener{
         label.setBounds(40, 110, 250, 150);
         menuPanel.add(label);
 
+        // Pause
+        pauseButton = new JButton(new ImageIcon("image/Pause button.png"));
+        pauseButton.setBounds(10, 10, 50, 50);
+
         // Insert Icon Image
         ImageIcon icon2 = new ImageIcon("image/Slimeconnector_icon.png");
         this.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
@@ -92,22 +96,15 @@ public class MyFrame extends JFrame implements ActionListener{
         btn3.addActionListener(this);
         btn4.addActionListener(this);
         btn6.addActionListener(this);
+        pauseButton.addActionListener(ee -> {
+            if (ee.getSource() == pauseButton) {
+                pausePanel2 pp = new pausePanel2();
+            }
+        });
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
-
-        pauseButton = new JButton(new ImageIcon("image/Pause button.png"));
-        pauseButton.setBounds(10, 10, 50, 50);
-        pauseButton.addActionListener(ee -> {
-            if (ee.getSource() == pauseButton) {
-                pausePanel2 pp = new pausePanel2();
-                if (pp.bb == 1) {
-
-                }
-            }
-        });
-
         if (e.getSource().equals(btn1)) {
             ChoosePanel c = new ChoosePanel();
             this.remove(menuPanel);

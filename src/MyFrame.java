@@ -92,18 +92,13 @@ public class MyFrame extends JFrame {
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-        btn1.addActionListener(new MyFrameEvent());
-        btn3.addActionListener(new MyFrameEvent());
-        btn4.addActionListener(new MyFrameEvent());
-        btn6.addActionListener(new MyFrameEvent());
+//        btn1.addActionListener(new MyFrameEvent());
+//        btn3.addActionListener(new MyFrameEvent());
+//        btn4.addActionListener(new MyFrameEvent());
+//        btn6.addActionListener(new MyFrameEvent());
         pauseButton.addActionListener(ee -> {
             new pausePanel2();
         });
-    }
-
-
-    public static void main(String[] args) {
-        new MyFrame();
     }
 
     public JPanel getMenuPanel() {

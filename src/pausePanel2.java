@@ -5,13 +5,13 @@ public class pausePanel2{
     private JButton con, retry, exits;
     public pausePanel2() {
 
-        con = new JButton("Continue");
-        retry = new JButton("Retry");
-        exits = new JButton("Exit to Menu");
+        con = new JButton(new ImageIcon("image/Continue button.png"));
+        retry = new JButton(new ImageIcon("image/Restart button.png"));
+        exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
 
         con.setPreferredSize(new Dimension(128, 64));
         retry.setPreferredSize(new Dimension(128, 64));
-        exits.setPreferredSize(new Dimension(128, 64));
+        exits.setPreferredSize(new Dimension(192, 64));
 
         con.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
@@ -19,10 +19,12 @@ public class pausePanel2{
 
         retry.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
+            bb = 1;
         });
 
         exits.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
+            bb = 2;
         });
 
         JLabel label = new JLabel("Pause");
@@ -40,9 +42,11 @@ public class pausePanel2{
 
 
         JDialog dialog = new JDialog();
-        dialog.setUndecorated(true);
+        dialog.setTitle("Pausssssse");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setUndecorated(false);
         dialog.setModal(true);
-        dialog.setPreferredSize(new Dimension(420, 120));
+        dialog.setPreferredSize(new Dimension(500, 170));
         dialog.setContentPane(mainPanel);
         dialog.pack();
         dialog.setLocationRelativeTo(null);

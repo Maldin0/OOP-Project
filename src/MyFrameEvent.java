@@ -2,60 +2,61 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MyFrameEvent extends MyFrame implements ActionListener{
-    public MyFrameEvent(){
-        getBtn1().addActionListener(this);
-        getBtn2().addActionListener(this);
-        getBtn3().addActionListener(this);
-        getBtn4().addActionListener(this);
-        getBtn5().addActionListener(this);
-        getBtn6().addActionListener(this);
+public class MyFrameEvent implements ActionListener {
+    public int check;
+    private MyFrame frame;
+    public MyFrameEvent(MyFrame frame) {
+        this.frame = frame;
     }
-    public static void main(String[] args) {
-        new MyFrameEvent();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
-            if (e.getSource().equals(this.getBtn1())) {
-                ChoosePanel c = new ChoosePanel();
-                this.remove(this.getMenuPanel());
-                this.revalidate();
-                this.add(this.getPauseButton());
+        if (e.getSource() == frame.getBtn1()) {
+            ChoosePanel c = new ChoosePanel();
+            if (e.getSource() == frame.getPauseButton()) {
+                new pausePanel2();
+            }
+            if (c.difficulty != -1) {
+                frame.remove(frame.getMenuPanel());
+                frame.revalidate();
+                frame.add(frame.getPauseButton());
 
                 if (c.difficulty == 0) {
-                    this.add(new GamePanel(4, 4));
+                    check = 0;
+                    frame.add(new GamePanel(4, 4));
                 } else if (c.difficulty == 1) {
-                    this.add(new GamePanel(6, 6));
+                    check = 1;
+                    frame.add(new GamePanel(6, 6));
                 } else if (c.difficulty == 2) {
-                    this.add(new GamePanel(8, 8));
+                    check = 2;
+                    frame.add(new GamePanel(8, 8));
                 }
+                frame.repaint();
+                frame.pack();
 
-                this.repaint();
-                this.pack();
             }
-            //Credit Button
-            if (e.getSource().equals((this.getBtn3()))) {
-                new CreditPanel();
-            }
-            // if Click Exit Button Exit game or Close JFrame
-            if (e.getSource().equals(this.getBtn4())) {
-                System.exit(0);
-            }
-            if (e.getSource().equals(this.getBtn6())) {
-                if (this.isSoundOn()) {
-                    ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
-                    this.getBtn6().setIcon(button6_2);
-                    this.setSoundOn(false);
-                    this.getP().mute();
+        }
+        //Credit Button
+        if (e.getSource().equals(frame.getBtn3())) {
+            new CreditPanel();
+        }
+        // if Click Exit Button Exit game or Close JFrame
+        if (e.getSource().equals(frame.getBtn4())) {
+            System.exit(0);
+        }
+        if (e.getSource().equals(frame.getBtn6())) {
+            if (frame.isSoundOn()) {
+                ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
+                frame.getBtn6().setIcon(button6_2);
+                frame.setSoundOn(false);
+                frame.getP().mute();
 
-                } else {
-                    ImageIcon button6 = new ImageIcon("image/Sound button.png");
-                    this.getBtn6().setIcon(button6);
-                    this.setSoundOn(true);
-                    this.getP().unmute();
-                }
+            } else {
+                ImageIcon button6 = new ImageIcon("image/Sound button.png");
+                frame.getBtn6().setIcon(button6);
+                frame.setSoundOn(true);
+                frame.getP().unmute();
             }
         }
     }
+}

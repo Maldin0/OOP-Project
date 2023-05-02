@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 public class ChoosePanel{
-    public int difficulty;
+    public int difficulty = -1;
     private JButton easy, normal, hard;
     public ChoosePanel() {
 
@@ -41,9 +41,11 @@ public class ChoosePanel{
         mainPanel.add(buttonPanel);
 
         JDialog dialog = new JDialog();
-        dialog.setUndecorated(true);
+        dialog.setTitle("Difficulty");
+        dialog.setUndecorated(false);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setModal(true);
-        dialog.setPreferredSize(new Dimension(260, 80));
+        dialog.setPreferredSize(new Dimension(260, 120));
         dialog.setContentPane(mainPanel);
         dialog.pack();
         dialog.setLocationRelativeTo(null);

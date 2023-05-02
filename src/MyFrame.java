@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class MyFrame extends JFrame {
+public class MyFrame extends JFrame{
     private JButton btn1, btn2, btn3, btn4, btn5, btn6, pauseButton;
     private JLabel label;
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
+    private MyFrameEvent me;
     public MyFrame() {
+        MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();
         p.play("sound/Slimeconnector Music.wav");
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
@@ -32,6 +34,7 @@ public class MyFrame extends JFrame {
         btn1 = new JButton();
         btn1.setIcon(button1);
         btn1.setBounds(100, 290, 128, 64);
+        btn1.addActionListener(event);
         menuPanel.add(btn1);
 
         // ScoreBoard;
@@ -39,6 +42,7 @@ public class MyFrame extends JFrame {
         btn2 = new JButton();
         btn2.setIcon(button2);
         btn2.setBounds(100, 365, 128, 64);
+        btn2.addActionListener(event);
         menuPanel.add(btn2);
 
         // Credit;
@@ -46,6 +50,7 @@ public class MyFrame extends JFrame {
         btn3 = new JButton();
         btn3.setIcon(button3);
         btn3.setBounds(100, 440, 128, 64);
+        btn3.addActionListener(event);
         menuPanel.add(btn3);
 
         // Exit;
@@ -53,6 +58,7 @@ public class MyFrame extends JFrame {
         btn4 = new JButton();
         btn4.setIcon(button4);
         btn4.setBounds(100, 515, 128, 64);
+        btn4.addActionListener(event);
         menuPanel.add(btn4);
 
         // How to Play;
@@ -60,11 +66,13 @@ public class MyFrame extends JFrame {
         btn5 = new JButton();
         btn5.setIcon(button5);
         btn5.setBounds(10, 15, 50, 50);
+        btn5.addActionListener(event);
         menuPanel.add(btn5);
 
         // Sound Setting;
         btn6 = new JButton(new ImageIcon("image/Sound button.png"));
         btn6.setBounds(80, 15, 50, 50);
+        btn6.addActionListener(event);
         menuPanel.add(btn6);
 
         //  Logo
@@ -92,13 +100,13 @@ public class MyFrame extends JFrame {
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-//        btn1.addActionListener(new MyFrameEvent());
-//        btn3.addActionListener(new MyFrameEvent());
-//        btn4.addActionListener(new MyFrameEvent());
-//        btn6.addActionListener(new MyFrameEvent());
         pauseButton.addActionListener(ee -> {
-            new pausePanel2();
+            pausePanel2 pp = new pausePanel2();
         });
+    }
+
+    public static void main(String[] args) {
+        new MyFrame();
     }
 
     public JPanel getMenuPanel() {

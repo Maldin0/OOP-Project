@@ -188,4 +188,5 @@ public class MyFrame extends JFrame {
     public void setP(MusicPlayer p) {
         this.p = p;
     }
+
 }

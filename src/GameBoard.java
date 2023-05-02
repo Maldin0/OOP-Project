@@ -57,8 +57,8 @@ public class GameBoard extends JPanel implements CardListener {
 
     @Override
     public void onCardFlip(CardPanel cardPanel) {
-        // Ignore clicks if two cards are already flipped
-        if (selectedCards.size() >= 2) {
+        if (cardPanel.card.isRevealed() || cardPanel.card.isMatched()) {
+            // Ignore the click event if the card is already revealed or matched
             return;
         }
 
@@ -72,7 +72,7 @@ public class GameBoard extends JPanel implements CardListener {
         selectedCards.add(cardPanel);
 
         if (selectedCards.size() == 2) {
-            SwingUtilities.invokeLater(() -> checkForMatch());
+            SwingUtilities.invokeLater(this::checkForMatch);
         }
     }
 

@@ -4,6 +4,7 @@ import javax.sound.sampled.*;
 public class MusicPlayer {
     private Clip clip;
     private FloatControl volumeControl;
+    private boolean isMuted = false;
 
     public void play(String filename) {
         try {
@@ -20,15 +21,25 @@ public class MusicPlayer {
             System.out.println("Error playing music file: " + ex.getMessage());
         }
     }
+
     public void mute() {
-        if (volumeControl != null) {
-            volumeControl.setValue(volumeControl.getMinimum());
+        if (volumeControl != null && !isMuted) {
+            isMuted = true;
+            adjustVolume(-1);
         }
     }
 
     public void unmute() {
-        if (volumeControl != null) {
-            volumeControl.setValue(volumeControl.getMaximum());
+        if (volumeControl != null && isMuted) {
+            isMuted = false;
+            adjustVolume(1);
         }
     }
+
+    private void adjustVolume(int direction) {
+        // Adjust the volume gradually
+        VolumeAdjuster volumeAdjuster = new VolumeAdjuster(volumeControl, direction);
+        new Thread(volumeAdjuster).start();
+    }
+
 }

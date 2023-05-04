@@ -16,6 +16,7 @@ public class GameBoard extends JPanel implements CardListener {
     private List<ColorCard> cards;
     private List<CardPanel> selectedCards = new ArrayList<>();
     private List<CardPanel> cardPanels = new ArrayList<>();
+    private boolean canInteract = true;
 
     public GameBoard(int rows, int cols, int cardSize, List<Color> colors) {
         this.rows = rows;
@@ -25,15 +26,15 @@ public class GameBoard extends JPanel implements CardListener {
 
         setLayout(new GridLayout(rows, cols, 0, 0));
 
-//        List<ColorCard> cards = generateCards(colors);
-
         for (ColorCard card : cards) {
             CardPanel cardPanel = new CardPanel(card, cardSize);
 
             cardPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    onCardFlip(cardPanel);
+                    if (canInteract) {
+                        onCardFlip(cardPanel);
+                    }
                 }
             });
 
@@ -79,6 +80,8 @@ public class GameBoard extends JPanel implements CardListener {
 
 
     private void checkForMatch() {
+        canInteract = false;
+
         CardPanel card1 = selectedCards.get(0);
         CardPanel card2 = selectedCards.get(1);
 
@@ -94,6 +97,7 @@ public class GameBoard extends JPanel implements CardListener {
             card1.repaint();
             card2.repaint();
             selectedCards.clear();
+            canInteract = true;
         });
 
         timer.setRepeats(false);

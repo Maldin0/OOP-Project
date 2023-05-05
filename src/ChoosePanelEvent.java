@@ -11,15 +11,15 @@ public class ChoosePanelEvent implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(choosePanel.getEasy())) {
             JOptionPane.getRootFrame().dispose();
-            choosePanel.difficulty = 1;
+            choosePanel.difficulty = 0;
         }
         else if (e.getSource().equals(choosePanel.getNormal())) {
             JOptionPane.getRootFrame().dispose();
-            choosePanel.difficulty = 2;
+            choosePanel.difficulty = 1;
         }
         else if (e.getSource().equals(choosePanel.getHard())) {
             JOptionPane.getRootFrame().dispose();
-            choosePanel.difficulty = 3;
+            choosePanel.difficulty = 2;
         }
     }
 }

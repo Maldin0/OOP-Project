@@ -51,7 +51,6 @@ public class pausePanel2 {
         exits.addActionListener(e -> {
             myFrame.getContentPane().removeAll();
             myFrame.revalidate();
-            myFrame.add(myFrame.getPauseButton());
             myFrame.add(myFrame.getMenuPanel());
             JOptionPane.getRootFrame().dispose();
             myFrame.repaint();

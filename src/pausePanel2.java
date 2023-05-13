@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-public class pausePanel2{
-    public int bb;
+public class pausePanel2 {
+    private MyFrameEvent myFrameEvent;
+    private MyFrame myFrame;
     private JButton con, retry, exits;
-    public pausePanel2() {
-
+    public pausePanel2(MyFrame mf) {
+        this.myFrame = mf;
+        myFrameEvent = new MyFrameEvent(myFrame);
         con = new JButton(new ImageIcon("image/Continue button.png"));
         retry = new JButton(new ImageIcon("image/Restart button.png"));
         exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
@@ -18,13 +20,34 @@ public class pausePanel2{
         });
 
         retry.addActionListener(e -> {
+            if (myFrameEvent.check == 0) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(4, 4));
+                System.out.println(myFrameEvent.check);
+            }
+            else if (myFrameEvent.check == 1) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(6, 6));
+                System.out.println(myFrameEvent.check);
+            }
+            else if (myFrameEvent.check == 2) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(8, 8));
+                System.out.println(myFrameEvent.check);
+            }
             JOptionPane.getRootFrame().dispose();
-            bb = 1;
+            myFrame.repaint();
+            myFrame.pack();
         });
 
         exits.addActionListener(e -> {
             JOptionPane.getRootFrame().dispose();
-            bb = 2;
         });
 
         JLabel label = new JLabel("Pause");
@@ -52,8 +75,5 @@ public class pausePanel2{
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
 
-    }
-    public static void main(String[] args) {
-        new pausePanel2();
     }
 }

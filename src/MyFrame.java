@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
 public class MyFrame extends JFrame{
     private JButton btn1, btn2, btn3, btn4, btn5, btn6, pauseButton;
     private JLabel label;
@@ -101,7 +101,7 @@ public class MyFrame extends JFrame{
         this.setLocationRelativeTo(null);
 
         pauseButton.addActionListener(ee -> {
-            pausePanel2 pp = new pausePanel2();
+            pausePanel2 pp = new pausePanel2(this);
         });
     }
 

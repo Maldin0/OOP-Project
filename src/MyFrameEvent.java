@@ -14,7 +14,7 @@ public class MyFrameEvent implements ActionListener {
         if (e.getSource() == frame.getBtn1()) {
             ChoosePanel c = new ChoosePanel();
             if (e.getSource() == frame.getPauseButton()) {
-                new pausePanel2();
+                new pausePanel2(frame);
             }
             if (c.difficulty != -1) {
                 frame.remove(frame.getMenuPanel());
@@ -23,13 +23,16 @@ public class MyFrameEvent implements ActionListener {
 
                 if (c.difficulty == 0) {
                     check = 0;
-                    frame.add(new GamePanel(4, 4));
+                    frame.add(new GamePanel(4,4));
+                    System.out.println(check);
                 } else if (c.difficulty == 1) {
                     check = 1;
-                    frame.add(new GamePanel(6, 6));
+                    frame.add(new GamePanel(6,6));
+                    System.out.println(check);
                 } else if (c.difficulty == 2) {
                     check = 2;
-                    frame.add(new GamePanel(8, 8));
+                    frame.add(new GamePanel(8,8));
+                    System.out.println(check);
                 }
                 frame.repaint();
                 frame.pack();

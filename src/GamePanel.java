@@ -17,12 +17,12 @@ public class GamePanel extends JPanel {
 
         int windowWidth = this.getWidth();
         int windowHeight = this.getHeight();
-        System.out.println(windowWidth);
-        System.out.println(windowHeight);
+//        System.out.println(windowWidth);
+//        System.out.println(windowHeight);
 
         // Calculate card size based on the frame size and number of rows and columns
         int cardSize = (windowHeight/rows)-1;
-        System.out.println(cardSize);
+//        System.out.println(cardSize);
 
         List<Color> uniqueColors = Arrays.asList(
                 Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN,
@@ -42,7 +42,7 @@ public class GamePanel extends JPanel {
         Collections.shuffle(colorPairs);
 
         GameBoard gameBoard = new GameBoard(rows, cols, cardSize, colorPairs);
-        System.out.println(colorPairs.size());
+//        System.out.println(colorPairs.size());
 
         add(gameBoard);
     }

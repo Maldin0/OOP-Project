@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MyFrameEvent implements ActionListener {
-    public int check;
     private MyFrame frame;
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
@@ -22,17 +21,14 @@ public class MyFrameEvent implements ActionListener {
                 frame.add(frame.getPauseButton());
 
                 if (c.difficulty == 0) {
-                    check = 0;
+                    frame.setCheck(0);
                     frame.add(new GamePanel(4,4));
-                    System.out.println(check);
                 } else if (c.difficulty == 1) {
-                    check = 1;
+                    frame.setCheck(1);
                     frame.add(new GamePanel(6,6));
-                    System.out.println(check);
                 } else if (c.difficulty == 2) {
-                    check = 2;
+                    frame.setCheck(2);
                     frame.add(new GamePanel(8,8));
-                    System.out.println(check);
                 }
                 frame.repaint();
                 frame.pack();
@@ -49,6 +45,9 @@ public class MyFrameEvent implements ActionListener {
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource().equals(frame.getBtn4())) {
             System.exit(0);
+        }
+        if (e.getSource().equals(frame.getBtn5())) {
+            new HowToPlay();
         }
         if (e.getSource().equals(frame.getBtn6())) {
             if (frame.isSoundOn()) {

@@ -7,7 +7,7 @@ public class MyFrame extends JFrame{
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
-    private MyFrameEvent me;
+    private int check;
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();
@@ -101,7 +101,7 @@ public class MyFrame extends JFrame{
         this.setLocationRelativeTo(null);
 
         pauseButton.addActionListener(ee -> {
-            pausePanel2 pp = new pausePanel2(this);
+            new pausePanel2(this);
         });
     }
 
@@ -197,4 +197,10 @@ public class MyFrame extends JFrame{
         this.p = p;
     }
 
+    public int getCheck() {
+        return check;
+    }
+    public void setCheck(int check) {
+        this.check = check;
+    }
 }

@@ -20,26 +20,28 @@ public class pausePanel2 {
         });
 
         retry.addActionListener(e -> {
-            if (myFrameEvent.check == 0) {
+            int check = myFrame.getCheck();
+
+            if (check == 0) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseButton());
                 myFrame.add(new GamePanel(4, 4));
-                System.out.println(myFrameEvent.check);
+                System.out.println(check);
             }
-            else if (myFrameEvent.check == 1) {
+            else if (check == 1) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseButton());
                 myFrame.add(new GamePanel(6, 6));
-                System.out.println(myFrameEvent.check);
+                System.out.println(check);
             }
-            else if (myFrameEvent.check == 2) {
+            else if (check == 2) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseButton());
                 myFrame.add(new GamePanel(8, 8));
-                System.out.println(myFrameEvent.check);
+                System.out.println(check);
             }
             JOptionPane.getRootFrame().dispose();
             myFrame.repaint();
@@ -47,7 +49,13 @@ public class pausePanel2 {
         });
 
         exits.addActionListener(e -> {
+            myFrame.getContentPane().removeAll();
+            myFrame.revalidate();
+            myFrame.add(myFrame.getPauseButton());
+            myFrame.add(myFrame.getMenuPanel());
             JOptionPane.getRootFrame().dispose();
+            myFrame.repaint();
+            myFrame.pack();
         });
 
         JLabel label = new JLabel("Pause");

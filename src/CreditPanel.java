@@ -26,12 +26,12 @@ public class CreditPanel implements ActionListener {
         creditPanel.setBackground(yellow);
 
         //Names
-        Name1 = new JLabel("นายก้องภพ สินสังข์");
-        Name2 = new JLabel("นายจิรกิตต์ มราชชาลี");
-        Name3 = new JLabel("นายจุนบอม คิม");
-        Name4 = new JLabel("นางสาวกนลรัตน์ เบิกขุนทด");
-        Name5 = new JLabel("นายกิตติพล สิริอมรกิติ์");
-        Name6 = new JLabel("นายชัยพิพัฒน์ พงษ์ประภาชื่น");
+        Name1 = new JLabel("    นายก้องภพ สินสังข์");
+        Name2 = new JLabel("    นายจิรกิตต์ มราชชาลี");
+        Name3 = new JLabel("    นายจุนบอม คิม");
+        Name4 = new JLabel("    นางสาวกนลรัตน์ เบิกขุนทด");
+        Name5 = new JLabel("    นายกิตติพล สิริอมรกิติ์");
+        Name6 = new JLabel("    นายชัยพิพัฒน์ พงษ์ประภาชื่น");
         num1 = new JLabel("65070007");
         num2 = new JLabel("65070015");
         num3 = new JLabel("65070019");
@@ -60,7 +60,7 @@ public class CreditPanel implements ActionListener {
         namePanel.setLayout(new GridLayout(6, 2));
         namePanel.add(Name4);//Mean
         namePanel.add(num1);
-        namePanel.add(Name1);//Klong
+        namePanel.add(Name1);//Kong
         namePanel.add(num2);
         namePanel.add(Name5);//Holmes
         namePanel.add(num3);

@@ -101,7 +101,11 @@ public class MyFrame extends JFrame{
         this.setLocationRelativeTo(null);
 
         pauseButton.addActionListener(ee -> {
+<<<<<<< HEAD
             pausePanel2 pp = new pausePanel2(this);
+=======
+            new pausePanel2();
+>>>>>>> 38c1c9dc6f8a5951b04dcf52741bdd41324ed111
         });
     }
 

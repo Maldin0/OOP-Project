@@ -36,6 +36,9 @@ public class MyFrameEvent implements ActionListener {
 
             }
         }
+        if (e.getSource().equals(frame.getBtn2())) {
+            new ScoreBoardPanel();
+        }
         //Credit Button
         if (e.getSource().equals(frame.getBtn3())) {
             new CreditPanel();

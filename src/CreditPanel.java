@@ -4,14 +4,14 @@ import java.awt.event.*;
 
 public class CreditPanel implements ActionListener {
     private JFrame fr;
-    private JPanel creditPanel;
-    private JLabel Name1, Name2, Name3, Name4, Name5, Name6;
+    private JPanel creditPanel, namePanel;
+    private JLabel Name1, Name2, Name3, Name4, Name5, Name6, num1, num2, num3, num4, num5, num6;
     private JButton backBtn;
 
     public CreditPanel(){
         fr = new JFrame("Credit");
-        Font thaiFont = new Font("Tahoma", Font.BOLD, 14);
-        fr.getContentPane().setPreferredSize(new Dimension(400, 300));
+        Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
+        fr.getContentPane().setPreferredSize(new Dimension(400, 370));
         Color yellow = new Color(255,236,138);
 
         //Background
@@ -26,12 +26,18 @@ public class CreditPanel implements ActionListener {
         creditPanel.setBackground(yellow);
 
         //Names
-        Name1 = new JLabel("นายก้องภพ สินสังข์ 65070015");
-        Name2 = new JLabel("นายจิรกิตต์ มราชชาลี 65070034");
-        Name3 = new JLabel("นายจุนบอม คิม 65070040");
-        Name4 = new JLabel("นางสาวกนลรัตน์ เบิกขุนทด 65070007");
-        Name5 = new JLabel("นายกิตติพล สิริอมรกิติ์ 65070019");
-        Name6 = new JLabel("นายชัยพิพัฒน์ พงษ์ประภาชื่น 65070047");
+        Name1 = new JLabel("นายก้องภพ สินสังข์");
+        Name2 = new JLabel("นายจิรกิตต์ มราชชาลี");
+        Name3 = new JLabel("นายจุนบอม คิม");
+        Name4 = new JLabel("นางสาวกนลรัตน์ เบิกขุนทด");
+        Name5 = new JLabel("นายกิตติพล สิริอมรกิติ์");
+        Name6 = new JLabel("นายชัยพิพัฒน์ พงษ์ประภาชื่น");
+        num1 = new JLabel("65070007");
+        num2 = new JLabel("65070015");
+        num3 = new JLabel("65070019");
+        num4 = new JLabel("65070034");
+        num5 = new JLabel("65070040");
+        num6 = new JLabel("65070047");
 
         //Set Font
         Name1.setFont(thaiFont);
@@ -50,21 +56,31 @@ public class CreditPanel implements ActionListener {
         creditPanel.add(backBtn);
 
         //Add names on panel
-        creditPanel.add(Name1);//Klong
-        creditPanel.add(Name4);//Mean
-        creditPanel.add(Name2);//Smol Boz
-        creditPanel.add(Name5);//Holmes
-        creditPanel.add(Name3);//Junbom
-        creditPanel.add(Name6);//Big Boz
+        namePanel = new JPanel();
+        namePanel.setLayout(new GridLayout(6, 2));
+        namePanel.add(Name4);//Mean
+        namePanel.add(num1);
+        namePanel.add(Name1);//Klong
+        namePanel.add(num2);
+        namePanel.add(Name5);//Holmes
+        namePanel.add(num3);
+        namePanel.add(Name2);//Smol Boz
+        namePanel.add(num4);
+        namePanel.add(Name3);//Junbom
+        namePanel.add(num5);
+        namePanel.add(Name6);//Big Boz
+        namePanel.add(num6);
+        namePanel.setBackground(yellow);
 
         //Everything on frame
-        fr.add(creditPanel);
         fr.pack();
+        fr.setLayout(new BorderLayout());
+        fr.add(creditPanel);
+        fr.add(namePanel, BorderLayout.SOUTH);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fr.setVisible(true);
-        fr.setLayout(null);
-        fr.setLocationRelativeTo(null);
         fr.setResizable(false);
+        fr.setLocationRelativeTo(null);
     }
     //ActionPerformed for Button set visible to false
     public void actionPerformed(ActionEvent ac) {
@@ -73,4 +89,3 @@ public class CreditPanel implements ActionListener {
         }
     }
 }
-//Note to myself ทำไมไม่ลองให้มันสร้างหน้าต่างขึ้นมาเลยแต่ให้ การมองเห็นเป็น False แทนล่ะ พอกดคลิกก็เปลี่ยนเป็น True

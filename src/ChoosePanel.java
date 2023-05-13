@@ -3,8 +3,8 @@ import java.awt.*;
 public class ChoosePanel{
     public int difficulty = -1;
     private JButton easy, normal, hard;
+    private ChoosePanelEvent event;
     public ChoosePanel() {
-
         easy = new JButton(new ImageIcon("image/Easy Button.png"));
         normal = new JButton(new ImageIcon("image/Normal Button.png"));
         hard = new JButton(new ImageIcon("image/Hard Button.png"));
@@ -13,20 +13,10 @@ public class ChoosePanel{
         normal.setPreferredSize(new Dimension(66, 32));
         hard.setPreferredSize(new Dimension(66, 32));
 
-        easy.addActionListener(e -> {
-            JOptionPane.getRootFrame().dispose();
-            difficulty = 0;
-        });
-
-        normal.addActionListener(e -> {
-            JOptionPane.getRootFrame().dispose();
-            difficulty = 1;
-        });
-
-        hard.addActionListener(e -> {
-            JOptionPane.getRootFrame().dispose();
-            difficulty = 2;
-        });
+        event = new ChoosePanelEvent(this);
+        easy.addActionListener(event);
+        normal.addActionListener(event);
+        hard.addActionListener(event);
 
         JLabel label = new JLabel("Choose the difficulty level:");
 
@@ -51,6 +41,29 @@ public class ChoosePanel{
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
 
+    }
+    public JButton getEasy() {
+        return easy;
+    }
+
+    public void setEasy(JButton easy) {
+        this.easy = easy;
+    }
+
+    public JButton getNormal() {
+        return normal;
+    }
+
+    public void setNormal(JButton normal) {
+        this.normal = normal;
+    }
+
+    public JButton getHard() {
+        return hard;
+    }
+
+    public void setHard(JButton hard) {
+        this.hard = hard;
     }
     public static void main(String[] args) {
         ChoosePanel c = new ChoosePanel();

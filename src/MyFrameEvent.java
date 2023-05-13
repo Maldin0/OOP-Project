@@ -47,6 +47,9 @@ public class MyFrameEvent implements ActionListener {
         if (e.getSource().equals(frame.getBtn4())) {
             System.exit(0);
         }
+        if (e.getSource().equals(frame.getBtn5())) {
+            new HowToPlay();
+        }
         if (e.getSource().equals(frame.getBtn6())) {
             if (frame.isSoundOn()) {
                 ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");

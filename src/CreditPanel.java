@@ -13,6 +13,7 @@ public class CreditPanel implements ActionListener {
         Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
         fr.getContentPane().setPreferredSize(new Dimension(400, 370));
         Color yellow = new Color(255,236,138);
+        Color orange = new Color(240,165,0);
 
         //Background
         creditPanel = new JPanel() {
@@ -32,12 +33,12 @@ public class CreditPanel implements ActionListener {
         Name4 = new JLabel("    นางสาวกนลรัตน์ เบิกขุนทด");
         Name5 = new JLabel("    นายกิตติพล สิริอมรกิติ์");
         Name6 = new JLabel("    นายชัยพิพัฒน์ พงษ์ประภาชื่น");
-        num1 = new JLabel("65070007");
-        num2 = new JLabel("65070015");
-        num3 = new JLabel("65070019");
-        num4 = new JLabel("65070034");
-        num5 = new JLabel("65070040");
-        num6 = new JLabel("65070047");
+        num1 = new JLabel("                 65070007");
+        num2 = new JLabel("                 65070015");
+        num3 = new JLabel("                 65070019");
+        num4 = new JLabel("                 65070034");
+        num5 = new JLabel("                 65070040");
+        num6 = new JLabel("                 65070047");
 
         //Set Font
         Name1.setFont(thaiFont);
@@ -70,7 +71,7 @@ public class CreditPanel implements ActionListener {
         namePanel.add(num5);
         namePanel.add(Name6);//Big Boz
         namePanel.add(num6);
-        namePanel.setBackground(yellow);
+        namePanel.setBackground(orange);
 
         //Everything on frame
         fr.pack();

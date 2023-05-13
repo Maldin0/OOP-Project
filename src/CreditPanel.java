@@ -60,7 +60,7 @@ public class CreditPanel implements ActionListener {
         namePanel.setLayout(new GridLayout(6, 2));
         namePanel.add(Name4);//Mean
         namePanel.add(num1);
-        namePanel.add(Name1);//Klong
+        namePanel.add(Name1);//Kong
         namePanel.add(num2);
         namePanel.add(Name5);//Holmes
         namePanel.add(num3);

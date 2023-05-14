@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class MyFrameEvent implements ActionListener {
     private MyFrame frame;
-    public MyFrameEvent(MyFrame frame) {
+    public MyFrameEvent (MyFrame frame) {
         this.frame = frame;
     }
     @Override
@@ -13,7 +13,7 @@ public class MyFrameEvent implements ActionListener {
         if (e.getSource() == frame.getBtn1()) {
             ChoosePanel c = new ChoosePanel();
             if (e.getSource() == frame.getPauseButton()) {
-                new pausePanel2(frame);
+                new PausePanel(frame);
             }
             if (c.difficulty != -1) {
                 frame.remove(frame.getMenuPanel());

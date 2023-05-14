@@ -1,56 +1,86 @@
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+public class PausePanel {
+    private MyFrameEvent myFrameEvent;
+    private MyFrame myFrame;
+    private JButton con, retry, exits;
+    public PausePanel(MyFrame mf) {
+        this.myFrame = mf;
+        myFrameEvent = new MyFrameEvent(myFrame);
+        con = new JButton(new ImageIcon("image/Continue button.png"));
+        retry = new JButton(new ImageIcon("image/Restart button.png"));
+        exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
 
-public class PausePanel extends JFrame implements ActionListener {
-    private JPanel pausePanel;
-    private JButton continueButton, retryButton, backToMenuButton;
-    private JLabel PauseWord;
+        con.setPreferredSize(new Dimension(128, 64));
+        retry.setPreferredSize(new Dimension(128, 64));
+        exits.setPreferredSize(new Dimension(192, 64));
 
-    public PausePanel() {
-        pausePanel = new JPanel();
-        continueButton = new JButton("Continue");
-        retryButton = new JButton("retry");
-        backToMenuButton = new JButton("Exit to Menu");
-        PauseWord = new JLabel("Pause");
+        con.addActionListener(e -> {
+            JOptionPane.getRootFrame().dispose();
+        });
 
-        // กำหนดปุ่มได้เอง
-        pausePanel.setLayout(null);
+        retry.addActionListener(e -> {
+            int check = myFrame.getCheck();
 
-        // title pause
-        PauseWord.setBounds(375, 50, 128, 64);
-        pausePanel.add(PauseWord);
+            if (check == 0) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(4, 4));
+                System.out.println(check);
+            }
+            else if (check == 1) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(6, 6));
+                System.out.println(check);
+            }
+            else if (check == 2) {
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(new GamePanel(8, 8));
+                System.out.println(check);
+            }
+            JOptionPane.getRootFrame().dispose();
+            myFrame.repaint();
+            myFrame.pack();
+        });
 
-        // continue button
-        continueButton.setBounds(330, 150, 128, 64);
-        pausePanel.add(continueButton);
+        exits.addActionListener(e -> {
+            myFrame.getContentPane().removeAll();
+            myFrame.revalidate();
+            myFrame.add(myFrame.getMenuPanel());
+            JOptionPane.getRootFrame().dispose();
+            myFrame.repaint();
+            myFrame.pack();
+        });
 
-        // retry button
-        retryButton.setBounds(330, 250, 128, 64);
-        pausePanel.add(retryButton);
+        JLabel label = new JLabel("Pause");
 
-        // back to menu button
-        backToMenuButton.setBounds(330, 350, 128, 64);
-        pausePanel.add(backToMenuButton);
+        JPanel mainPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
 
-        this.add(pausePanel);
+        mainPanel.add(label);
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(con);
+        buttonPanel.add(retry);
+        buttonPanel.add(exits);
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        mainPanel.add(buttonPanel);
 
-        backToMenuButton.addActionListener(this);
-    }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(backToMenuButton)) {
-            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            MyFrame mf = new MyFrame();
-            this.add(mf);
-        }
-    }
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Pausssssse");
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setUndecorated(false);
+        dialog.setModal(true);
+        dialog.setPreferredSize(new Dimension(500, 170));
+        dialog.setContentPane(mainPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
 
-    public static void main(String[] args) {
-        new PausePanel();
     }
 }

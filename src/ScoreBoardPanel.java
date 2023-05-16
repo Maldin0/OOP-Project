@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 public class ScoreBoardPanel extends JFrame{
     private JPanel mainPanel;
+    private JButton backBtn;
     public ScoreBoardPanel() {
         mainPanel = new JPanel() {
         @Override
@@ -13,10 +14,23 @@ public class ScoreBoardPanel extends JFrame{
             }
         };
 
+        mainPanel.setLayout(null);
+
+        backBtn = new JButton();
+        backBtn.setIcon(new ImageIcon("image/Back button.png"));
+        backBtn.setBounds(35, 35, 50, 50);
+        backBtn.addActionListener(e -> {
+            if (e.getSource().equals(backBtn)) {
+                this.setVisible(false);
+            }
+        });
+        mainPanel.add(backBtn);
+
+        this.add(mainPanel);
+
         this.setIconImage(new ImageIcon("image/Slimeconnector_icon.png").getImage());
         this.setTitle("Scoreboard");
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
-        this.add(mainPanel);
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,21 +20,21 @@ public class PausePanelEvent implements ActionListener {
             if (check == 0) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(myFrame.getPauseBtn());
                 myFrame.add(new GamePanel(4, 4));
                 System.out.println(check);
             }
             else if (check == 1) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(myFrame.getPauseBtn());
                 myFrame.add(new GamePanel(6, 6));
                 System.out.println(check);
             }
             else if (check == 2) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseButton());
+                myFrame.add(myFrame.getPauseBtn());
                 myFrame.add(new GamePanel(8, 8));
                 System.out.println(check);
             }

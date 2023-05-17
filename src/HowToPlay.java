@@ -36,6 +36,7 @@ public class HowToPlay{
             smallPanel.setBackground(orange);
             smallPanel.add(head);
 
+            frame.setUndecorated(true);
             frame.pack();
             frame.setLayout(new BorderLayout());
             frame.add(mainPanel);

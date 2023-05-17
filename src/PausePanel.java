@@ -21,7 +21,12 @@ public class PausePanel {
         retry.addActionListener(pausePanelEvent);
         exits.addActionListener(pausePanelEvent);
 
+        Font font = new Font("Tahoma", Font.BOLD, 30);
+
         JLabel label = new JLabel("Pause");
+        label.setBounds(0, 0, 150, 50);
+        label.setForeground(new Color(52,60,132));
+        label.setFont(font);
 
         JPanel mainPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
@@ -36,11 +41,9 @@ public class PausePanel {
 
 
         dialog = new JDialog();
-        dialog.setTitle("Pausssssse");
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.setUndecorated(false);
+        dialog.setUndecorated(true);
         dialog.setModal(true);
-        dialog.setPreferredSize(new Dimension(500, 170));
+        dialog.setPreferredSize(new Dimension(500, 120));
         dialog.setContentPane(mainPanel);
         dialog.pack();
         dialog.setLocationRelativeTo(null);

@@ -10,6 +10,7 @@ public class CreditPanel {
 
     public CreditPanel(){
         fr = new JFrame("Credit");
+        fr.setUndecorated(true);
         Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
         fr.getContentPane().setPreferredSize(new Dimension(400, 370));
         Color yellow = new Color(255,236,138);
@@ -26,18 +27,18 @@ public class CreditPanel {
         creditPanel.setBackground(yellow);
 
         //Names
-        Name1 = new JLabel("        นายก้องภพ สินสังข์");
-        Name2 = new JLabel("        นายจิรกิตต์ มราชชาลี");
-        Name3 = new JLabel("        นายจุนบอม คิม");
-        Name4 = new JLabel("        นางสาวกนลรัตน์ เบิกขุนทด");
-        Name5 = new JLabel("        นายกิตติพล สิริอมรกิติ์");
-        Name6 = new JLabel("        นายชัยพิพัฒน์ พงษ์ประภาชื่น");
-        num1 = new JLabel("             65070007");
-        num2 = new JLabel("             65070015");
-        num3 = new JLabel("             65070019");
-        num4 = new JLabel("             65070034");
-        num5 = new JLabel("             65070040");
-        num6 = new JLabel("             65070047");
+        Name1 = new JLabel("     นาย ก้องภพ สินสังข์");
+        Name2 = new JLabel("     นาย จิรกิตต์ มราชชาลี");
+        Name3 = new JLabel("     นาย จุนบอม คิม");
+        Name4 = new JLabel("     นางสาว กนลรัตน์ เบิกขุนทด");
+        Name5 = new JLabel("     นาย กิตติพล สิริอมรกิติ์");
+        Name6 = new JLabel("     นาย ชัยพิพัฒน์ พงษ์ประภาชื่น");
+        num1 = new JLabel("                 65070007");
+        num2 = new JLabel("                 65070015");
+        num3 = new JLabel("                 65070019");
+        num4 = new JLabel("                 65070034");
+        num5 = new JLabel("                 65070040");
+        num6 = new JLabel("                 65070047");
 
         //Set Font
         Name1.setFont(thaiFont);

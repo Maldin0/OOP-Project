@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class CreditPanel implements ActionListener {
+public class CreditPanel {
     private JFrame fr;
     private JPanel creditPanel, namePanel;
     private JLabel Name1, Name2, Name3, Name4, Name5, Name6, num1, num2, num3, num4, num5, num6;

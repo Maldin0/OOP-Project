@@ -52,7 +52,13 @@ public class CreditPanel implements ActionListener {
         ImageIcon imgBtn = new ImageIcon("image/Back button.png");
         backBtn.setIcon(imgBtn);
         backBtn.setBounds(10, 15, 50, 50);
-        backBtn.addActionListener(this);
+
+        //ActionPerformed for Button set visible to false
+        backBtn.addActionListener(e -> {
+            if (e.getSource().equals(backBtn)) {
+                fr.setVisible(false);
+            }
+        });
         creditPanel.add(backBtn);
 
         //Add names on panel
@@ -81,11 +87,5 @@ public class CreditPanel implements ActionListener {
         fr.setVisible(true);
         fr.setResizable(false);
         fr.setLocationRelativeTo(null);
-    }
-    //ActionPerformed for Button set visible to false
-    public void actionPerformed(ActionEvent ac) {
-        if (ac.getSource().equals(backBtn)) {
-            fr.setVisible(false);
-        }
     }
 }

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HowToPlay implements ActionListener {
+public class HowToPlay{
         private JFrame frame;
         private JPanel mainPanel, smallPanel, infoPanel;
         private JLabel head, info;
@@ -25,7 +25,11 @@ public class HowToPlay implements ActionListener {
             ImageIcon imgBtn = new ImageIcon("image/Back button.png");
             backBtn.setIcon(imgBtn);
             backBtn.setBounds(10, 15, 50, 50);
-            backBtn.addActionListener(this);
+            backBtn.addActionListener(e -> {
+                if (e.getSource().equals(backBtn)) {
+                    frame.setVisible(false);
+                }
+            });
             mainPanel.add(backBtn);
 
             smallPanel = new JPanel();
@@ -44,12 +48,5 @@ public class HowToPlay implements ActionListener {
 
         public static void main(String[] args) {
             new HowToPlay();
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if(e.getSource().equals(backBtn)) {
-                frame.setVisible(false);
-            }
         }
     }

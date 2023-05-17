@@ -45,8 +45,4 @@ public class HowToPlay{
             frame.setResizable(false);
             frame.setLocationRelativeTo(null);
         }
-
-        public static void main(String[] args) {
-            new HowToPlay();
-        }
     }

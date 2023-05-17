@@ -158,9 +158,10 @@ public class ScoreBoardPanel extends JFrame{
         score8.setFont(font);
         mainPanel.add(score8);
 
-        this.add(mainPanel);
+        ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
+        this.setIconImage(icon.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
 
-        this.setIconImage(new ImageIcon("image/Slimeconnector_icon.png").getImage());
+        this.add(mainPanel);
         this.setTitle("Scoreboard");
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);

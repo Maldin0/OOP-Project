@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class HowToPlay{
         private JFrame frame;
@@ -17,7 +19,6 @@ public class HowToPlay{
             Color orange = new Color(240,165,0);
             mainPanel.setLayout(null);
             mainPanel.setBackground(yellow);
-
             head = new JLabel("How To Play");
             info = new JLabel("This is how to play and I don't know?");
 
@@ -35,6 +36,9 @@ public class HowToPlay{
             smallPanel = new JPanel();
             smallPanel.setBackground(orange);
             smallPanel.add(head);
+
+            ImageIcon icon2 = new ImageIcon("image/Slimeconnector_icon.png");
+            frame.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
 
             frame.pack();
             frame.setLayout(new BorderLayout());

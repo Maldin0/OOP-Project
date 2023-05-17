@@ -32,7 +32,7 @@ public class ChoosePanel{
 
         JDialog dialog = new JDialog();
         dialog.setTitle("Difficulty");
-        dialog.setUndecorated(false);
+
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setModal(true);
         dialog.setPreferredSize(new Dimension(260, 120));

@@ -15,16 +15,16 @@ public class WinScreenAnimation implements Runnable {
         int height = imageIcon.getIconHeight();
         int width = imageIcon.getIconWidth();
 
-        int initialY = -height; // Start the image off the top of the panel
+        int topY = -height; // Start the image off the top of the panel
         int finalY = (winScreenPanel.getHeight() - height) / 2; // Calculate the final y-coordinate
 
-        for (int y = initialY; y <= finalY; y++) {
+        for (int i = topY; i <= finalY; i++) {
             Image scaledImage = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
             ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
 
             // Create a new position for the image within the label
             int x = (winScreenPanel.getWidth() - width) / 2;
-            int currentY = y;
+            int currentY = i;
             Rectangle position = new Rectangle(x, currentY, width, height);
 
             // Set the position of the image within the label

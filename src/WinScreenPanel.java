@@ -8,17 +8,17 @@ public class WinScreenPanel extends JFrame {
         winSign.setHorizontalAlignment(JLabel.CENTER);
         this.add(winSign);
 
-        ImageIcon image = new ImageIcon("image/WinScreen.png");
-
-        // Create a separate thread and start it
-        Thread t = new Thread(new WinScreenAnimation(this, image));
-        t.start();
+        ImageIcon imageIcon = new ImageIcon("image/WinScreen.png");
 
         this.setTitle("Image Display");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        // Create a separate thread and start it
+        Thread t = new Thread(new WinScreenAnimation(this, imageIcon));
+        t.start();
     }
 
     public static void main(String[] args) {

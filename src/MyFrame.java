@@ -8,6 +8,7 @@ public class MyFrame extends JFrame{
     private boolean soundOn = true;
     private MusicPlayer p;
     private int check;
+
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();

@@ -1,56 +1,93 @@
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+public class PausePanel {
+    private MyFrame myFrame;
+    private JButton con, retry, exits;
+    private JDialog dialog;
+    private PausePanelEvent pausePanelEvent;
+    public PausePanel(MyFrame mf) {
+        this.myFrame = mf;
 
-public class PausePanel extends JFrame implements ActionListener {
-    private JPanel pausePanel;
-    private JButton continueButton, retryButton, backToMenuButton;
-    private JLabel PauseWord;
+        con = new JButton(new ImageIcon("image/Continue button.png"));
+        retry = new JButton(new ImageIcon("image/Restart button.png"));
+        exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
 
-    public PausePanel() {
-        pausePanel = new JPanel();
-        continueButton = new JButton("Continue");
-        retryButton = new JButton("retry");
-        backToMenuButton = new JButton("Exit to Menu");
-        PauseWord = new JLabel("Pause");
+        con.setPreferredSize(new Dimension(128, 64));
+        retry.setPreferredSize(new Dimension(128, 64));
+        exits.setPreferredSize(new Dimension(192, 64));
 
-        // กำหนดปุ่มได้เอง
-        pausePanel.setLayout(null);
+        pausePanelEvent = new PausePanelEvent(this, myFrame);
+        con.addActionListener(pausePanelEvent);
+        retry.addActionListener(pausePanelEvent);
+        exits.addActionListener(pausePanelEvent);
 
-        // title pause
-        PauseWord.setBounds(375, 50, 128, 64);
-        pausePanel.add(PauseWord);
+        Font font = new Font("Tahoma", Font.BOLD, 30);
 
-        // continue button
-        continueButton.setBounds(330, 150, 128, 64);
-        pausePanel.add(continueButton);
+        JLabel label = new JLabel("Pause");
+        label.setBounds(0, 0, 150, 50);
+        label.setForeground(new Color(52,60,132));
+        label.setFont(font);
 
-        // retry button
-        retryButton.setBounds(330, 250, 128, 64);
-        pausePanel.add(retryButton);
+        JPanel mainPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
 
-        // back to menu button
-        backToMenuButton.setBounds(330, 350, 128, 64);
-        pausePanel.add(backToMenuButton);
+        mainPanel.add(label);
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(con);
+        buttonPanel.add(retry);
+        buttonPanel.add(exits);
 
-        this.add(pausePanel);
+        mainPanel.add(buttonPanel);
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
 
-        backToMenuButton.addActionListener(this);
+        dialog = new JDialog();
+        dialog.setUndecorated(true);
+        dialog.setModal(true);
+        dialog.setPreferredSize(new Dimension(500, 120));
+        dialog.setContentPane(mainPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(backToMenuButton)) {
-            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            MyFrame mf = new MyFrame();
-            this.add(mf);
-        }
+    public MyFrame getMyFrame() {
+        return myFrame;
     }
 
-    public static void main(String[] args) {
-        new PausePanel();
+    public void setMyFrame(MyFrame myFrame) {
+        this.myFrame = myFrame;
+    }
+
+    public JButton getCon() {
+        return con;
+    }
+
+    public void setCon(JButton con) {
+        this.con = con;
+    }
+
+    public JButton getRetry() {
+        return retry;
+    }
+
+    public void setRetry(JButton retry) {
+        this.retry = retry;
+    }
+
+    public JButton getExits() {
+        return exits;
+    }
+
+    public void setExits(JButton exits) {
+        this.exits = exits;
+    }
+
+    public JDialog getDialog() {
+        return dialog;
+    }
+
+    public void setDialog(JDialog dialog) {
+        this.dialog = dialog;
     }
 }

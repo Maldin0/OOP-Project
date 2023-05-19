@@ -32,9 +32,11 @@ public class ChoosePanel{
 
         JDialog dialog = new JDialog();
         dialog.setTitle("Difficulty");
-        dialog.setUndecorated(false);
+
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setModal(true);
+        ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
+        dialog.setIconImage(icon.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
         dialog.setPreferredSize(new Dimension(260, 120));
         dialog.setContentPane(mainPanel);
         dialog.pack();

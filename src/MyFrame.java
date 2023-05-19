@@ -1,13 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
 public class MyFrame extends JFrame{
-    private JButton btn1, btn2, btn3, btn4, btn5, btn6, pauseButton;
-    private JLabel label;
+    private JButton startBtn, scoreBtn, creditBtn, exitBtn, helpBtn, soundBtn, pauseBtn;
+    private JLabel logoName;
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
-    private MyFrameEvent me;
+    private int check;
+
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();
@@ -31,58 +32,58 @@ public class MyFrame extends JFrame{
 
         // Start Button;
         ImageIcon button1 = new ImageIcon("image/Start button.png");
-        btn1 = new JButton();
-        btn1.setIcon(button1);
-        btn1.setBounds(100, 290, 128, 64);
-        btn1.addActionListener(event);
-        menuPanel.add(btn1);
+        startBtn = new JButton();
+        startBtn.setIcon(button1);
+        startBtn.setBounds(100, 290, 128, 64);
+        startBtn.addActionListener(event);
+        menuPanel.add(startBtn);
 
         // ScoreBoard;
         ImageIcon button2 = new ImageIcon("image/Scoreboard button.png");
-        btn2 = new JButton();
-        btn2.setIcon(button2);
-        btn2.setBounds(100, 365, 128, 64);
-        btn2.addActionListener(event);
-        menuPanel.add(btn2);
+        scoreBtn = new JButton();
+        scoreBtn.setIcon(button2);
+        scoreBtn.setBounds(100, 365, 128, 64);
+        scoreBtn.addActionListener(event);
+        menuPanel.add(scoreBtn);
 
         // Credit;
         ImageIcon button3 = new ImageIcon("image/Credit button.png");
-        btn3 = new JButton();
-        btn3.setIcon(button3);
-        btn3.setBounds(100, 440, 128, 64);
-        btn3.addActionListener(event);
-        menuPanel.add(btn3);
+        creditBtn = new JButton();
+        creditBtn.setIcon(button3);
+        creditBtn.setBounds(100, 440, 128, 64);
+        creditBtn.addActionListener(event);
+        menuPanel.add(creditBtn);
 
         // Exit;
         ImageIcon button4 = new ImageIcon("image/Exit button.png");
-        btn4 = new JButton();
-        btn4.setIcon(button4);
-        btn4.setBounds(100, 515, 128, 64);
-        btn4.addActionListener(event);
-        menuPanel.add(btn4);
+        exitBtn = new JButton();
+        exitBtn.setIcon(button4);
+        exitBtn.setBounds(100, 515, 128, 64);
+        exitBtn.addActionListener(event);
+        menuPanel.add(exitBtn);
 
         // How to Play;
         ImageIcon button5 = new ImageIcon("image/Help button.png");
-        btn5 = new JButton();
-        btn5.setIcon(button5);
-        btn5.setBounds(10, 15, 50, 50);
-        btn5.addActionListener(event);
-        menuPanel.add(btn5);
+        helpBtn = new JButton();
+        helpBtn.setIcon(button5);
+        helpBtn.setBounds(10, 15, 50, 50);
+        helpBtn.addActionListener(event);
+        menuPanel.add(helpBtn);
 
         // Sound Setting;
-        btn6 = new JButton(new ImageIcon("image/Sound button.png"));
-        btn6.setBounds(80, 15, 50, 50);
-        btn6.addActionListener(event);
-        menuPanel.add(btn6);
+        soundBtn = new JButton(new ImageIcon("image/Sound button.png"));
+        soundBtn.setBounds(80, 15, 50, 50);
+        soundBtn.addActionListener(event);
+        menuPanel.add(soundBtn);
 
         //  Logo
-        label = new JLabel(new ImageIcon("image/Finished logo.png"));
-        label.setBounds(40, 110, 250, 150);
-        menuPanel.add(label);
+        logoName = new JLabel(new ImageIcon("image/Finished logo.png"));
+        logoName.setBounds(40, 110, 250, 150);
+        menuPanel.add(logoName);
 
         // Pause
-        pauseButton = new JButton(new ImageIcon("image/Pause button.png"));
-        pauseButton.setBounds(10, 10, 50, 50);
+        pauseBtn = new JButton(new ImageIcon("image/Pause button.png"));
+        pauseBtn.setBounds(10, 10, 50, 50);
 
         // Insert Icon Image
         ImageIcon icon2 = new ImageIcon("image/Slimeconnector_icon.png");
@@ -100,8 +101,8 @@ public class MyFrame extends JFrame{
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-        pauseButton.addActionListener(ee -> {
-            pausePanel2 pp = new pausePanel2();
+        pauseBtn.addActionListener(ee -> {
+            new PausePanel(this);
         });
     }
 
@@ -113,68 +114,68 @@ public class MyFrame extends JFrame{
         return menuPanel;
     }
 
-    public JButton getBtn1() {
-        return btn1;
+    public JButton getStartBtn() {
+        return startBtn;
     }
 
-    public void setBtn1(JButton btn1) {
-        this.btn1 = btn1;
+    public void setStartBtn(JButton startBtn) {
+        this.startBtn = startBtn;
     }
 
-    public JButton getBtn2() {
-        return btn2;
+    public JButton getScoreBtn() {
+        return scoreBtn;
     }
 
-    public void setBtn2(JButton btn2) {
-        this.btn2 = btn2;
+    public void setScoreBtn(JButton scoreBtn) {
+        this.scoreBtn = scoreBtn;
     }
 
-    public JButton getBtn3() {
-        return btn3;
+    public JButton getCreditBtn() {
+        return creditBtn;
     }
 
-    public void setBtn3(JButton btn3) {
-        this.btn3 = btn3;
+    public void setCreditBtn(JButton creditBtn) {
+        this.creditBtn = creditBtn;
     }
 
-    public JButton getBtn4() {
-        return btn4;
+    public JButton getExitBtn() {
+        return exitBtn;
     }
 
-    public void setBtn4(JButton btn4) {
-        this.btn4 = btn4;
+    public void setExitBtn(JButton exitBtn) {
+        this.exitBtn = exitBtn;
     }
 
-    public JButton getBtn5() {
-        return btn5;
+    public JButton getHelpBtn() {
+        return helpBtn;
     }
 
-    public void setBtn5(JButton btn5) {
-        this.btn5 = btn5;
+    public void setHelpBtn(JButton helpBtn) {
+        this.helpBtn = helpBtn;
     }
 
-    public JButton getBtn6() {
-        return btn6;
+    public JButton getSoundBtn() {
+        return soundBtn;
     }
 
-    public void setBtn6(JButton btn6) {
-        this.btn6 = btn6;
+    public void setSoundBtn(JButton soundBtn) {
+        this.soundBtn = soundBtn;
     }
 
-    public JButton getPauseButton() {
-        return pauseButton;
+    public JButton getPauseBtn() {
+        return pauseBtn;
     }
 
-    public void setPauseButton(JButton pauseButton) {
-        this.pauseButton = pauseButton;
+    public void setPauseBtn(JButton pauseBtn) {
+        this.pauseBtn = pauseBtn;
     }
 
-    public JLabel getLabel() {
-        return label;
+    public JLabel getLogoName() {
+        return logoName;
     }
 
-    public void setLabel(JLabel label) {
-        this.label = label;
+    public void setLogoName(JLabel logoName) {
+        this.logoName = logoName;
     }
 
     public void setMenuPanel(JPanel menuPanel) {
@@ -197,4 +198,10 @@ public class MyFrame extends JFrame{
         this.p = p;
     }
 
+    public int getCheck() {
+        return check;
+    }
+    public void setCheck(int check) {
+        this.check = check;
+    }
 }

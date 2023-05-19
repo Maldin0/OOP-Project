@@ -29,8 +29,8 @@ public class WinScreenAnimation implements Runnable {
 
             // Set the position of the image within the label
             SwingUtilities.invokeLater(() -> {
-                winScreenPanel.winSign.setIcon(scaledImageIcon);
-                winScreenPanel.winSign.setBounds(position);
+                winScreenPanel.getWinSign().setIcon(scaledImageIcon);
+                winScreenPanel.getWinSign().setBounds(position);
                 winScreenPanel.repaint(); // Update the panel to show the changes
             });
 

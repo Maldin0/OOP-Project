@@ -6,20 +6,28 @@ import java.awt.event.ActionListener;
 public class HowToPlay{
         private JFrame frame;
         private JPanel mainPanel, smallPanel, infoPanel;
-        private JLabel head, info;
+        private JLabel head;
         private JButton backBtn;
 
         public HowToPlay() {
-            frame = new JFrame("HowToPlay");
-            mainPanel = new JPanel();
-            frame.getContentPane().setPreferredSize(new Dimension(400, 300));
+            frame = new JFrame();
+            head = new JLabel("How To Play");
+            frame.getContentPane().setPreferredSize(new Dimension(400, 350));
             Color yellow = new Color(255,236,138);
             Color orange = new Color(240,165,0);
+            mainPanel = new JPanel() {
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    Image HowToImg = new ImageIcon("image/Howtoplay.png").getImage();
+                    g.drawImage(HowToImg, 0, 0, null);
+                }
+            };
             mainPanel.setLayout(null);
             mainPanel.setBackground(yellow);
 
-            head = new JLabel("How To Play");
-            info = new JLabel("This is how to play and I don't know?");
+            smallPanel = new JPanel();
+            smallPanel.setBackground(orange);
+            smallPanel.add(head);
 
             backBtn = new JButton();
             ImageIcon imgBtn = new ImageIcon("image/Back button.png");
@@ -27,21 +35,16 @@ public class HowToPlay{
             backBtn.setBounds(10, 15, 50, 50);
             backBtn.addActionListener(e -> {
                 if (e.getSource().equals(backBtn)) {
-                    frame.setVisible(false);
+                    frame.dispose();
                 }
             });
             mainPanel.add(backBtn);
-
-            smallPanel = new JPanel();
-            smallPanel.setBackground(orange);
-            smallPanel.add(head);
 
             frame.setUndecorated(true);
             frame.pack();
             frame.setLayout(new BorderLayout());
             frame.add(mainPanel);
             frame.add(smallPanel, BorderLayout.NORTH);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setVisible(true);
             frame.setResizable(false);
             frame.setLocationRelativeTo(null);

@@ -9,7 +9,7 @@ public class CreditPanel {
     private JButton backBtn;
 
     public CreditPanel(){
-        fr = new JFrame("Credit");
+        fr = new JFrame();
         fr.setUndecorated(true);
         Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
         fr.getContentPane().setPreferredSize(new Dimension(400, 370));
@@ -57,7 +57,7 @@ public class CreditPanel {
         //ActionPerformed for Button set visible to false
         backBtn.addActionListener(e -> {
             if (e.getSource().equals(backBtn)) {
-                fr.setVisible(false);
+                fr.dispose();
             }
         });
         creditPanel.add(backBtn);
@@ -84,7 +84,6 @@ public class CreditPanel {
         fr.setLayout(new BorderLayout());
         fr.add(creditPanel);
         fr.add(namePanel, BorderLayout.SOUTH);
-        fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fr.setVisible(true);
         fr.setResizable(false);
         fr.setLocationRelativeTo(null);

@@ -3,8 +3,7 @@ import java.awt.*;
 public class ScoreBoardPanel extends JFrame{
     private JPanel mainPanel;
     private JButton backBtn;
-    private JLabel name1, name2, name3, name4, name5, name6, name7, name8;
-    private JLabel score1, score2, score3, score4, score5, score6, score7, score8;
+    private JLabel easyScore, normalScore, hardScore;
     public ScoreBoardPanel() {
         mainPanel = new JPanel() {
         @Override
@@ -30,6 +29,30 @@ public class ScoreBoardPanel extends JFrame{
 
         Font font = new Font("Tahoma", Font.BOLD, 30);
 
+        easyScore = new JLabel("000000", JLabel.LEFT);
+        easyScore.setBounds(230, 140, 350, 40);
+        easyScore.setForeground(new Color(255,236,138,255));
+        easyScore.setBackground(new Color(63,63,116,255));
+        easyScore.setOpaque(true);
+        easyScore.setFont(font);
+        mainPanel.add(easyScore);
+
+        normalScore = new JLabel("111111", JLabel.LEFT);
+        normalScore.setBounds(230, 320, 350, 40);
+        normalScore.setForeground(new Color(255,236,138,255));
+        normalScore.setBackground(new Color(63,63,116,255));
+        normalScore.setOpaque(true);
+        normalScore.setFont(font);
+        mainPanel.add(normalScore);
+
+        hardScore = new JLabel("222222", JLabel.LEFT);
+        hardScore.setBounds(230, 505, 350, 40);
+        hardScore.setForeground(new Color(255,236,138,255));
+        hardScore.setBackground(new Color(63,63,116,255));
+        hardScore.setOpaque(true);
+        hardScore.setFont(font);
+        mainPanel.add(hardScore);
+
         ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
         this.setIconImage(icon.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
 
@@ -38,7 +61,7 @@ public class ScoreBoardPanel extends JFrame{
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setLocationRelativeTo(null);
 

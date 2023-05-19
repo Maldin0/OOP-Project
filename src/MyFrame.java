@@ -7,7 +7,7 @@ public class MyFrame extends JFrame{
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
-    private int check;
+    private int check = -1;
 
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
@@ -23,7 +23,6 @@ public class MyFrame extends JFrame{
                 // Background
                 Image bgImage = new ImageIcon("image/BG01.png").getImage();
                 g.drawImage(bgImage, 0, 0, null);
-
                 Image slimeFront = new ImageIcon("image/Slime front.png").getImage();
                 g.drawImage(slimeFront, 225, 80, 600, 500, null);
             }

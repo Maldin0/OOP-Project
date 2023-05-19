@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class MyFrameEvent implements ActionListener {
     public int check;
     private MyFrame frame;
+    private JPanel menuPanel;
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
     }
@@ -22,17 +23,44 @@ public class MyFrameEvent implements ActionListener {
                 frame.revalidate();
                 frame.setLayout(new BorderLayout());
                 frame.add(frame.getPauseBtn());
-                JPanel fillPanel = new JPanel();
-                frame.add(fillPanel, BorderLayout.CENTER);
+//                JPanel fillPanel = new JPanel();
+//                frame.add(fillPanel);
                 if (c.difficulty == 0) {
                     check = 0;
-                    frame.add(new GamePanel(4), BorderLayout.SOUTH);
+                    menuPanel = new JPanel() {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            super.paintComponent(g);
+                            Image bg1 = new ImageIcon("image/easybackground.png").getImage();
+                            g.drawImage(bg1, 0, 0, null);
+                        }
+                    };
+                    menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
+                    frame.add(menuPanel);
                 } else if (c.difficulty == 1) {
                     check = 1;
-                    frame.add(new GamePanel(6), BorderLayout.SOUTH);
+                    menuPanel = new JPanel() {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            super.paintComponent(g);
+                            Image bg2 = new ImageIcon("image/mediumbackground.png").getImage();
+                            g.drawImage(bg2, 0, 0, null);
+                        }
+                    };
+                    menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
+                    frame.add(menuPanel);
                 } else if (c.difficulty == 2) {
+                    menuPanel = new JPanel() {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            super.paintComponent(g);
+                            Image bg1 = new ImageIcon("image/hardbackground.png").getImage();
+                            g.drawImage(bg1, 0, 0, null);
+                        }
+                    };
                     check = 2;
-                    frame.add(new GamePanel(8), BorderLayout.SOUTH);
+                    menuPanel.add(new GamePanel(8), BorderLayout.SOUTH);
+                    frame.add(menuPanel);
                 }
                 frame.repaint();
                 frame.pack();

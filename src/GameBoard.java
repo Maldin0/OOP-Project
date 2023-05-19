@@ -131,7 +131,7 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        if (count == 8 || count == 16 || count == 64) {
+        if ((rows == 4 && count == 8) || (rows == 6 && count == 16) || (rows == 8 && count == 32)) {
             new WinScreenPanel();
             resetCount();
         }
@@ -153,6 +153,7 @@ public class GameBoard extends JPanel implements CardListener {
         timer.setRepeats(false);
         timer.start();
     }
+
     public void resetCount() {
         count = 0;
     }

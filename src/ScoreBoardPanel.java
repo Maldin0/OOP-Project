@@ -61,7 +61,7 @@ public class ScoreBoardPanel extends JFrame{
         this.getContentPane().setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
         this.setLocationRelativeTo(null);
 

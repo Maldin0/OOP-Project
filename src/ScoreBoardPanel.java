@@ -70,4 +70,28 @@ public class ScoreBoardPanel extends JFrame{
     public static void main(String[] args) {
         new ScoreBoardPanel();
     }
+
+    public JLabel getEasyScore() {
+        return easyScore;
+    }
+
+    public void setEasyScore(JLabel easyScore) {
+        this.easyScore = easyScore;
+    }
+
+    public JLabel getNormalScore() {
+        return normalScore;
+    }
+
+    public void setNormalScore(JLabel normalScore) {
+        this.normalScore = normalScore;
+    }
+
+    public JLabel getHardScore() {
+        return hardScore;
+    }
+
+    public void setHardScore(JLabel hardScore) {
+        this.hardScore = hardScore;
+    }
 }

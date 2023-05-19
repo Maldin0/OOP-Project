@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class WinScreenPanel extends JFrame {
+public class WinScreenPanel extends JFrame implements ActionListener {
     private JPanel mainPanel, buttonPanel;
     private JButton exits;
     private JLabel winSign;
-
     public WinScreenPanel() {
+
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
@@ -19,9 +21,8 @@ public class WinScreenPanel extends JFrame {
 
         exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
         exits.setPreferredSize(new Dimension(192, 64));
-        exits.addActionListener(e -> {
-            this.dispose();
-        });
+        exits.addActionListener(this);
+
         buttonPanel.add(exits);
 
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -41,15 +42,18 @@ public class WinScreenPanel extends JFrame {
         t.start();
     }
 
-    public static void main(String[] args) {
-        new WinScreenPanel();
-    }
-
     public JLabel getWinSign() {
         return winSign;
     }
 
     public void setWinSign(JLabel winSign) {
         this.winSign = winSign;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == exits) {
+            this.dispose();
+        }
     }
 }

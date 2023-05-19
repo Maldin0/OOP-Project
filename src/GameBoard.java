@@ -113,7 +113,9 @@ public class GameBoard extends JPanel implements CardListener {
         count++;
         if (count == 8) {
             new WinScreenPanel();
+            resetCount();
         }
+        System.out.println(count);
     }
 
     private void revealAllCards() {

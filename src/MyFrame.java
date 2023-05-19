@@ -7,7 +7,7 @@ public class MyFrame extends JFrame{
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
-    private int check = -1;
+    private int check;
 
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);

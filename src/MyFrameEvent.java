@@ -26,8 +26,8 @@ public class MyFrameEvent implements ActionListener {
 //                JPanel fillPanel = new JPanel();
 //                frame.add(fillPanel);
                 if (c.difficulty == 0) {
-                    check = 0;
-                    System.out.println(check);
+                    frame.setCheck(0);
+                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
@@ -39,9 +39,10 @@ public class MyFrameEvent implements ActionListener {
 //                    menuPanel.add(new JPanel(), BorderLayout.CENTER);
                     menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
                     frame.add(menuPanel);
+
                 } else if (c.difficulty == 1) {
-                    check = 1;
-                    System.out.println(check);
+                    frame.setCheck(1);
+                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
@@ -52,9 +53,10 @@ public class MyFrameEvent implements ActionListener {
                     };
                     menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
                     frame.add(menuPanel);
+
                 } else if (c.difficulty == 2) {
-                    check = 2;
-                    System.out.println(check);
+                    frame.setCheck(2);
+                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {

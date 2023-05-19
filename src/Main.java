@@ -7,9 +7,11 @@ public class Main extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setPreferredSize(new Dimension(800, 600));
         setResizable(true);
-
+        setLayout(new BorderLayout());
+        JPanel fillPanel = new JPanel();
         GamePanel gamePanel = new GamePanel(8);
-        add(gamePanel);
+        add(fillPanel, BorderLayout.CENTER);
+        add(gamePanel, BorderLayout.SOUTH);
 
         pack();
         setLocationRelativeTo(null);

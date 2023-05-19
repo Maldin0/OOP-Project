@@ -61,5 +61,8 @@ public class MyFrameEvent implements ActionListener {
                 frame.getP().unmute();
             }
         }
+        if (e.getSource().equals(frame.getHelpBtn())) {
+            new HowToPlay();
+        }
     }
 }

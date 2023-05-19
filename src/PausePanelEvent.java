@@ -23,49 +23,24 @@ public class PausePanelEvent implements ActionListener {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseBtn());
-                background = new JPanel(new BorderLayout()) {
-                    @Override
-                    protected void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-                        Image bg2 = new ImageIcon("image/easybackground.png").getImage();
-                        g.drawImage(bg2, 0, 0, null);
-                    }
-                };
-                background.add(new GamePanel(4), BorderLayout.SOUTH);
-                myFrame.add(background);
+                myFrame.setCheck(0);
+                myFrame.add(new GamePanel(4, myFrame));
             }
             else if (check == 1) {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseBtn());
-                background = new JPanel(new BorderLayout()) {
-                    @Override
-                    protected void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-                        Image bg2 = new ImageIcon("image/mediumbackground.png").getImage();
-                        g.drawImage(bg2, 0, 0, null);
-                    }
-                };
-                background.add(new GamePanel(6), BorderLayout.SOUTH);
-                myFrame.add(background);
+                myFrame.getContentPane().removeAll();
+                myFrame.revalidate();
+                myFrame.setCheck(0);
+                myFrame.add(new GamePanel(6, myFrame));
             }
             else if (check == 2) {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.add(myFrame.getPauseBtn());
-                background = new JPanel(new BorderLayout()) {
-                    @Override
-                    protected void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-                        Image bg2 = new ImageIcon("image/hardbackground.png").getImage();
-                        g.drawImage(bg2, 0, 0, null);
-                    }
-                };
-                background.add(new GamePanel(8), BorderLayout.SOUTH);
-                myFrame.add(background);
+                myFrame.setCheck(0);
+                myFrame.add(new GamePanel(8, myFrame));
             }
             pausePanel.getDialog().dispose();
             myFrame.repaint();

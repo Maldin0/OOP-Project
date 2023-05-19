@@ -15,19 +15,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 public class GameBoard extends JPanel implements CardListener {
-    private int rows;
-    private int cols;
     private List<ImageCard> cards;
     private List<CardPanel> selectedCards = new ArrayList<>();
     private List<CardPanel> cardPanels = new ArrayList<>();
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
     private static int count;
-
-    public GameBoard(int rows, int cols, int cardSize, List<BufferedImage> images) {
-        this.rows = rows;
-        this.cols = cols;
+    private boolean isFinished = false;
+    private String timeValue;
+    private MyTimer timer;
+    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer) {
         this.cards = generateCards(images);
+        this.timer = timer;
         setOpaque(false);
 //        setBackground(Color.RED);
 
@@ -42,7 +41,7 @@ public class GameBoard extends JPanel implements CardListener {
             e.printStackTrace();
         }
 
-        setLayout(new GridLayout(rows, cols, 0, 0));
+        setLayout(new GridLayout(rows, rows, 0, 0));
 
         for (ImageCard card : cards) {
             CardPanel cardPanel = new CardPanel(card, cardSize, hiddenImage);
@@ -132,6 +131,8 @@ public class GameBoard extends JPanel implements CardListener {
         card2.card.setMatched(true);
         count++;
         if (count == 8 || count == 16 || count == 64) {
+            isFinished = true;
+            timer.pauseTimer();
             new WinScreenPanel();
             resetCount();
         }
@@ -143,7 +144,7 @@ public class GameBoard extends JPanel implements CardListener {
             cardPanel.repaint();
         });
 
-        Timer timer = new Timer(1000, e -> {
+        Timer timer = new Timer(3000, e -> {
             cardPanels.forEach(cardPanel -> {
                 cardPanel.card.setRevealed(false);
                 cardPanel.repaint();
@@ -152,8 +153,18 @@ public class GameBoard extends JPanel implements CardListener {
 
         timer.setRepeats(false);
         timer.start();
+
     }
     public void resetCount() {
         count = 0;
+    }
+
+    public int getValue(MyTimer timer) {
+        String time = timer.getText();
+        String[] units = time.split(":");
+        int hours = Integer.parseInt(units[0]);
+        int minutes = Integer.parseInt(units[1]);
+        int seconds = Integer.parseInt(units[2]);
+        return (hours * 3600) + (minutes * 60) + seconds;
     }
 }

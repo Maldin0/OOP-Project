@@ -7,9 +7,13 @@ public class PausePanelEvent implements ActionListener {
     private MyFrame myFrame;
     private PausePanel pausePanel;
     private JPanel background;
+    private MyClock clock;
     public PausePanelEvent (PausePanel pausePanel, MyFrame myFrame) {
         this.myFrame = myFrame;
         this.pausePanel = pausePanel;
+    }
+    public PausePanelEvent(MyClock clock) {
+        this.clock = clock;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -32,6 +36,12 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                background.add(myFrame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                background.add(clock, BorderLayout.CENTER);
+                t.start();
                 background.add(new GamePanel(4), BorderLayout.SOUTH);
                 myFrame.add(background);
             }
@@ -48,6 +58,12 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                background.add(myFrame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                background.add(clock, BorderLayout.CENTER);
+                t.start();
                 background.add(new GamePanel(6), BorderLayout.SOUTH);
                 myFrame.add(background);
             }
@@ -64,6 +80,12 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                background.add(myFrame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                background.add(clock, BorderLayout.CENTER);
+                t.start();
                 background.add(new GamePanel(8), BorderLayout.SOUTH);
                 myFrame.add(background);
             }

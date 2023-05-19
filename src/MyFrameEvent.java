@@ -7,9 +7,11 @@ public class MyFrameEvent implements ActionListener {
     public int check;
     private MyFrame frame;
     private JPanel menuPanel;
+    private MyClock clock;
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
     }
+    public MyFrameEvent(MyClock clock) {this.clock = clock;}
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
@@ -18,62 +20,67 @@ public class MyFrameEvent implements ActionListener {
             if (e.getSource() == frame.getPauseBtn()) {
                 new PausePanel(frame);
             }
-            if (c.difficulty != -1) {
-                frame.remove(frame.getMenuPanel());
-                frame.revalidate();
-                frame.setLayout(new BorderLayout());
-                frame.add(frame.getPauseBtn());
-//                JPanel fillPanel = new JPanel();
-//                frame.add(fillPanel);
-                if (c.difficulty == 0) {
-                    frame.setCheck(0);
-                    menuPanel = new JPanel(new BorderLayout()) {
-                        @Override
-                        protected void paintComponent(Graphics g) {
-                            super.paintComponent(g);
-                            Image bg1 = new ImageIcon("image/easybackground.png").getImage();
-                            g.drawImage(bg1, 0, 0, null);
-                        }
-                    };
-                    MyClock clock = new MyClock();
-                    clock.setHorizontalAlignment(JLabel.CENTER);
-                    Thread t = new Thread(clock);
-                    menuPanel.add(clock, BorderLayout.CENTER);
-                    t.start();
-                    menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
-                    frame.add(menuPanel);
-
-                } else if (c.difficulty == 1) {
-                    frame.setCheck(1);
-                    menuPanel = new JPanel(new BorderLayout()) {
-                        @Override
-                        protected void paintComponent(Graphics g) {
-                            super.paintComponent(g);
-                            Image bg2 = new ImageIcon("image/mediumbackground.png").getImage();
-                            g.drawImage(bg2, 0, 0, null);
-                        }
-                    };
-                    menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
-                    frame.add(menuPanel);
-
-                } else if (c.difficulty == 2) {
-                    frame.setCheck(2);
-                    menuPanel = new JPanel(new BorderLayout()) {
-                        @Override
-                        protected void paintComponent(Graphics g) {
-                            super.paintComponent(g);
-                            Image bg1 = new ImageIcon("image/hardbackground.png").getImage();
-                            g.drawImage(bg1, 0, 0, null);
-                        }
-                    };
-
-                    menuPanel.add(new GamePanel(8), BorderLayout.SOUTH);
-                    frame.add(menuPanel);
-                }
-                frame.repaint();
-                frame.pack();
-
+            frame.remove(frame.getMenuPanel());
+            frame.revalidate();
+            frame.setLayout(new BorderLayout());
+//            frame.add();
+            if (c.difficulty == 0) {
+                frame.setCheck(0);
+                menuPanel = new JPanel(new BorderLayout()) {
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        Image bg1 = new ImageIcon("image/easybackground.png").getImage();
+                        g.drawImage(bg1, 0, 0, null);
+                    }
+                };
+                menuPanel.add(frame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                menuPanel.add(clock, BorderLayout.CENTER);
+                t.start();
+                menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
+                frame.add(menuPanel);
+            } else if (c.difficulty == 1) {
+                frame.setCheck(1);
+                menuPanel = new JPanel(new BorderLayout()) {
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        Image bg2 = new ImageIcon("image/mediumbackground.png").getImage();
+                        g.drawImage(bg2, 0, 0, null);
+                    }
+                };
+                menuPanel.add(frame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                menuPanel.add(clock, BorderLayout.CENTER);
+                t.start();
+                menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
+                frame.add(menuPanel);
+            } else if (c.difficulty == 2) {
+                frame.setCheck(2);
+                menuPanel = new JPanel(new BorderLayout()) {
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        Image bg1 = new ImageIcon("image/hardbackground.png").getImage();
+                        g.drawImage(bg1, 0, 0, null);
+                    }
+                };
+                menuPanel.add(frame.getPauseBtn());
+                clock = new MyClock();
+                clock.setHorizontalAlignment(JLabel.CENTER);
+                Thread t = new Thread(clock);
+                menuPanel.add(clock, BorderLayout.CENTER);
+                t.start();
+                menuPanel.add(new GamePanel(8), BorderLayout.SOUTH);
+                frame.add(menuPanel);
             }
+            frame.repaint();
+            frame.pack();
         }
         if (e.getSource().equals(frame.getScoreBtn())) {
             new ScoreBoardPanel();

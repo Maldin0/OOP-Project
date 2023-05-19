@@ -28,7 +28,8 @@ public class GameBoard extends JPanel implements CardListener {
         this.rows = rows;
         this.cols = cols;
         this.cards = generateCards(images);
-//        setBackground(Color.GRAY);
+        setOpaque(false);
+//        setBackground(Color.RED);
 
         try {
             URL hiddenImageUrl = getClass().getResource("Slime/cardback.png");

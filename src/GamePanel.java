@@ -16,15 +16,17 @@ import java.util.List;
 public class GamePanel extends JPanel {
     public GamePanel(int rows) {
         setSize(800, 550);
+        setOpaque(false);
+//        setBackground(Color.BLUE);
 //        this.setLayout(new BoxLayout());
         int windowWidth = this.getWidth();
         int windowHeight = this.getHeight();
-        System.out.println(windowWidth);
-        System.out.println(windowHeight);
+//        System.out.println(windowWidth);
+//        System.out.println(windowHeight);
 
         // Calculate card size based on the frame size and number of rows and columns
         int cardSize = (windowHeight/rows)-1;
-        System.out.println(cardSize);
+//        System.out.println(cardSize);
 
 //        List<Color> uniqueColors = Arrays.asList(
 //                Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN,

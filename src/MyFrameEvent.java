@@ -27,7 +27,8 @@ public class MyFrameEvent implements ActionListener {
 //                frame.add(fillPanel);
                 if (c.difficulty == 0) {
                     check = 0;
-                    menuPanel = new JPanel() {
+                    System.out.println(check);
+                    menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
                             super.paintComponent(g);
@@ -35,11 +36,13 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg1, 0, 0, null);
                         }
                     };
+//                    menuPanel.add(new JPanel(), BorderLayout.CENTER);
                     menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
                     frame.add(menuPanel);
                 } else if (c.difficulty == 1) {
                     check = 1;
-                    menuPanel = new JPanel() {
+                    System.out.println(check);
+                    menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
                             super.paintComponent(g);
@@ -50,7 +53,9 @@ public class MyFrameEvent implements ActionListener {
                     menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
                     frame.add(menuPanel);
                 } else if (c.difficulty == 2) {
-                    menuPanel = new JPanel() {
+                    check = 2;
+                    System.out.println(check);
+                    menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
                             super.paintComponent(g);
@@ -58,7 +63,7 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg1, 0, 0, null);
                         }
                     };
-                    check = 2;
+
                     menuPanel.add(new GamePanel(8), BorderLayout.SOUTH);
                     frame.add(menuPanel);
                 }

@@ -36,7 +36,9 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg1, 0, 0, null);
                         }
                     };
-//                    menuPanel.add(new JPanel(), BorderLayout.CENTER);
+                    JLabel label = new JLabel("Test");
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    menuPanel.add(label, BorderLayout.CENTER);
                     menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
                     frame.add(menuPanel);
 
@@ -51,6 +53,9 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg2, 0, 0, null);
                         }
                     };
+                    JLabel label = new JLabel("Test");
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    menuPanel.add(label, BorderLayout.CENTER);
                     menuPanel.add(new GamePanel(6), BorderLayout.SOUTH);
                     frame.add(menuPanel);
 
@@ -65,7 +70,9 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg1, 0, 0, null);
                         }
                     };
-
+                    JLabel label = new JLabel("Test");
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    menuPanel.add(label, BorderLayout.CENTER);
                     menuPanel.add(new GamePanel(8), BorderLayout.SOUTH);
                     frame.add(menuPanel);
                 }

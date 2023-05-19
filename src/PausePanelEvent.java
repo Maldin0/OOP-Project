@@ -32,6 +32,9 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                JLabel label = new JLabel("Test");
+                label.setHorizontalAlignment(JLabel.CENTER);
+                background.add(label, BorderLayout.CENTER);
                 background.add(new GamePanel(4), BorderLayout.SOUTH);
                 myFrame.add(background);
             }
@@ -48,6 +51,9 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                JLabel label = new JLabel("Test");
+                label.setHorizontalAlignment(JLabel.CENTER);
+                background.add(label, BorderLayout.CENTER);
                 background.add(new GamePanel(6), BorderLayout.SOUTH);
                 myFrame.add(background);
             }
@@ -64,6 +70,9 @@ public class PausePanelEvent implements ActionListener {
                         g.drawImage(bg2, 0, 0, null);
                     }
                 };
+                JLabel label = new JLabel("Test");
+                label.setHorizontalAlignment(JLabel.CENTER);
+                background.add(label, BorderLayout.CENTER);
                 background.add(new GamePanel(8), BorderLayout.SOUTH);
                 myFrame.add(background);
             }

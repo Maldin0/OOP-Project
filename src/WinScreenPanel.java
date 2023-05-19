@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class WinScreenPanel extends JFrame {
     private JPanel mainPanel, buttonPanel;
@@ -22,11 +20,7 @@ public class WinScreenPanel extends JFrame {
         exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
         exits.setPreferredSize(new Dimension(192, 64));
         exits.addActionListener(e -> {
-            for (java.awt.Window window : java.awt.Window.getWindows()) {
-                if (window instanceof JFrame) {
-                    window.dispose();
-                }
-            }
+            this.dispose();
         });
         buttonPanel.add(exits);
 

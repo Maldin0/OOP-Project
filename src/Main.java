@@ -8,7 +8,7 @@ public class Main extends JFrame{
         getContentPane().setPreferredSize(new Dimension(800, 600));
         setResizable(true);
 
-        GamePanel gamePanel = new GamePanel(4,4);
+        GamePanel gamePanel = new GamePanel(8);
         add(gamePanel);
 
         pack();

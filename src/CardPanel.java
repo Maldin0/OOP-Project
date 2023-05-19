@@ -5,12 +5,16 @@
  */
 import javax.swing.*;
 import java.awt.*;
-public class CardPanel extends JPanel {
-     ColorCard card;
-     private static final Color HIDDEN_COLOR = Color.GRAY;
+import java.awt.image.BufferedImage;
 
-     public CardPanel(ColorCard card, int cardSize) {
+public class CardPanel extends JPanel {
+     ImageCard card;
+     private BufferedImage hiddenImage;
+     private int margin = 2;
+
+     public CardPanel(ImageCard card, int cardSize, BufferedImage hiddenImage) {
          this.card = card;
+         this.hiddenImage =hiddenImage;
          setPreferredSize(new Dimension(cardSize, cardSize));
          setOpaque(false);
      }
@@ -18,18 +22,18 @@ public class CardPanel extends JPanel {
      @Override
      protected void paintComponent(Graphics g) {
          super.paintComponent(g);
-         int margin = 2;
 
+         BufferedImage displayImage;
          if (card.isRevealed() || card.isMatched()) {
-             g.setColor(card.getColor());
+             displayImage = card.getImage();
          } else {
-             g.setColor(HIDDEN_COLOR);
+             displayImage = hiddenImage;
          }
-         g.fillRect(margin, margin, getWidth() - 2 * margin, getHeight() - 2 * margin);
+         g.drawImage(displayImage, margin, margin, getWidth() - 2 * margin, getHeight() - 2 * margin, this);
 
-         if (!card.isRevealed() && !card.isMatched()) {
-             g.setColor(Color.BLACK);
-             g.fillRect(margin + 1, margin + 1, getWidth() - 2 * margin - 2, getHeight() - 2 * margin - 2);
-         }
+//         if (!card.isRevealed() && !card.isMatched()) {
+//             g.setColor(Color.BLACK);
+//             g.fillRect(margin + 1, margin + 1, getWidth() - 2 * margin - 2, getHeight() - 2 * margin - 2);
+//         }
      }
 }

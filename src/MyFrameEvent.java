@@ -23,13 +23,13 @@ public class MyFrameEvent implements ActionListener {
 
                 if (c.difficulty == 0) {
                     check = 0;
-                    frame.add(new GamePanel(4, 4));
+                    frame.add(new GamePanel(4));
                 } else if (c.difficulty == 1) {
                     check = 1;
-                    frame.add(new GamePanel(6, 6));
+                    frame.add(new GamePanel(6));
                 } else if (c.difficulty == 2) {
                     check = 2;
-                    frame.add(new GamePanel(8, 8));
+                    frame.add(new GamePanel(8));
                 }
                 frame.repaint();
                 frame.pack();

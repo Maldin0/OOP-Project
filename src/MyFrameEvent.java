@@ -15,9 +15,6 @@ public class MyFrameEvent implements ActionListener {
         // if Click Start Button goes to GamePanel
         if (e.getSource() == frame.getStartBtn()) {
             ChoosePanel c = new ChoosePanel();
-            if (e.getSource() == frame.getPauseBtn()) {
-                new PausePanel(frame);
-            }
             if (c.difficulty != -1) {
                 frame.remove(frame.getMenuPanel());
                 frame.revalidate();

@@ -14,6 +14,7 @@ public class PausePanelEvent implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(pausePanel.getCon())) {
+            pausePanel.getTimer().resumeTimer();
             pausePanel.getDialog().dispose();
         }
         else if (e.getSource().equals(pausePanel.getRetry())) {

@@ -73,8 +73,13 @@ public class GamePanel extends JPanel {
         pauseBtn = new JButton();
         pauseBtn.setPreferredSize(new Dimension(50,50));
         pauseBtn.setIcon(new ImageIcon("image/Pause button.png"));
-        pauseBtn.addActionListener(e -> new PausePanel(frame));
-
+        pauseBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clock.pauseTimer();
+                new PausePanel(frame, clock);
+            }
+        });
         JPanel fillPanel = new JPanel();
         fillPanel.setPreferredSize(new Dimension(50, 50));
         fillPanel.setOpaque(false);

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,17 +20,19 @@ public class MyFrameEvent implements ActionListener {
             if (c.difficulty != -1) {
                 frame.remove(frame.getMenuPanel());
                 frame.revalidate();
+                frame.setLayout(new BorderLayout());
                 frame.add(frame.getPauseBtn());
-
+                JPanel fillPanel = new JPanel();
+                frame.add(fillPanel, BorderLayout.CENTER);
                 if (c.difficulty == 0) {
                     check = 0;
-                    frame.add(new GamePanel(4));
+                    frame.add(new GamePanel(4), BorderLayout.SOUTH);
                 } else if (c.difficulty == 1) {
                     check = 1;
-                    frame.add(new GamePanel(6));
+                    frame.add(new GamePanel(6), BorderLayout.SOUTH);
                 } else if (c.difficulty == 2) {
                     check = 2;
-                    frame.add(new GamePanel(8));
+                    frame.add(new GamePanel(8), BorderLayout.SOUTH);
                 }
                 frame.repaint();
                 frame.pack();

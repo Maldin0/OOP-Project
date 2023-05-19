@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,16 +23,22 @@ public class PausePanelEvent implements ActionListener {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
+                myFrame.setLayout(new BorderLayout());
                 myFrame.add(myFrame.getPauseBtn());
-                myFrame.add(new GamePanel(4));
+                JPanel fillPanel = new JPanel();
+                myFrame.add(fillPanel, BorderLayout.CENTER);
+                myFrame.add(new GamePanel(4), BorderLayout.SOUTH);
                 System.out.println(check);
+
             }
             else if (check == 1) {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseBtn());
-                myFrame.add(new GamePanel(6));
+                JPanel fillPanel = new JPanel();
+                myFrame.add(fillPanel, BorderLayout.CENTER);
+                myFrame.add(new GamePanel(6), BorderLayout.SOUTH);
                 System.out.println(check);
             }
             else if (check == 2) {
@@ -38,7 +46,9 @@ public class PausePanelEvent implements ActionListener {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseBtn());
-                myFrame.add(new GamePanel(8));
+                JPanel fillPanel = new JPanel();
+                myFrame.add(fillPanel, BorderLayout.CENTER);
+                myFrame.add(new GamePanel(8), BorderLayout.SOUTH);
                 System.out.println(check);
             }
             pausePanel.getDialog().dispose();

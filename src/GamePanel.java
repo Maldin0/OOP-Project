@@ -15,9 +15,8 @@ import java.util.List;
 
 public class GamePanel extends JPanel {
     public GamePanel(int rows) {
-        setPreferredSize(new Dimension(800, 600));
-        setSize(new Dimension(800, 600));
-
+        setSize(800, 550);
+//        this.setLayout(new BoxLayout());
         int windowWidth = this.getWidth();
         int windowHeight = this.getHeight();
         System.out.println(windowWidth);

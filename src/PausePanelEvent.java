@@ -18,6 +18,7 @@ public class PausePanelEvent implements ActionListener {
             int check = myFrame.getCheck();
 
             if (check == 0) {
+                new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseBtn());
@@ -25,6 +26,7 @@ public class PausePanelEvent implements ActionListener {
                 System.out.println(check);
             }
             else if (check == 1) {
+                new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseBtn());
@@ -32,6 +34,7 @@ public class PausePanelEvent implements ActionListener {
                 System.out.println(check);
             }
             else if (check == 2) {
+                new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
                 myFrame.add(myFrame.getPauseBtn());

@@ -22,6 +22,7 @@ public class GameBoard extends JPanel implements CardListener {
     private List<CardPanel> cardPanels = new ArrayList<>();
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
+    private static int count;
 
     public GameBoard(int rows, int cols, int cardSize, List<BufferedImage> images) {
         this.rows = rows;
@@ -59,6 +60,9 @@ public class GameBoard extends JPanel implements CardListener {
         }
 
         revealAllCards();
+    }
+    public GameBoard() {
+        resetCount();
     }
 
 
@@ -125,6 +129,11 @@ public class GameBoard extends JPanel implements CardListener {
     public void onMatchFound(CardPanel card1, CardPanel card2) {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
+        count++;
+        if (count == 8 || count == 16 || count == 64) {
+            new WinScreenPanel();
+            resetCount();
+        }
     }
 
     private void revealAllCards() {
@@ -142,5 +151,8 @@ public class GameBoard extends JPanel implements CardListener {
 
         timer.setRepeats(false);
         timer.start();
+    }
+    public void resetCount() {
+        count = 0;
     }
 }

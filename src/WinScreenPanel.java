@@ -27,7 +27,6 @@ public class WinScreenPanel extends JFrame {
                     window.dispose();
                 }
             }
-            new MyFrame();
         });
         buttonPanel.add(exits);
 

@@ -27,7 +27,6 @@ public class MyFrameEvent implements ActionListener {
 //                frame.add(fillPanel);
                 if (c.difficulty == 0) {
                     frame.setCheck(0);
-                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
@@ -36,13 +35,16 @@ public class MyFrameEvent implements ActionListener {
                             g.drawImage(bg1, 0, 0, null);
                         }
                     };
-//                    menuPanel.add(new JPanel(), BorderLayout.CENTER);
+                    MyClock clock = new MyClock();
+                    clock.setHorizontalAlignment(JLabel.CENTER);
+                    Thread t = new Thread(clock);
+                    menuPanel.add(clock, BorderLayout.CENTER);
+                    t.start();
                     menuPanel.add(new GamePanel(4), BorderLayout.SOUTH);
                     frame.add(menuPanel);
 
                 } else if (c.difficulty == 1) {
                     frame.setCheck(1);
-                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {
@@ -56,7 +58,6 @@ public class MyFrameEvent implements ActionListener {
 
                 } else if (c.difficulty == 2) {
                     frame.setCheck(2);
-                    System.out.println("eeeeee");
                     menuPanel = new JPanel(new BorderLayout()) {
                         @Override
                         protected void paintComponent(Graphics g) {

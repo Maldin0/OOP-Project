@@ -45,6 +45,9 @@ public class GameBoard extends JPanel implements CardListener {
 
         revealAllCards();
     }
+    public GameBoard() {
+        resetCount();
+    }
 
 
     private List<ColorCard> generateCards(List<Color> colors) {

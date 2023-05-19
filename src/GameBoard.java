@@ -114,7 +114,7 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        if (count == 8) {
+        if (count == 8 || count == 36 || count == 64) {
             new WinScreenPanel();
             resetCount();
         }

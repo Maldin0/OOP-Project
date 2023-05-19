@@ -14,11 +14,11 @@ public class MyClock extends JLabel implements Runnable {
     @Override
     public void run() {
         while (true) {
-//                Calendar d = Calendar.getInstance();
-//                int sec = d.get(Calendar.SECOND);
-//                int min = d.get(Calendar.MINUTE);
-//                int hour = d.get(Calendar.HOUR_OF_DAY);
-//                this.setText(String.format("%02d:%02d:%02d", hour, min, sec));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             try {
                 if(running) {
                     time++;
@@ -27,7 +27,7 @@ public class MyClock extends JLabel implements Runnable {
                     int sec = time % 60;
                     this.setText(String.format("%02d:%02d:%02d", hour, min, sec));
                 }
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 System.out.println(e.toString());
             }

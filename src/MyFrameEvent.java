@@ -11,15 +11,15 @@ public class MyFrameEvent implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel
-        if (e.getSource() == frame.getBtn1()) {
+        if (e.getSource() == frame.getStartBtn()) {
             ChoosePanel c = new ChoosePanel();
-            if (e.getSource() == frame.getPauseButton()) {
-                new pausePanel2();
+            if (e.getSource() == frame.getPauseBtn()) {
+                new PausePanel(frame);
             }
             if (c.difficulty != -1) {
                 frame.remove(frame.getMenuPanel());
                 frame.revalidate();
-                frame.add(frame.getPauseButton());
+                frame.add(frame.getPauseBtn());
 
                 if (c.difficulty == 0) {
                     check = 0;
@@ -36,27 +36,27 @@ public class MyFrameEvent implements ActionListener {
 
             }
         }
-        if (e.getSource().equals(frame.getBtn2())) {
+        if (e.getSource().equals(frame.getScoreBtn())) {
             new ScoreBoardPanel();
         }
         //Credit Button
-        if (e.getSource().equals(frame.getBtn3())) {
+        if (e.getSource().equals(frame.getCreditBtn())) {
             new CreditPanel();
         }
         // if Click Exit Button Exit game or Close JFrame
-        if (e.getSource().equals(frame.getBtn4())) {
+        if (e.getSource().equals(frame.getExitBtn())) {
             System.exit(0);
         }
-        if (e.getSource().equals(frame.getBtn6())) {
+        if (e.getSource().equals(frame.getSoundBtn())) {
             if (frame.isSoundOn()) {
                 ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
-                frame.getBtn6().setIcon(button6_2);
+                frame.getSoundBtn().setIcon(button6_2);
                 frame.setSoundOn(false);
                 frame.getP().mute();
 
             } else {
                 ImageIcon button6 = new ImageIcon("image/Sound button.png");
-                frame.getBtn6().setIcon(button6);
+                frame.getSoundBtn().setIcon(button6);
                 frame.setSoundOn(true);
                 frame.getP().unmute();
             }

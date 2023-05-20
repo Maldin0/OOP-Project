@@ -135,6 +135,7 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
+        System.out.println("" + count + " " + rowss);
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
@@ -143,7 +144,7 @@ public class GameBoard extends JPanel implements CardListener {
             frame.revalidate();
             frame.add(new WinScreenPanel(frame));
             resetCount();
-        } else if (count == 16 && rowss == 6) {
+        } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
             normal = timer.getText();
@@ -151,7 +152,7 @@ public class GameBoard extends JPanel implements CardListener {
             frame.revalidate();
             frame.add(new WinScreenPanel(frame));
             resetCount();
-        } else if (count == 64 && rowss == 8) {
+        } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
             hard = timer.getText();

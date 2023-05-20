@@ -24,9 +24,12 @@ public class GameBoard extends JPanel implements CardListener {
     private boolean isFinished = false;
     private String timeValue;
     private MyTimer timer;
-    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer) {
+    private int rowss;
+
+    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss) {
         this.cards = generateCards(images);
         this.timer = timer;
+        this.rowss = rowss;
         setOpaque(false);
 //        setBackground(Color.RED);
 
@@ -130,7 +133,17 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        if (count == 8 || count == 16 || count == 64) {
+        if (count == 8 && rowss == 4) {
+            isFinished = true;
+            timer.pauseTimer();
+            new WinScreenPanel();
+            resetCount();
+        } else if (count == 16 && rowss == 6) {
+            isFinished = true;
+            timer.pauseTimer();
+            new WinScreenPanel();
+            resetCount();
+        } else if (count == 64 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
             new WinScreenPanel();

@@ -63,7 +63,7 @@ public class GamePanel extends JPanel {
         Thread thread = new Thread(clock);
         clock.setHorizontalAlignment(JLabel.CENTER);
 
-        GameBoard gameBoard = new GameBoard(rows, cardSize, imagePairs, clock);
+        GameBoard gameBoard = new GameBoard(rows, cardSize, imagePairs, clock, rows);
 
         JPanel wrapper = new JPanel(new FlowLayout());
 

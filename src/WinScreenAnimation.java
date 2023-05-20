@@ -33,9 +33,8 @@ public class WinScreenAnimation implements Runnable {
                 winScreenPanel.getWinSign().setBounds(position);
                 winScreenPanel.repaint(); // Update the panel to show the changes
             });
-
             try {
-                Thread.sleep(5); // Adjust the delay between each partial image display
+                Thread.sleep(3); // Adjust the delay between each partial image display
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

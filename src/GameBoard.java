@@ -133,19 +133,20 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
+        System.out.println("" + count + " " + rowss);
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
             easy = timer.getText();
             new WinScreenPanel();
             resetCount();
-        } else if (count == 16 && rowss == 6) {
+        } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
             normal = timer.getText();
             new WinScreenPanel();
             resetCount();
-        } else if (count == 64 && rowss == 8) {
+        } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
             hard = timer.getText();

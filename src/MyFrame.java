@@ -8,7 +8,6 @@ public class MyFrame extends JFrame{
     private boolean soundOn = true;
     private MusicPlayer p;
     private int check;
-
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();
@@ -80,10 +79,6 @@ public class MyFrame extends JFrame{
         logoName.setBounds(40, 110, 250, 150);
         menuPanel.add(logoName);
 
-        // Pause
-        pauseBtn = new JButton(new ImageIcon("image/Pause button.png"));
-        pauseBtn.setBounds(10, 10, 50, 50);
-
         // Insert Icon Image
         ImageIcon icon2 = new ImageIcon("image/Slimeconnector_icon.png");
         this.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
@@ -94,15 +89,11 @@ public class MyFrame extends JFrame{
         this.setTitle("Slime Connector");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
         this.setResizable(false);
-        //    this.setSize(800, 600);
         this.pack();
         this.setVisible(true);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-        pauseBtn.addActionListener(ee -> {
-            new PausePanel(this);
-        });
     }
 
     public static void main(String[] args) {

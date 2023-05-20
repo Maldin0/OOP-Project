@@ -15,19 +15,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 public class GameBoard extends JPanel implements CardListener {
-    private int rows;
-    private int cols;
     private List<ImageCard> cards;
     private List<CardPanel> selectedCards = new ArrayList<>();
     private List<CardPanel> cardPanels = new ArrayList<>();
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
     private static int count;
-
-    public GameBoard(int rows, int cols, int cardSize, List<BufferedImage> images) {
-        this.rows = rows;
-        this.cols = cols;
+    private boolean isFinished = false;
+    private String timeValue;
+    private MyTimer timer;
+    private int rowss;
+    private MyFrame frame;
+    private String easy, normal, hard;
+    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
         this.cards = generateCards(images);
+        this.timer = timer;
+        this.rowss = rowss;
+        this.frame = frame;
         setOpaque(false);
 //        setBackground(Color.RED);
 
@@ -42,7 +46,7 @@ public class GameBoard extends JPanel implements CardListener {
             e.printStackTrace();
         }
 
-        setLayout(new GridLayout(rows, cols, 0, 0));
+        setLayout(new GridLayout(rows, rows, 0, 0));
 
         for (ImageCard card : cards) {
             CardPanel cardPanel = new CardPanel(card, cardSize, hiddenImage);
@@ -131,10 +135,34 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        if (count == 8 || count == 16 || count == 64) {
-            new WinScreenPanel();
+        System.out.println("" + count + " " + rowss);
+        if (count == 8 && rowss == 4) {
+            isFinished = true;
+            timer.pauseTimer();
+            easy = timer.getText();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
+            resetCount();
+        } else if (count == 18 && rowss == 6) {
+            isFinished = true;
+            timer.pauseTimer();
+            normal = timer.getText();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
+            resetCount();
+        } else if (count == 32 && rowss == 8) {
+            isFinished = true;
+            timer.pauseTimer();
+            hard = timer.getText();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
             resetCount();
         }
+        frame.repaint();
+        frame.pack();
     }
 
     private void revealAllCards() {
@@ -143,7 +171,7 @@ public class GameBoard extends JPanel implements CardListener {
             cardPanel.repaint();
         });
 
-        Timer timer = new Timer(1000, e -> {
+        Timer timer = new Timer(3000, e -> {
             cardPanels.forEach(cardPanel -> {
                 cardPanel.card.setRevealed(false);
                 cardPanel.repaint();
@@ -152,8 +180,14 @@ public class GameBoard extends JPanel implements CardListener {
 
         timer.setRepeats(false);
         timer.start();
+
     }
     public void resetCount() {
         count = 0;
+    }
+
+    public String getValue() {
+        String time = timer.getText();
+        return time;
     }
 }

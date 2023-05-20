@@ -5,7 +5,9 @@ public class PausePanel {
     private JButton con, retry, exits;
     private JDialog dialog;
     private PausePanelEvent pausePanelEvent;
-    public PausePanel(MyFrame mf) {
+    private MyTimer timer;
+    public PausePanel(MyFrame mf, MyTimer timer) {
+        this.timer = timer;
         this.myFrame = mf;
 
         con = new JButton(new ImageIcon("image/Continue button.png"));
@@ -85,6 +87,10 @@ public class PausePanel {
 
     public JDialog getDialog() {
         return dialog;
+    }
+
+    public MyTimer getTimer() {
+        return timer;
     }
 
     public void setDialog(JDialog dialog) {

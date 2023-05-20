@@ -6,6 +6,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -14,36 +16,30 @@ import java.util.Collections;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-    public GamePanel(int rows) {
-        setSize(800, 550);
-        setOpaque(false);
+    private int rows;
+    private Image bg1;
+    private MyFrame frame;
+    private JButton pauseBtn;
+    public GamePanel(int rows, MyFrame frame) {
+        this.rows = rows;
+        this.frame = frame;
+        // Load Background images
+        if (rows == 4){
+            bg1 = new ImageIcon("image/easybackground.png").getImage();
+        } else if (rows == 6) {
+            bg1 = new ImageIcon("image/mediumbackground.png").getImage();
+        } else if (rows == 8) {
+            bg1 = new ImageIcon("image/hardbackground.png").getImage();
+        }
+        setLayout(new BorderLayout());
+        setSize(800,600);
+        setOpaque(true);
 //        setBackground(Color.BLUE);
-//        this.setLayout(new BoxLayout());
-        int windowWidth = this.getWidth();
+
         int windowHeight = this.getHeight();
-//        System.out.println(windowWidth);
-//        System.out.println(windowHeight);
 
         // Calculate card size based on the frame size and number of rows and columns
-        int cardSize = (windowHeight/rows)-1;
-//        System.out.println(cardSize);
-
-//        List<Color> uniqueColors = Arrays.asList(
-//                Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN,
-//                Color.MAGENTA, Color.ORANGE, Color.PINK, Color.LIGHT_GRAY, Color.DARK_GRAY,
-//                // Additional colors
-//                new Color(255, 153, 153), new Color(255, 204, 153), new Color(255, 255, 153),
-//                new Color(204, 255, 153), new Color(153, 255, 153), new Color(153, 255, 204),
-//                new Color(153, 255, 255), new Color(153, 204, 255), new Color(153, 153, 255),
-//                new Color(204, 153, 255), new Color(255, 153, 255), new Color(255, 153, 204),
-//                new Color(255, 102, 102), new Color(255, 178, 102), new Color(255, 255, 102),
-//                new Color(178, 255, 102), new Color(102, 255, 102), new Color(102, 255, 178),
-//                new Color(102, 255, 255), new Color(102, 178, 255), new Color(102, 102, 255),
-//                new Color(178, 102, 255)
-//        );
-
-//        List<Color> colorPairs = createColorPairs(uniqueColors, rows * rows / 2);
-//        Collections.shuffle(colorPairs);
+        int cardSize = ((windowHeight-50)/rows)-1;
 
         List<BufferedImage> images = new ArrayList<>();
         for (int i = 0; i < 32; i++) {
@@ -63,10 +59,41 @@ public class GamePanel extends JPanel {
         List<BufferedImage> imagePairs = createImagePairs(images, rows * rows / 2);
         Collections.shuffle(imagePairs);
 
-        GameBoard gameBoard = new GameBoard(rows, rows, cardSize, imagePairs);
-//        System.out.println(colorPairs.size());
+        MyTimer clock = new MyTimer();
+        Thread thread = new Thread(clock);
+        clock.setHorizontalAlignment(JLabel.CENTER);
 
-        add(gameBoard);
+        GameBoard gameBoard = new GameBoard(rows, cardSize, imagePairs, clock, rows, frame);
+
+        JPanel wrapper = new JPanel(new FlowLayout());
+
+        wrapper.add(gameBoard);
+        wrapper.setOpaque(false);
+
+        pauseBtn = new JButton();
+        pauseBtn.setPreferredSize(new Dimension(50,50));
+        pauseBtn.setIcon(new ImageIcon("image/Pause button.png"));
+        pauseBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clock.pauseTimer();
+                new PausePanel(frame, clock);
+            }
+        });
+        JPanel fillPanel = new JPanel();
+        fillPanel.setPreferredSize(new Dimension(50, 50));
+        fillPanel.setOpaque(false);
+
+        add(clock, BorderLayout.CENTER);
+        add(pauseBtn, BorderLayout.WEST);
+        add(fillPanel, BorderLayout.EAST);
+        add(wrapper, BorderLayout.SOUTH);
+
+        Timer timer = new Timer(3000, te -> {
+            thread.start();
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 
     private List<BufferedImage> createImagePairs(List<BufferedImage> uniqueImages, int pairCount) {
@@ -85,6 +112,9 @@ public class GamePanel extends JPanel {
 
         return imagePairs;
     }
-
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(bg1, 0, 0, null);
+    }
 }
 

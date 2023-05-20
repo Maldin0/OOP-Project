@@ -25,7 +25,7 @@ public class GameBoard extends JPanel implements CardListener {
     private String timeValue;
     private MyTimer timer;
     private int rowss;
-
+    private String easy, normal, hard;
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss) {
         this.cards = generateCards(images);
         this.timer = timer;
@@ -136,16 +136,19 @@ public class GameBoard extends JPanel implements CardListener {
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
+            easy = timer.getText();
             new WinScreenPanel();
             resetCount();
         } else if (count == 16 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
+            normal = timer.getText();
             new WinScreenPanel();
             resetCount();
         } else if (count == 64 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
+            hard = timer.getText();
             new WinScreenPanel();
             resetCount();
         }
@@ -172,12 +175,8 @@ public class GameBoard extends JPanel implements CardListener {
         count = 0;
     }
 
-    public int getValue(MyTimer timer) {
+    public String getValue() {
         String time = timer.getText();
-        String[] units = time.split(":");
-        int hours = Integer.parseInt(units[0]);
-        int minutes = Integer.parseInt(units[1]);
-        int seconds = Integer.parseInt(units[2]);
-        return (hours * 3600) + (minutes * 60) + seconds;
+        return time;
     }
 }

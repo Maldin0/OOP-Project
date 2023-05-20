@@ -3,40 +3,43 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WinScreenPanel extends JFrame implements ActionListener {
-    private JPanel mainPanel, buttonPanel;
+public class WinScreenPanel extends JPanel{
+    private JPanel buttonPanel;
     private JButton exits;
     private JLabel winSign;
-    public WinScreenPanel() {
-
-        mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
+    private MyFrame frame;
+    public WinScreenPanel(MyFrame frame) {
+        this.frame = frame;
+        this.setLayout(new BorderLayout());
 
         winSign = new JLabel();
         winSign.setHorizontalAlignment(JLabel.CENTER);
-        mainPanel.add(winSign, BorderLayout.CENTER);
+        this.add(winSign, BorderLayout.CENTER);
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
-
         exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
         exits.setPreferredSize(new Dimension(192, 64));
-        exits.addActionListener(this);
-
+        exits.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == exits) {
+                    frame.getContentPane().removeAll();
+                    frame.revalidate();
+                    frame.add(frame.getMenuPanel());
+                    frame.repaint();
+                    frame.pack();
+                }
+            }
+        });
         buttonPanel.add(exits);
+        this.add(buttonPanel, BorderLayout.SOUTH);
 
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+//        this.add(buttonPanel, BorderLayout.SOUTH);
 
         ImageIcon imageIcon = new ImageIcon("image/WinScreen.png");
-
-        this.add(mainPanel);
-
-        this.setTitle("Image Display");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
+        this.setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);
-
         // Create a separate thread and start it
         Thread t = new Thread(new WinScreenAnimation(this, imageIcon));
         t.start();
@@ -50,10 +53,4 @@ public class WinScreenPanel extends JFrame implements ActionListener {
         this.winSign = winSign;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == exits) {
-            this.dispose();
-        }
-    }
 }

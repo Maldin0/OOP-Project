@@ -25,11 +25,13 @@ public class GameBoard extends JPanel implements CardListener {
     private String timeValue;
     private MyTimer timer;
     private int rowss;
+    private MyFrame frame;
     private String easy, normal, hard;
-    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss) {
+    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
         this.cards = generateCards(images);
         this.timer = timer;
         this.rowss = rowss;
+        this.frame = frame;
         setOpaque(false);
 //        setBackground(Color.RED);
 
@@ -137,21 +139,29 @@ public class GameBoard extends JPanel implements CardListener {
             isFinished = true;
             timer.pauseTimer();
             easy = timer.getText();
-            new WinScreenPanel();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
             resetCount();
         } else if (count == 16 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
             normal = timer.getText();
-            new WinScreenPanel();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
             resetCount();
         } else if (count == 64 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
             hard = timer.getText();
-            new WinScreenPanel();
+            frame.getContentPane().removeAll();
+            frame.revalidate();
+            frame.add(new WinScreenPanel(frame));
             resetCount();
         }
+        frame.repaint();
+        frame.pack();
     }
 
     private void revealAllCards() {

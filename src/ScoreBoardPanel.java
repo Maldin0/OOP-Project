@@ -5,7 +5,11 @@ public class ScoreBoardPanel extends JFrame{
     private JPanel mainPanel;
     private JButton backBtn;
     private JLabel easyScore, normalScore, hardScore;
+
+    private ScoreIO scoreIO;
+    private ScoreTime scoreTime;
     public ScoreBoardPanel() {
+
         mainPanel = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
@@ -29,7 +33,7 @@ public class ScoreBoardPanel extends JFrame{
         mainPanel.add(backBtn);
 
         Font font = new Font("Tahoma", Font.BOLD, 30);
-        easyScore = new JLabel("", JLabel.LEFT);
+        easyScore = new JLabel();
         easyScore.setBounds(230, 140, 350, 40);
         easyScore.setForeground(new Color(255,236,138,255));
         easyScore.setBackground(new Color(63,63,116,255));
@@ -37,7 +41,7 @@ public class ScoreBoardPanel extends JFrame{
         easyScore.setFont(font);
         mainPanel.add(easyScore);
 
-        normalScore = new JLabel("", JLabel.LEFT);
+        normalScore = new JLabel();
         normalScore.setBounds(230, 320, 350, 40);
         normalScore.setForeground(new Color(255,236,138,255));
         normalScore.setBackground(new Color(63,63,116,255));
@@ -45,7 +49,7 @@ public class ScoreBoardPanel extends JFrame{
         normalScore.setFont(font);
         mainPanel.add(normalScore);
 
-        hardScore = new JLabel("", JLabel.LEFT);
+        hardScore = new JLabel();
         hardScore.setBounds(230, 505, 350, 40);
         hardScore.setForeground(new Color(255,236,138,255));
         hardScore.setBackground(new Color(63,63,116,255));
@@ -65,6 +69,13 @@ public class ScoreBoardPanel extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
 
+        scoreIO = new ScoreIO();
+        scoreIO.loadData();
+
+        scoreTime = new ScoreTime();
+        getEasyScore().setText(scoreTime.getEasyTime());
+        getNormalScore().setText(scoreTime.getNormalTime());
+        getHardScore().setText(scoreTime.getHardTime());
     }
 
     public static void main(String[] args) {
@@ -75,8 +86,8 @@ public class ScoreBoardPanel extends JFrame{
         return easyScore;
     }
 
-    public void setEasyScore(String score) {
-        easyScore.setText(score);
+    public void setEasyScore(JLabel easyScore) {
+        this.easyScore = easyScore;
     }
 
     public JLabel getNormalScore() {

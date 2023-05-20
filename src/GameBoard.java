@@ -25,7 +25,8 @@ public class GameBoard extends JPanel implements CardListener {
     private String timeValue;
     private MyTimer timer;
     private int rowss;
-    private String easy, normal, hard;
+    private ScoreTime scoreTime;
+    private ScoreIO scoreIO;
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss) {
         this.cards = generateCards(images);
         this.timer = timer;
@@ -134,22 +135,27 @@ public class GameBoard extends JPanel implements CardListener {
         card2.card.setMatched(true);
         count++;
         System.out.println("" + count + " " + rowss);
+        scoreTime = new ScoreTime();
+        scoreIO = new ScoreIO();
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
-            easy = timer.getText();
+            scoreTime.setEasyTime(timer.getText());
+            scoreIO.saveData();
             new WinScreenPanel();
             resetCount();
         } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
-            normal = timer.getText();
+            scoreTime.setNormalTime(timer.getText());
+            scoreIO.saveData();
             new WinScreenPanel();
             resetCount();
         } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
-            hard = timer.getText();
+            scoreTime.setHardTime(timer.getText());
+            scoreIO.saveData();
             new WinScreenPanel();
             resetCount();
         }

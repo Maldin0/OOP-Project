@@ -34,7 +34,12 @@ public class MyFrameEvent implements ActionListener {
             }
         }
         if (e.getSource().equals(frame.getScoreBtn())) {
-            new ScoreBoardPanel();
+            frame.remove(frame.getMenuPanel());
+            frame.revalidate();
+            frame.setLayout(new BorderLayout());
+            frame.add(new ScoreBoardPanel(frame).getMainPanel());
+            frame.repaint();
+            frame.pack();
         }
         //Credit Button
         if (e.getSource().equals(frame.getCreditBtn())) {

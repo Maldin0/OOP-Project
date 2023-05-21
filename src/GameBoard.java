@@ -25,8 +25,10 @@ public class GameBoard extends JPanel implements CardListener {
     private String timeValue;
     private MyTimer timer;
     private int rowss;
-    private MyFrame frame;
     private String easy, normal, hard;
+    private MyFrame frame;
+    private ScoreIO scoreIO;
+    private ScoreTime scoreTime;
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
         this.cards = generateCards(images);
         this.timer = timer;
@@ -135,11 +137,14 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
+        scoreIO = new ScoreIO();
+        scoreTime = new ScoreTime();
         System.out.println("" + count + " " + rowss);
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
-            easy = timer.getText();
+            scoreTime.setEasyTime(timer.getText());
+            scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame));
@@ -147,7 +152,8 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
-            normal = timer.getText();
+            scoreTime.setNormalTime(timer.getText());
+            scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame));
@@ -155,7 +161,8 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
-            hard = timer.getText();
+            scoreTime.setHardTime(timer.getText());
+            scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame));

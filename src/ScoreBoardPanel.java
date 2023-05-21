@@ -5,6 +5,8 @@ public class ScoreBoardPanel extends JFrame{
     private JPanel mainPanel;
     private JButton backBtn;
     private JLabel easyScore, normalScore, hardScore;
+    private ScoreIO scoreIO;
+    private ScoreTime scoreTime;
     public ScoreBoardPanel() {
         mainPanel = new JPanel() {
         @Override
@@ -65,6 +67,12 @@ public class ScoreBoardPanel extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
 
+        scoreIO = new ScoreIO();
+        scoreTime = new ScoreTime();
+        scoreIO.loadData();
+        getEasyScore().setText(scoreTime.getEasyTime());
+        getNormalScore().setText(scoreTime.getNormalTime());
+        getHardScore().setText(scoreTime.getHardTime());
     }
 
     public static void main(String[] args) {

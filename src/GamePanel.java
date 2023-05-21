@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
         } else if (rows == 6) {
             bg1 = new ImageIcon(getClass().getResource("/image/mediumbackground.png")).getImage();
         } else if (rows == 8) {
-            bg1 = new ImageIcon(getClass().getResource("/image/hardbackground.png")).getImage();
+            bg1 = new ImageIcon(getClass().getResource("/image/Hardbackground.png")).getImage();
         }
         setLayout(new BorderLayout());
         setSize(800, 600);

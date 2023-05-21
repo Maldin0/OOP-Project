@@ -58,7 +58,6 @@ public class ScoreBoardPanel extends JPanel{
         hardScore.setOpaque(true);
         hardScore.setFont(font);
         mainPanel.add(hardScore);
-        ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
 
         scoreIO = new ScoreIO();
         scoreTime = new ScoreTime();

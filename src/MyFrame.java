@@ -140,10 +140,6 @@ public class MyFrame extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MyFrame::new);
-    }
-
     public JPanel getMenuPanel() {
         return menuPanel;
     }

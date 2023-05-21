@@ -47,11 +47,6 @@ public class ChoosePanel {
 
     }
 
-    public static void main(String[] args) {
-        ChoosePanel c = new ChoosePanel();
-        System.out.println(c.difficulty);
-    }
-
     public JButton getEasy() {
         return easy;
     }

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 public class PausePanelEvent implements ActionListener {
     private final MyFrame myFrame;
     private final PausePanel pausePanel;
-    private JPanel background;
 
     public PausePanelEvent(PausePanel pausePanel, MyFrame myFrame) {
         this.myFrame = myFrame;

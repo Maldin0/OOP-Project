@@ -18,7 +18,7 @@ public class HowToPlay {
         mainPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                Image HowToImg = new ImageIcon("src/image/Howtoplay.png").getImage();
+                Image HowToImg = new ImageIcon(getClass().getResource("/image/Howtoplay.png")).getImage();
                 g.drawImage(HowToImg, 0, 0, null);
             }
         };

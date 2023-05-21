@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class MyFrameEvent implements ActionListener {
     public int check;
@@ -50,17 +51,17 @@ public class MyFrameEvent implements ActionListener {
         }
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource().equals(frame.getExitBtn())) {
-            System.exit(0);
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         }
         if (e.getSource().equals(frame.getSoundBtn())) {
             if (frame.isSoundOn()) {
-                ImageIcon button6_2 = new ImageIcon("src/image/Sound off button.png");
+                ImageIcon button6_2 = new ImageIcon(getClass().getResource("/image/Sound off button.png"));
                 frame.getSoundBtn().setIcon(button6_2);
                 frame.setSoundOn(false);
                 frame.getP().mute();
 
             } else {
-                ImageIcon button6 = new ImageIcon("src/image/Sound button.png");
+                ImageIcon button6 = new ImageIcon(getClass().getResource("/image/Sound button.png"));
                 frame.getSoundBtn().setIcon(button6);
                 frame.setSoundOn(true);
                 frame.getP().unmute();

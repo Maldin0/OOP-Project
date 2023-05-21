@@ -8,14 +8,11 @@ public class WinScreenPanel extends JPanel {
     private final JPanel buttonPanel;
     private final JButton exits;
     private JLabel winSign;
-    private final MyFrame frame;
-    private MyTimer timer;
 
     public WinScreenPanel(MyFrame frame, MyTimer timer) {
-        this.frame = frame;
         this.setLayout(new BorderLayout());
 
-        ImageIcon imageIcon = new ImageIcon("src/image/WinScreen.png");
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/image/WinScreen.png"));
         winSign = new JLabel(imageIcon);
         winSign.setHorizontalAlignment(JLabel.CENTER);
         this.add(winSign, BorderLayout.CENTER);
@@ -27,7 +24,7 @@ public class WinScreenPanel extends JPanel {
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
-        exits = new JButton(new ImageIcon("src/image/Exit to menu button.png"));
+        exits = new JButton(new ImageIcon(getClass().getResource("/image/Exit to menu button.png")));
         exits.setPreferredSize(new Dimension(192, 64));
         exits.addActionListener(new ActionListener() {
             @Override
@@ -69,6 +66,6 @@ public class WinScreenPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(new ImageIcon("src/image/BG02.png").getImage(), 0, 0, null);
+        g.drawImage(new ImageIcon(getClass().getResource("/image/BG02.png")).getImage(), 0, 0, null);
     }
 }

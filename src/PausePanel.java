@@ -12,9 +12,9 @@ public class PausePanel {
         this.timer = timer;
         this.myFrame = mf;
 
-        con = new JButton(new ImageIcon("src/image/Continue button.png"));
-        retry = new JButton(new ImageIcon("src/image/Restart button.png"));
-        exits = new JButton(new ImageIcon("src/image/Exit to menu button.png"));
+        con = new JButton(new ImageIcon(getClass().getResource("/image/Continue button.png")));
+        retry = new JButton(new ImageIcon(getClass().getResource("/image/Restart button.png")));
+        exits = new JButton(new ImageIcon(getClass().getResource("/image/Exit to menu button.png")));
 
         con.setPreferredSize(new Dimension(128, 64));
         retry.setPreferredSize(new Dimension(128, 64));

@@ -2,7 +2,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
-import java.io.File;
+import java.net.URL;
 
 public class MusicPlayer {
     private Clip clip;
@@ -11,8 +11,8 @@ public class MusicPlayer {
 
     public void play(String filename) {
         try {
-            File file = new File(filename);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+            URL url = this.getClass().getResource(filename);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -24,6 +24,7 @@ public class MusicPlayer {
             System.out.println("Error playing music file: " + ex.getMessage());
         }
     }
+
 
     public void mute() {
         if (volumeControl != null && !isMuted) {

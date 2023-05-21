@@ -4,7 +4,6 @@ import java.awt.*;
 public class HowToPlay {
     private final JFrame frame;
     private final JButton backBtn;
-    private JPanel infoPanel;
 
     public HowToPlay() {
         frame = new JFrame();

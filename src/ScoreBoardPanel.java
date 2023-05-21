@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-public class ScoreBoardPanel extends JFrame{
+public class ScoreBoardPanel extends JPanel{
     private JPanel mainPanel;
     private JButton backBtn;
     private JLabel easyScore, normalScore, hardScore;
-    public ScoreBoardPanel() {
+    public ScoreBoardPanel(MyFrame frame) {
         mainPanel = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
@@ -23,7 +23,11 @@ public class ScoreBoardPanel extends JFrame{
         backBtn.setBounds(35, 35, 50, 50);
         backBtn.addActionListener(e -> {
             if (e.getSource().equals(backBtn)) {
-                this.setVisible(false);
+                frame.getContentPane().removeAll();
+                frame.revalidate();
+                frame.add(frame.getMenuPanel());
+                frame.repaint();
+                frame.pack();
             }
         });
         mainPanel.add(backBtn);
@@ -53,27 +57,13 @@ public class ScoreBoardPanel extends JFrame{
         hardScore.setFont(font);
         mainPanel.add(hardScore);
 
-        ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
-        this.setIconImage(icon.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
-
-        this.add(mainPanel);
-        this.setTitle("Scoreboard");
-        this.getContentPane().setPreferredSize(new Dimension(800, 600));
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
-        this.setLocationRelativeTo(null);
-
         getEasyScore().setText(MyFrame.scoreTime.getEasyTime());
         getNormalScore().setText(MyFrame.scoreTime.getNormalTime());
         getHardScore().setText(MyFrame.scoreTime.getHardTime());
     }
-
-    public static void main(String[] args) {
-        new ScoreBoardPanel();
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
-
     public JLabel getEasyScore() {
         return easyScore;
     }

@@ -34,6 +34,7 @@ public class MyFrameEvent implements ActionListener {
             }
         }
         if (e.getSource().equals(frame.getScoreBtn())) {
+            frame.setLayout(new BorderLayout());
             frame.remove(frame.getMenuPanel());
             frame.revalidate();
             frame.setLayout(new BorderLayout());

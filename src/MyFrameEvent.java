@@ -54,13 +54,13 @@ public class MyFrameEvent implements ActionListener {
         }
         if (e.getSource().equals(frame.getSoundBtn())) {
             if (frame.isSoundOn()) {
-                ImageIcon button6_2 = new ImageIcon("image/Sound off button.png");
+                ImageIcon button6_2 = new ImageIcon("src/image/Sound off button.png");
                 frame.getSoundBtn().setIcon(button6_2);
                 frame.setSoundOn(false);
                 frame.getP().mute();
 
             } else {
-                ImageIcon button6 = new ImageIcon("image/Sound button.png");
+                ImageIcon button6 = new ImageIcon("src/image/Sound button.png");
                 frame.getSoundBtn().setIcon(button6);
                 frame.setSoundOn(true);
                 frame.getP().unmute();

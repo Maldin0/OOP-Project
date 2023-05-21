@@ -7,9 +7,9 @@ public class ChoosePanel {
     private final ChoosePanelEvent event;
 
     public ChoosePanel() {
-        easy = new JButton(new ImageIcon("image/Easy Button.png"));
-        normal = new JButton(new ImageIcon("image/Normal Button.png"));
-        hard = new JButton(new ImageIcon("image/Hard Button.png"));
+        easy = new JButton(new ImageIcon("src/image/Easy Button.png"));
+        normal = new JButton(new ImageIcon("src/image/Normal Button.png"));
+        hard = new JButton(new ImageIcon("src/image/Hard Button.png"));
 
         easy.setPreferredSize(new Dimension(66, 32));
         normal.setPreferredSize(new Dimension(66, 32));
@@ -37,7 +37,7 @@ public class ChoosePanel {
 
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setModal(true);
-        ImageIcon icon = new ImageIcon("image/Slimeconnector_icon.png");
+        ImageIcon icon = new ImageIcon("src/image/Slimeconnector_icon.png");
         dialog.setIconImage(icon.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
         dialog.setPreferredSize(new Dimension(260, 120));
         dialog.setContentPane(mainPanel);
@@ -72,7 +72,4 @@ public class ChoosePanel {
         return hard;
     }
 
-    public void setHard(JButton hard) {
-        this.hard = hard;
-    }
 }

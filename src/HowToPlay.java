@@ -18,7 +18,7 @@ public class HowToPlay {
         mainPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                Image HowToImg = new ImageIcon("image/Howtoplay.png").getImage();
+                Image HowToImg = new ImageIcon("src/image/Howtoplay.png").getImage();
                 g.drawImage(HowToImg, 0, 0, null);
             }
         };
@@ -30,7 +30,7 @@ public class HowToPlay {
         smallPanel.add(head);
 
         backBtn = new JButton();
-        ImageIcon imgBtn = new ImageIcon("image/Back button.png");
+        ImageIcon imgBtn = new ImageIcon("src/image/Back button.png");
         backBtn.setIcon(imgBtn);
         backBtn.setBounds(10, 15, 50, 50);
         backBtn.addActionListener(e -> {

@@ -3,7 +3,7 @@ import java.io.*;
 public class ScoreIO {
 
     public void saveData() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("TimeData.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/TimeData.dat"))) {
             oos.writeObject(MyFrame.scoreTime);
             System.out.println("Saved");
         } catch (IOException ex) {
@@ -12,7 +12,7 @@ public class ScoreIO {
     }
 
     public void loadData() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("TimeData.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/TimeData.dat"))) {
             ScoreTime loadedScore = (ScoreTime) ois.readObject();
             MyFrame.scoreTime.setEasyTime(loadedScore.getEasyTime());
             MyFrame.scoreTime.setNormalTime(loadedScore.getNormalTime());

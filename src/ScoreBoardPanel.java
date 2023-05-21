@@ -14,7 +14,7 @@ public class ScoreBoardPanel extends JPanel {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Background
-                Image bgImage = new ImageIcon("image/scoreboardstuff.png").getImage();
+                Image bgImage = new ImageIcon("src/image/scoreboardstuff.png").getImage();
                 g.drawImage(bgImage, 0, 0, null);
             }
         };
@@ -22,7 +22,7 @@ public class ScoreBoardPanel extends JPanel {
         mainPanel.setLayout(null);
 
         backBtn = new JButton();
-        backBtn.setIcon(new ImageIcon("image/Back button.png"));
+        backBtn.setIcon(new ImageIcon("src/image/Back button.png"));
         backBtn.setBounds(35, 35, 50, 50);
         backBtn.addActionListener(e -> {
             if (e.getSource().equals(backBtn)) {

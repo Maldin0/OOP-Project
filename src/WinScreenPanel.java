@@ -15,7 +15,8 @@ public class WinScreenPanel extends JPanel {
         this.frame = frame;
         this.setLayout(new BorderLayout());
 
-        winSign = new JLabel();
+        ImageIcon imageIcon = new ImageIcon("src/image/WinScreen.png");
+        winSign = new JLabel(imageIcon);
         winSign.setHorizontalAlignment(JLabel.CENTER);
         this.add(winSign, BorderLayout.CENTER);
 
@@ -26,7 +27,7 @@ public class WinScreenPanel extends JPanel {
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
-        exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
+        exits = new JButton(new ImageIcon("src/image/Exit to menu button.png"));
         exits.setPreferredSize(new Dimension(192, 64));
         exits.addActionListener(new ActionListener() {
             @Override
@@ -49,12 +50,12 @@ public class WinScreenPanel extends JPanel {
 
 //        this.add(buttonPanel, BorderLayout.SOUTH);
 
-        ImageIcon imageIcon = new ImageIcon("image/WinScreen.png");
+
         this.setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);
         // Create a separate thread and start it
-        Thread t = new Thread(new WinScreenAnimation(this, imageIcon));
-        t.start();
+//        Thread t = new Thread(new WinScreenAnimation(this, imageIcon));
+//        t.start();
     }
 
     public JLabel getWinSign() {
@@ -68,6 +69,6 @@ public class WinScreenPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(new ImageIcon("image/BG02.png").getImage(), 0, 0, null);
+        g.drawImage(new ImageIcon("src/image/BG02.png").getImage(), 0, 0, null);
     }
 }

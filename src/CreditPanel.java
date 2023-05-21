@@ -30,7 +30,7 @@ public class CreditPanel {
         creditPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                Image creditImg = new ImageIcon("image/Credit Sprite.png").getImage();
+                Image creditImg = new ImageIcon("src/image/Credit Sprite.png").getImage();
                 g.drawImage(creditImg, 0, 0, null);
             }
         };
@@ -61,7 +61,7 @@ public class CreditPanel {
 
         //Button
         backBtn = new JButton();
-        ImageIcon imgBtn = new ImageIcon("image/Back button.png");
+        ImageIcon imgBtn = new ImageIcon("src/image/Back button.png");
         backBtn.setIcon(imgBtn);
         backBtn.setBounds(10, 15, 50, 50);
 

@@ -27,11 +27,11 @@ public class GamePanel extends JPanel {
         this.frame = frame;
         // Load Background images
         if (rows == 4) {
-            bg1 = new ImageIcon("image/easybackground.png").getImage();
+            bg1 = new ImageIcon("src/image/easybackground.png").getImage();
         } else if (rows == 6) {
-            bg1 = new ImageIcon("image/mediumbackground.png").getImage();
+            bg1 = new ImageIcon("src/image/mediumbackground.png").getImage();
         } else if (rows == 8) {
-            bg1 = new ImageIcon("image/hardbackground.png").getImage();
+            bg1 = new ImageIcon("src/image/hardbackground.png").getImage();
         }
         setLayout(new BorderLayout());
         setSize(800, 600);
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
         List<BufferedImage> images = new ArrayList<>();
         for (int i = 0; i < 32; i++) {
             try {
-                URL imageUrl = getClass().getResource("/Slime/Slime" + i + ".png");
+                URL imageUrl = getClass().getResource("Slime/Slime" + i + ".png");
                 BufferedImage img = ImageIO.read(imageUrl);
                 BufferedImage scaledImage = new BufferedImage(cardSize, cardSize, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = scaledImage.createGraphics();
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel {
 
         pauseBtn = new JButton();
         pauseBtn.setPreferredSize(new Dimension(50, 50));
-        pauseBtn.setIcon(new ImageIcon("image/Pause button.png"));
+        pauseBtn.setIcon(new ImageIcon("src/image/Pause button.png"));
         pauseBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

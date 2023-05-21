@@ -15,12 +15,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class GameBoard extends JPanel implements CardListener {
     private static int count;
-    private List<ImageCard> cards;
     private final List<CardPanel> selectedCards = new ArrayList<>();
     private final List<CardPanel> cardPanels = new ArrayList<>();
+    private List<ImageCard> cards;
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
     private boolean isFinished = false;
@@ -143,7 +144,7 @@ public class GameBoard extends JPanel implements CardListener {
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
-            MyFrame.scoreTime.setEasyTime(timer.getText());
+            MyFrame.scoreTime.setEasyTime(isFaster(MyFrame.scoreTime.getEasyTime(), timer.getText()));
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -151,7 +152,7 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
-            MyFrame.scoreTime.setNormalTime(timer.getText());
+            MyFrame.scoreTime.setNormalTime(isFaster(MyFrame.scoreTime.getNormalTime(), timer.getText()));
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -159,7 +160,7 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
-            MyFrame.scoreTime.setHardTime(timer.getText());
+            MyFrame.scoreTime.setHardTime(isFaster(MyFrame.scoreTime.getHardTime(), timer.getText()));
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -184,10 +185,28 @@ public class GameBoard extends JPanel implements CardListener {
 
         timer.setRepeats(false);
         timer.start();
-
     }
 
     public void resetCount() {
         count = 0;
+    }
+
+    public int convertToSeconds(String time) {
+        String[] units = time.split(" : "); // will break the string up into an array
+        int hours = Integer.parseInt(units[0]); // first element
+        int minutes = Integer.parseInt(units[1]); // second element
+        int seconds = Integer.parseInt(units[2]); // third element
+        return (hours * 3600) + (minutes * 60) + seconds;
+    }
+
+    public String isFaster(String time1, String time2) {
+        if (time1.equals("-")) {
+            return time2;
+        }
+        if (convertToSeconds(time1) < convertToSeconds(time2)) {
+            return time1;
+        } else {
+            return time2;
+        }
     }
 }

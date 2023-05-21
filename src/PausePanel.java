@@ -2,11 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PausePanel {
+    private final MyTimer timer;
     private MyFrame myFrame;
     private JButton con, retry, exits;
     private JDialog dialog;
-    private final PausePanelEvent pausePanelEvent;
-    private final MyTimer timer;
 
     public PausePanel(MyFrame mf, MyTimer timer) {
         this.timer = timer;
@@ -20,7 +19,7 @@ public class PausePanel {
         retry.setPreferredSize(new Dimension(128, 64));
         exits.setPreferredSize(new Dimension(192, 64));
 
-        pausePanelEvent = new PausePanelEvent(this, myFrame);
+        PausePanelEvent pausePanelEvent = new PausePanelEvent(this, myFrame);
         con.addActionListener(pausePanelEvent);
         retry.addActionListener(pausePanelEvent);
         exits.addActionListener(pausePanelEvent);

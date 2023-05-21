@@ -9,10 +9,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class CardPanel extends JPanel {
-    ImageCard card;
     private final BufferedImage hiddenImage;
-    private final int margin = 2;
-
+    ImageCard card;
     public CardPanel(ImageCard card, int cardSize, BufferedImage hiddenImage) {
         this.card = card;
         this.hiddenImage = hiddenImage;
@@ -30,6 +28,7 @@ public class CardPanel extends JPanel {
         } else {
             displayImage = hiddenImage;
         }
+        int margin = 2;
         g.drawImage(displayImage, margin, margin, getWidth() - 2 * margin, getHeight() - 2 * margin, this);
 
 //         if (!card.isRevealed() && !card.isMatched()) {

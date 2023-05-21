@@ -15,27 +15,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class GameBoard extends JPanel implements CardListener {
     private static int count;
     private final List<CardPanel> selectedCards = new ArrayList<>();
     private final List<CardPanel> cardPanels = new ArrayList<>();
-    private List<ImageCard> cards;
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
-    private boolean isFinished = false;
-    private String timeValue;
     private MyTimer timer;
-    private int rowss;
-    private String easy, normal, hard;
+    private int rows;
     private MyFrame frame;
-    private ScoreTime scoreTime;
 
-    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
-        this.cards = generateCards(images);
+    public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, MyFrame frame) {
+        List<ImageCard> cards = generateCards(images);
         this.timer = timer;
-        this.rowss = rowss;
+        this.rows = rows;
         this.frame = frame;
         setOpaque(false);
 //        setBackground(Color.RED);
@@ -140,25 +134,21 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        System.out.println(count + " " + rowss);
-        if (count == 8 && rowss == 4) {
-            isFinished = true;
+        if (count == 8 && rows == 4) {
             timer.pauseTimer();
             MyFrame.scoreTime.setEasyTime(isFaster(MyFrame.scoreTime.getEasyTime(), timer.getText()));
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
             resetCount();
-        } else if (count == 18 && rowss == 6) {
-            isFinished = true;
+        } else if (count == 18 && rows == 6) {
             timer.pauseTimer();
             MyFrame.scoreTime.setNormalTime(isFaster(MyFrame.scoreTime.getNormalTime(), timer.getText()));
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
             resetCount();
-        } else if (count == 32 && rowss == 8) {
-            isFinished = true;
+        } else if (count == 32 && rows == 8) {
             timer.pauseTimer();
             MyFrame.scoreTime.setHardTime(isFaster(MyFrame.scoreTime.getHardTime(), timer.getText()));
             frame.getContentPane().removeAll();

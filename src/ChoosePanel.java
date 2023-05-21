@@ -3,8 +3,9 @@ import java.awt.*;
 
 public class ChoosePanel {
     public int difficulty = -1;
-    private JButton easy, normal, hard;
-    private final ChoosePanelEvent event;
+    private JButton easy;
+    private JButton normal;
+    private final JButton hard;
 
     public ChoosePanel() {
         easy = new JButton(new ImageIcon(getClass().getResource("/image/Easy Button.png")));
@@ -15,7 +16,7 @@ public class ChoosePanel {
         normal.setPreferredSize(new Dimension(66, 32));
         hard.setPreferredSize(new Dimension(66, 32));
 
-        event = new ChoosePanelEvent(this);
+        ChoosePanelEvent event = new ChoosePanelEvent(this);
         easy.addActionListener(event);
         normal.addActionListener(event);
         hard.addActionListener(event);

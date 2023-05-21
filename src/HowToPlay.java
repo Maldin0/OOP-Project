@@ -3,19 +3,16 @@ import java.awt.*;
 
 public class HowToPlay {
     private final JFrame frame;
-    private final JPanel mainPanel;
-    private final JPanel smallPanel;
-    private JPanel infoPanel;
-    private final JLabel head;
     private final JButton backBtn;
+    private JPanel infoPanel;
 
     public HowToPlay() {
         frame = new JFrame();
-        head = new JLabel("How To Play");
+        JLabel head = new JLabel("How To Play");
         frame.getContentPane().setPreferredSize(new Dimension(400, 350));
         Color yellow = new Color(255, 236, 138);
         Color orange = new Color(240, 165, 0);
-        mainPanel = new JPanel() {
+        JPanel mainPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Image HowToImg = new ImageIcon(getClass().getResource("/image/Howtoplay.png")).getImage();
@@ -25,12 +22,12 @@ public class HowToPlay {
         mainPanel.setLayout(null);
         mainPanel.setBackground(yellow);
 
-        smallPanel = new JPanel();
+        JPanel smallPanel = new JPanel();
         smallPanel.setBackground(orange);
         smallPanel.add(head);
 
         backBtn = new JButton();
-        ImageIcon imgBtn = new ImageIcon("src/image/Back button.png");
+        ImageIcon imgBtn = new ImageIcon(getClass().getResource("/image/Back button.png"));
         backBtn.setIcon(imgBtn);
         backBtn.setBounds(10, 15, 50, 50);
         backBtn.addActionListener(e -> {

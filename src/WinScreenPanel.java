@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WinScreenPanel extends JPanel {
-    private final JPanel botPanel;
-    private final JPanel buttonPanel;
     private final JButton exits;
     private JLabel winSign;
 
@@ -17,12 +15,12 @@ public class WinScreenPanel extends JPanel {
         winSign.setHorizontalAlignment(JLabel.CENTER);
         this.add(winSign, BorderLayout.CENTER);
 
-        botPanel = new JPanel();
+        JPanel botPanel = new JPanel();
         botPanel.setLayout(new BorderLayout());
 
         timer.setHorizontalAlignment(JLabel.CENTER);
 
-        buttonPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         exits = new JButton(new ImageIcon(getClass().getResource("/image/Exit to menu button.png")));
         exits.setPreferredSize(new Dimension(192, 64));

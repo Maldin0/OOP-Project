@@ -5,10 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 public class MyFrameEvent implements ActionListener {
-    public int check;
     private final MyFrame frame;
-    private JPanel menuPanel;
-
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
     }

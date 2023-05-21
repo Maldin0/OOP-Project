@@ -17,14 +17,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-    private final int rows;
     private Image bg1;
-    private final MyFrame frame;
-    private final JButton pauseBtn;
 
     public GamePanel(int rows, MyFrame frame) {
-        this.rows = rows;
-        this.frame = frame;
         // Load Background images
         if (rows == 4) {
             bg1 = new ImageIcon(getClass().getResource("/image/easybackground.png")).getImage();
@@ -65,14 +60,14 @@ public class GamePanel extends JPanel {
         Thread thread = new Thread(clock);
         clock.setHorizontalAlignment(JLabel.CENTER);
 
-        GameBoard gameBoard = new GameBoard(rows, cardSize, imagePairs, clock, rows, frame);
+        GameBoard gameBoard = new GameBoard(rows, cardSize, imagePairs, clock, frame);
 
         JPanel wrapper = new JPanel(new FlowLayout());
 
         wrapper.add(gameBoard);
         wrapper.setOpaque(false);
 
-        pauseBtn = new JButton();
+        JButton pauseBtn = new JButton();
         pauseBtn.setPreferredSize(new Dimension(50, 50));
         pauseBtn.setIcon(new ImageIcon(getClass().getResource("/image/Pause button.png")));
         pauseBtn.addActionListener(new ActionListener() {

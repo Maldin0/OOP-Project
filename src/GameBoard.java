@@ -107,29 +107,30 @@ public class GameBoard extends JPanel implements CardListener {
 
 
     private void checkForMatch() {
-        canInteract = false;
-
         CardPanel card1 = selectedCards.get(0);
         CardPanel card2 = selectedCards.get(1);
 
-        // Add a delay before checking for a match and updating cards' state
-        Timer timer = new Timer(1000, e -> {
-            if (card1.card.isMatch(card2.card)) {
-                onMatchFound(card1, card2);
-            } else {
-                card1.card.setRevealed(false);
-                card2.card.setRevealed(false);
-            }
-
-            card1.repaint();
-            card2.repaint();
+        if (card1.card.isMatch(card2.card)) {
+            onMatchFound(card1, card2);
             selectedCards.clear();
             canInteract = true;
-        });
+        } else {
+            // When the cards don't match, add a delay before flipping them back
+            canInteract = false;
+            Timer timer = new Timer(1000, e -> {
+                card1.card.setRevealed(false);
+                card2.card.setRevealed(false);
+                card1.repaint();
+                card2.repaint();
+                selectedCards.clear();
+                canInteract = true;
+            });
 
-        timer.setRepeats(false);
-        timer.start();
+            timer.setRepeats(false);
+            timer.start();
+        }
     }
+
 
 
     @Override
@@ -147,7 +148,7 @@ public class GameBoard extends JPanel implements CardListener {
             scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
-            frame.add(new WinScreenPanel(frame));
+            frame.add(new WinScreenPanel(frame, timer));
             resetCount();
         } else if (count == 18 && rowss == 6) {
             isFinished = true;
@@ -156,7 +157,7 @@ public class GameBoard extends JPanel implements CardListener {
             scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
-            frame.add(new WinScreenPanel(frame));
+            frame.add(new WinScreenPanel(frame, timer));
             resetCount();
         } else if (count == 32 && rowss == 8) {
             isFinished = true;
@@ -165,7 +166,7 @@ public class GameBoard extends JPanel implements CardListener {
             scoreIO.saveData();
             frame.getContentPane().removeAll();
             frame.revalidate();
-            frame.add(new WinScreenPanel(frame));
+            frame.add(new WinScreenPanel(frame, timer));
             resetCount();
         }
         frame.repaint();

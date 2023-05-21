@@ -4,17 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WinScreenPanel extends JPanel{
-    private JPanel buttonPanel;
+    private JPanel botPanel, buttonPanel;
     private JButton exits;
     private JLabel winSign;
     private MyFrame frame;
-    public WinScreenPanel(MyFrame frame) {
+    private MyTimer timer;
+    public WinScreenPanel(MyFrame frame, MyTimer timer) {
         this.frame = frame;
         this.setLayout(new BorderLayout());
 
         winSign = new JLabel();
         winSign.setHorizontalAlignment(JLabel.CENTER);
         this.add(winSign, BorderLayout.CENTER);
+
+        botPanel = new JPanel();
+        botPanel.setLayout(new BorderLayout());
 
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
@@ -53,4 +57,9 @@ public class WinScreenPanel extends JPanel{
         this.winSign = winSign;
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("image/BG02.png").getImage(),0,0,null);
+    }
 }

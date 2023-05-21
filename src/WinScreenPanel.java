@@ -20,6 +20,8 @@ public class WinScreenPanel extends JPanel{
         botPanel = new JPanel();
         botPanel.setLayout(new BorderLayout());
 
+        timer.setHorizontalAlignment(JLabel.CENTER);
+
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         exits = new JButton(new ImageIcon("image/Exit to menu button.png"));
@@ -37,7 +39,11 @@ public class WinScreenPanel extends JPanel{
             }
         });
         buttonPanel.add(exits);
-        this.add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.setOpaque(false);
+        botPanel.add(timer, BorderLayout.CENTER);
+        botPanel.add(buttonPanel, BorderLayout.SOUTH);
+        botPanel.setOpaque(false);
+        this.add(botPanel, BorderLayout.SOUTH);
 
 //        this.add(buttonPanel, BorderLayout.SOUTH);
 

@@ -27,7 +27,6 @@ public class GameBoard extends JPanel implements CardListener {
     private int rowss;
     private String easy, normal, hard;
     private MyFrame frame;
-    private ScoreIO scoreIO;
     private ScoreTime scoreTime;
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
         this.cards = generateCards(images);
@@ -138,14 +137,11 @@ public class GameBoard extends JPanel implements CardListener {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        scoreIO = new ScoreIO();
-        scoreTime = new ScoreTime();
         System.out.println("" + count + " " + rowss);
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
-            scoreTime.setEasyTime(timer.getText());
-            scoreIO.saveData();
+            MyFrame.scoreTime.setEasyTime(timer.getText());
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -153,8 +149,7 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 18 && rowss == 6) {
             isFinished = true;
             timer.pauseTimer();
-            scoreTime.setNormalTime(timer.getText());
-            scoreIO.saveData();
+            MyFrame.scoreTime.setNormalTime(timer.getText());
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -162,8 +157,7 @@ public class GameBoard extends JPanel implements CardListener {
         } else if (count == 32 && rowss == 8) {
             isFinished = true;
             timer.pauseTimer();
-            scoreTime.setHardTime(timer.getText());
-            scoreIO.saveData();
+            MyFrame.scoreTime.setHardTime(timer.getText());
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.add(new WinScreenPanel(frame, timer));
@@ -192,10 +186,5 @@ public class GameBoard extends JPanel implements CardListener {
     }
     public void resetCount() {
         count = 0;
-    }
-
-    public String getValue() {
-        String time = timer.getText();
-        return time;
     }
 }

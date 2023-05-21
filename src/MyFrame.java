@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class MyFrame extends JFrame{
     private JButton startBtn, scoreBtn, creditBtn, exitBtn, helpBtn, soundBtn, pauseBtn;
@@ -8,6 +10,8 @@ public class MyFrame extends JFrame{
     private boolean soundOn = true;
     private MusicPlayer p;
     private int check;
+    public static ScoreTime scoreTime;
+
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
         p = new MusicPlayer();
@@ -84,8 +88,48 @@ public class MyFrame extends JFrame{
         this.setIconImage(icon2.getImage().getScaledInstance(5000, 5000, java.awt.Image.SCALE_SMOOTH));
         // Add menuPanel in JFrame
         this.add(menuPanel);
+        // Score
+        scoreTime = new ScoreTime();
+        ScoreIO scoreIO = new ScoreIO();
+        scoreIO.loadData();
 
         // JFrame
+        this.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                scoreIO.saveData();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
         this.setTitle("Slime Connector");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
         this.setResizable(false);
@@ -97,7 +141,7 @@ public class MyFrame extends JFrame{
     }
 
     public static void main(String[] args) {
-        new MyFrame();
+        SwingUtilities.invokeLater(MyFrame::new);
     }
 
     public JPanel getMenuPanel() {

@@ -3,7 +3,8 @@
  * @created 5/2/2023 - 12:28 PM
  * @project OOP-Project
  */
-import javax.sound.sampled.*;
+
+import javax.sound.sampled.FloatControl;
 
 public class VolumeAdjuster implements Runnable {
     private final FloatControl volumeControl;

@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-public class ChoosePanel{
+
+public class ChoosePanel {
     public int difficulty = -1;
     private JButton easy, normal, hard;
-    private ChoosePanelEvent event;
+    private final ChoosePanelEvent event;
+
     public ChoosePanel() {
         easy = new JButton(new ImageIcon("image/Easy Button.png"));
         normal = new JButton(new ImageIcon("image/Normal Button.png"));
@@ -44,6 +46,12 @@ public class ChoosePanel{
         dialog.setVisible(true);
 
     }
+
+    public static void main(String[] args) {
+        ChoosePanel c = new ChoosePanel();
+        System.out.println(c.difficulty);
+    }
+
     public JButton getEasy() {
         return easy;
     }
@@ -66,9 +74,5 @@ public class ChoosePanel{
 
     public void setHard(JButton hard) {
         this.hard = hard;
-    }
-    public static void main(String[] args) {
-        ChoosePanel c = new ChoosePanel();
-        System.out.println(c.difficulty);
     }
 }

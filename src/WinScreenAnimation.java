@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WinScreenAnimation implements Runnable {
-    private WinScreenPanel winScreenPanel;
-    private ImageIcon imageIcon;
+    private final WinScreenPanel winScreenPanel;
+    private final ImageIcon imageIcon;
 
     public WinScreenAnimation(WinScreenPanel winScreenPanel, ImageIcon imageIcon) {
         this.winScreenPanel = winScreenPanel;

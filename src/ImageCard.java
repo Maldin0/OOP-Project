@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
  * @created 5/18/2023 - 11:53 AM
  * @project OOP-Project
  */
-public class ImageCard extends BaseCard{
-    private BufferedImage image;
+public class ImageCard extends BaseCard {
+    private final BufferedImage image;
 
     public ImageCard(BufferedImage image) {
         super(null);

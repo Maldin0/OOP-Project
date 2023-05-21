@@ -3,12 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WinScreenPanel extends JPanel{
-    private JPanel botPanel, buttonPanel;
-    private JButton exits;
+public class WinScreenPanel extends JPanel {
+    private final JPanel botPanel;
+    private final JPanel buttonPanel;
+    private final JButton exits;
     private JLabel winSign;
-    private MyFrame frame;
+    private final MyFrame frame;
     private MyTimer timer;
+
     public WinScreenPanel(MyFrame frame, MyTimer timer) {
         this.frame = frame;
         this.setLayout(new BorderLayout());
@@ -66,6 +68,6 @@ public class WinScreenPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(new ImageIcon("image/BG02.png").getImage(),0,0,null);
+        g.drawImage(new ImageIcon("image/BG02.png").getImage(), 0, 0, null);
     }
 }

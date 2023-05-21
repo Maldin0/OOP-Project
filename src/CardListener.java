@@ -5,5 +5,6 @@
  */
 public interface CardListener {
     void onCardFlip(CardPanel cardPanel);
+
     void onMatchFound(CardPanel card1, CardPanel card2);
 }

@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+
 public class PausePanel {
     private MyFrame myFrame;
     private JButton con, retry, exits;
     private JDialog dialog;
-    private PausePanelEvent pausePanelEvent;
-    private MyTimer timer;
+    private final PausePanelEvent pausePanelEvent;
+    private final MyTimer timer;
+
     public PausePanel(MyFrame mf, MyTimer timer) {
         this.timer = timer;
         this.myFrame = mf;
@@ -27,7 +29,7 @@ public class PausePanel {
 
         JLabel label = new JLabel("Pause");
         label.setBounds(0, 0, 150, 50);
-        label.setForeground(new Color(52,60,132));
+        label.setForeground(new Color(52, 60, 132));
         label.setFont(font);
 
         JPanel mainPanel = new JPanel();
@@ -89,11 +91,11 @@ public class PausePanel {
         return dialog;
     }
 
-    public MyTimer getTimer() {
-        return timer;
-    }
-
     public void setDialog(JDialog dialog) {
         this.dialog = dialog;
+    }
+
+    public MyTimer getTimer() {
+        return timer;
     }
 }

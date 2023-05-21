@@ -18,7 +18,7 @@ public class ScoreIO {
             MyFrame.scoreTime.setNormalTime(loadedScore.getNormalTime());
             MyFrame.scoreTime.setHardTime(loadedScore.getHardTime());
             System.out.println("Loaded");
-        }   catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

@@ -3,6 +3,7 @@
  * @created 3/26/2023 - 5:25 PM
  * @project OOP-Project
  */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -16,15 +17,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-    private int rows;
+    private final int rows;
     private Image bg1;
-    private MyFrame frame;
-    private JButton pauseBtn;
+    private final MyFrame frame;
+    private final JButton pauseBtn;
+
     public GamePanel(int rows, MyFrame frame) {
         this.rows = rows;
         this.frame = frame;
         // Load Background images
-        if (rows == 4){
+        if (rows == 4) {
             bg1 = new ImageIcon("image/easybackground.png").getImage();
         } else if (rows == 6) {
             bg1 = new ImageIcon("image/mediumbackground.png").getImage();
@@ -32,14 +34,14 @@ public class GamePanel extends JPanel {
             bg1 = new ImageIcon("image/hardbackground.png").getImage();
         }
         setLayout(new BorderLayout());
-        setSize(800,600);
+        setSize(800, 600);
         setOpaque(true);
 //        setBackground(Color.BLUE);
 
         int windowHeight = this.getHeight();
 
         // Calculate card size based on the frame size and number of rows and columns
-        int cardSize = ((windowHeight-50)/rows)-1;
+        int cardSize = ((windowHeight - 50) / rows) - 1;
 
         List<BufferedImage> images = new ArrayList<>();
         for (int i = 0; i < 32; i++) {
@@ -71,7 +73,7 @@ public class GamePanel extends JPanel {
         wrapper.setOpaque(false);
 
         pauseBtn = new JButton();
-        pauseBtn.setPreferredSize(new Dimension(50,50));
+        pauseBtn.setPreferredSize(new Dimension(50, 50));
         pauseBtn.setIcon(new ImageIcon("image/Pause button.png"));
         pauseBtn.addActionListener(new ActionListener() {
             @Override
@@ -112,6 +114,7 @@ public class GamePanel extends JPanel {
 
         return imagePairs;
     }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(bg1, 0, 0, null);

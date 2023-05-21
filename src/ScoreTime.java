@@ -4,9 +4,11 @@ public class ScoreTime implements Serializable {
     private String easyTime;
     private String normalTime;
     private String hardTime;
+
     public ScoreTime() {
         this("-", "-", "-");
     }
+
     public ScoreTime(String easyTime, String normalTime, String hardTime) {
         this.easyTime = easyTime;
         this.normalTime = normalTime;

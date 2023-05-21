@@ -1,19 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class CreditPanel {
-    private JFrame fr;
-    private JPanel creditPanel, namePanel;
-    private JLabel Name1, Name2, Name3, Name4, Name5, Name6, num1, num2, num3, num4, num5, num6;
-    private JButton backBtn;
+    private final JFrame fr;
+    private final JPanel creditPanel;
+    private final JPanel namePanel;
+    private final JLabel Name1;
+    private final JLabel Name2;
+    private final JLabel Name3;
+    private final JLabel Name4;
+    private final JLabel Name5;
+    private final JLabel Name6;
+    private final JLabel num1;
+    private final JLabel num2;
+    private final JLabel num3;
+    private final JLabel num4;
+    private final JLabel num5;
+    private final JLabel num6;
+    private final JButton backBtn;
 
-    public CreditPanel(){
+    public CreditPanel() {
         fr = new JFrame();
         fr.setUndecorated(true);
         Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
         fr.getContentPane().setPreferredSize(new Dimension(400, 370));
-        Color yellow = new Color(255,236,138);
+        Color yellow = new Color(255, 236, 138);
 
         //Background
         creditPanel = new JPanel() {

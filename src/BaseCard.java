@@ -4,7 +4,8 @@
  * @project OOP-Project
  */
 
-import java.awt.Color;
+import java.awt.*;
+
 public abstract class BaseCard {
     protected Color color;
     protected boolean isMatched;
@@ -20,7 +21,7 @@ public abstract class BaseCard {
         return color;
     }
 
-    public boolean isMatched(){
+    public boolean isMatched() {
         return isMatched;
     }
 
@@ -28,7 +29,7 @@ public abstract class BaseCard {
         isMatched = matched;
     }
 
-    public boolean isRevealed(){
+    public boolean isRevealed() {
         return isRevealed;
     }
 

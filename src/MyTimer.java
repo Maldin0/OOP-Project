@@ -8,16 +8,17 @@ import java.awt.*;
  * @project OOP-Lab
  */
 public class MyTimer extends JLabel implements Runnable {
+    public boolean isEnable = true;
     private int sec;
     private int min;
     private int hour;
-    public boolean isEnable = true;
 
     public MyTimer() {
         this.sec = 0;
         this.min = 0;
         this.hour = 0;
     }
+
     public synchronized void resumeTimer() {
         isEnable = true;
         this.notify();
@@ -37,9 +38,10 @@ public class MyTimer extends JLabel implements Runnable {
             }
         }
     }
+
     @Override
     public void run() {
-        while (true){
+        while (true) {
             checkPause();
             this.setFont(new Font("Tahoma", Font.BOLD, 30));
             this.setText(String.format("%02d : %02d : %02d", hour, min, sec));

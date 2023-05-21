@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 public class MyFrameEvent implements ActionListener {
     public int check;
-    private MyFrame frame;
+    private final MyFrame frame;
     private JPanel menuPanel;
+
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // if Click Start Button goes to GamePanel

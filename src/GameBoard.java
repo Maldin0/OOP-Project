@@ -3,6 +3,7 @@
  * @created 3/26/2023 - 5:01 PM
  * @project OOP-Project
  */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +15,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 public class GameBoard extends JPanel implements CardListener {
+    private static int count;
     private List<ImageCard> cards;
-    private List<CardPanel> selectedCards = new ArrayList<>();
-    private List<CardPanel> cardPanels = new ArrayList<>();
+    private final List<CardPanel> selectedCards = new ArrayList<>();
+    private final List<CardPanel> cardPanels = new ArrayList<>();
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
-    private static int count;
     private boolean isFinished = false;
     private String timeValue;
     private MyTimer timer;
@@ -28,6 +30,7 @@ public class GameBoard extends JPanel implements CardListener {
     private String easy, normal, hard;
     private MyFrame frame;
     private ScoreTime scoreTime;
+
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, int rowss, MyFrame frame) {
         this.cards = generateCards(images);
         this.timer = timer;
@@ -67,6 +70,7 @@ public class GameBoard extends JPanel implements CardListener {
 
         revealAllCards();
     }
+
     public GameBoard() {
         resetCount();
     }
@@ -104,7 +108,6 @@ public class GameBoard extends JPanel implements CardListener {
     }
 
 
-
     private void checkForMatch() {
         CardPanel card1 = selectedCards.get(0);
         CardPanel card2 = selectedCards.get(1);
@@ -131,13 +134,12 @@ public class GameBoard extends JPanel implements CardListener {
     }
 
 
-
     @Override
     public void onMatchFound(CardPanel card1, CardPanel card2) {
         card1.card.setMatched(true);
         card2.card.setMatched(true);
         count++;
-        System.out.println("" + count + " " + rowss);
+        System.out.println(count + " " + rowss);
         if (count == 8 && rowss == 4) {
             isFinished = true;
             timer.pauseTimer();
@@ -184,6 +186,7 @@ public class GameBoard extends JPanel implements CardListener {
         timer.start();
 
     }
+
     public void resetCount() {
         count = 0;
     }

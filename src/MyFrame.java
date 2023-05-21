@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class MyFrame extends JFrame{
+public class MyFrame extends JFrame {
+    public static ScoreTime scoreTime;
     private JButton startBtn, scoreBtn, creditBtn, exitBtn, helpBtn, soundBtn, pauseBtn;
     private JLabel logoName;
     private JPanel menuPanel;
     private boolean soundOn = true;
     private MusicPlayer p;
     private int check;
-    public static ScoreTime scoreTime;
 
     public MyFrame() {
         MyFrameEvent event = new MyFrameEvent(this);
@@ -148,6 +148,10 @@ public class MyFrame extends JFrame{
         return menuPanel;
     }
 
+    public void setMenuPanel(JPanel menuPanel) {
+        this.menuPanel = menuPanel;
+    }
+
     public JButton getStartBtn() {
         return startBtn;
     }
@@ -212,10 +216,6 @@ public class MyFrame extends JFrame{
         this.logoName = logoName;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
-        this.menuPanel = menuPanel;
-    }
-
     public boolean isSoundOn() {
         return soundOn;
     }
@@ -235,6 +235,7 @@ public class MyFrame extends JFrame{
     public int getCheck() {
         return check;
     }
+
     public void setCheck(int check) {
         this.check = check;
     }

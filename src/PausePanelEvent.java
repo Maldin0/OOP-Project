@@ -1,23 +1,23 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PausePanelEvent implements ActionListener {
-    private MyFrame myFrame;
-    private PausePanel pausePanel;
+    private final MyFrame myFrame;
+    private final PausePanel pausePanel;
     private JPanel background;
-    public PausePanelEvent (PausePanel pausePanel, MyFrame myFrame) {
+
+    public PausePanelEvent(PausePanel pausePanel, MyFrame myFrame) {
         this.myFrame = myFrame;
         this.pausePanel = pausePanel;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(pausePanel.getCon())) {
             pausePanel.getTimer().resumeTimer();
             pausePanel.getDialog().dispose();
-        }
-        else if (e.getSource().equals(pausePanel.getRetry())) {
+        } else if (e.getSource().equals(pausePanel.getRetry())) {
             int check = myFrame.getCheck();
             System.out.println(check);
             if (check == 0) {
@@ -26,8 +26,7 @@ public class PausePanelEvent implements ActionListener {
                 myFrame.revalidate();
                 myFrame.setCheck(0);
                 myFrame.add(new GamePanel(4, myFrame));
-            }
-            else if (check == 1) {
+            } else if (check == 1) {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
@@ -35,8 +34,7 @@ public class PausePanelEvent implements ActionListener {
                 myFrame.revalidate();
                 myFrame.setCheck(0);
                 myFrame.add(new GamePanel(6, myFrame));
-            }
-            else if (check == 2) {
+            } else if (check == 2) {
                 new GameBoard();
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
@@ -46,8 +44,7 @@ public class PausePanelEvent implements ActionListener {
             pausePanel.getDialog().dispose();
             myFrame.repaint();
             myFrame.pack();
-        }
-        else if (e.getSource().equals(pausePanel.getExits())) {
+        } else if (e.getSource().equals(pausePanel.getExits())) {
             myFrame.getContentPane().removeAll();
             myFrame.revalidate();
             myFrame.add(myFrame.getMenuPanel());

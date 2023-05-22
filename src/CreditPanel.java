@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CreditPanel {
+    private static CreditPanel instance;
     private final JFrame fr;
     private final JButton backBtn;
 
-    public CreditPanel() {
+    private CreditPanel() {
         fr = new JFrame();
         fr.setUndecorated(true);
         Font thaiFont = new Font("Tahoma", Font.BOLD, 13);
@@ -84,5 +85,16 @@ public class CreditPanel {
         fr.setVisible(true);
         fr.setResizable(false);
         fr.setLocationRelativeTo(null);
+    }
+
+    public static CreditPanel getInstance() {
+        if (instance == null) {
+            instance = new CreditPanel();
+        }
+        return instance;
+    }
+
+    public void show() {
+        fr.setVisible(true);
     }
 }

@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class HowToPlay {
+    private static HowToPlay instance;
     private final JFrame frame;
     private final JButton backBtn;
 
-    public HowToPlay() {
+    private HowToPlay() {
         frame = new JFrame();
         JLabel head = new JLabel("How To Play");
         frame.getContentPane().setPreferredSize(new Dimension(400, 350));
@@ -44,5 +45,15 @@ public class HowToPlay {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+    }
+    public static HowToPlay getInstance() {
+        if (instance == null) {
+            instance = new HowToPlay();
+        }
+        return instance;
+    }
+
+    public void show() {
+        frame.setVisible(true);
     }
 }

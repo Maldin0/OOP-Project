@@ -45,7 +45,10 @@ public class MyFrameEvent implements ActionListener {
         }
         //Credit Button
         if (e.getSource().equals(frame.getCreditBtn())) {
-            new CreditPanel();
+            SwingUtilities.invokeLater(() -> {
+                CreditPanel creditPanel = CreditPanel.getInstance();
+                creditPanel.show();
+            });
         }
         // if Click Exit Button Exit game or Close JFrame
         if (e.getSource().equals(frame.getExitBtn())) {
@@ -65,7 +68,10 @@ public class MyFrameEvent implements ActionListener {
             }
         }
         if (e.getSource().equals(frame.getHelpBtn())) {
-            new HowToPlay();
+            SwingUtilities.invokeLater(() -> {
+                HowToPlay howToPlay = HowToPlay.getInstance();
+                howToPlay.show();
+            });
         }
     }
 }

@@ -15,23 +15,23 @@ public class MyFrameEvent implements ActionListener {
         // if Click Start Button goes to GamePanel
         if (e.getSource() == frame.getStartBtn()) {
             ChoosePanel c = new ChoosePanel();
-            if (c.difficulty != -1) {
-                frame.remove(frame.getMenuPanel());
-                frame.revalidate();
-                frame.setLayout(new BorderLayout());
-                if (c.difficulty == 0) {
-                    frame.setCheck(0);
-                    frame.add(new GamePanel(4, frame));
-                } else if (c.difficulty == 1) {
-                    frame.setCheck(1);
-                    frame.add(new GamePanel(6, frame));
-                } else if (c.difficulty == 2) {
-                    frame.setCheck(2);
-                    frame.add(new GamePanel(8, frame));
-                }
-                frame.repaint();
-                frame.pack();
+
+            frame.remove(frame.getMenuPanel());
+            frame.revalidate();
+            frame.setLayout(new BorderLayout());
+            if (c.difficulty == 0) {
+                frame.setCheck(0);
+                frame.add(new GamePanel(4, frame));
+            } else if (c.difficulty == 1) {
+                frame.setCheck(1);
+                frame.add(new GamePanel(6, frame));
+            } else if (c.difficulty == 2) {
+                frame.setCheck(2);
+                frame.add(new GamePanel(8, frame));
             }
+            frame.repaint();
+            frame.pack();
+
         }
         if (e.getSource().equals(frame.getScoreBtn())) {
             frame.setLayout(new BorderLayout());

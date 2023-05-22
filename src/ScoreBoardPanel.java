@@ -73,23 +73,12 @@ public class ScoreBoardPanel extends JPanel {
         return easyScore;
     }
 
-    public void setEasyScore(String score) {
-        easyScore.setText(score);
-    }
-
     public JLabel getNormalScore() {
         return normalScore;
-    }
-
-    public void setNormalScore(JLabel normalScore) {
-        this.normalScore = normalScore;
     }
 
     public JLabel getHardScore() {
         return hardScore;
     }
 
-    public void setHardScore(JLabel hardScore) {
-        this.hardScore = hardScore;
-    }
 }

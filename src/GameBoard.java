@@ -17,14 +17,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameBoard extends JPanel implements CardListener {
-    private static int count;
+    public static int count;
     private final List<CardPanel> selectedCards = new ArrayList<>();
     private final List<CardPanel> cardPanels = new ArrayList<>();
     private boolean canInteract = true;
     private BufferedImage hiddenImage;
-    private MyTimer timer;
-    private int rows;
-    private MyFrame frame;
+    private final MyTimer timer;
+    private final int rows;
+    private final MyFrame frame;
 
     public GameBoard(int rows, int cardSize, List<BufferedImage> images, MyTimer timer, MyFrame frame) {
         List<ImageCard> cards = generateCards(images);
@@ -32,7 +32,6 @@ public class GameBoard extends JPanel implements CardListener {
         this.rows = rows;
         this.frame = frame;
         setOpaque(false);
-//        setBackground(Color.RED);
 
         try {
             URL hiddenImageUrl = getClass().getResource("Slime/cardback.png");
@@ -66,16 +65,14 @@ public class GameBoard extends JPanel implements CardListener {
         revealAllCards();
     }
 
-    public GameBoard() {
-        resetCount();
+    public static void resetCount() {
+        count = 0;
     }
-
 
     private List<ImageCard> generateCards(List<BufferedImage> images) {
         List<ImageCard> cards = new ArrayList<>();
         for (BufferedImage image : images) {
             cards.add(new ImageCard(image));
-//            cards.add(new ColorCard(color));
         }
         Collections.shuffle(cards);
         return cards;
@@ -102,7 +99,6 @@ public class GameBoard extends JPanel implements CardListener {
         }
     }
 
-
     private void checkForMatch() {
         CardPanel card1 = selectedCards.get(0);
         CardPanel card2 = selectedCards.get(1);
@@ -122,12 +118,10 @@ public class GameBoard extends JPanel implements CardListener {
                 selectedCards.clear();
                 canInteract = true;
             });
-
             timer.setRepeats(false);
             timer.start();
         }
     }
-
 
     @Override
     public void onMatchFound(CardPanel card1, CardPanel card2) {
@@ -175,10 +169,6 @@ public class GameBoard extends JPanel implements CardListener {
 
         timer.setRepeats(false);
         timer.start();
-    }
-
-    public void resetCount() {
-        count = 0;
     }
 
     public int convertToSeconds(String time) {

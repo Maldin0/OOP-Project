@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 
 public class MyFrameEvent implements ActionListener {
     private final MyFrame frame;
+
     public MyFrameEvent(MyFrame frame) {
         this.frame = frame;
     }
@@ -56,7 +57,6 @@ public class MyFrameEvent implements ActionListener {
                 frame.getSoundBtn().setIcon(button6_2);
                 frame.setSoundOn(false);
                 frame.getP().mute();
-
             } else {
                 ImageIcon button6 = new ImageIcon(getClass().getResource("/image/Sound button.png"));
                 frame.getSoundBtn().setIcon(button6);

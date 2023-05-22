@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class WinScreenPanel extends JPanel {
     private final JButton exits;
-    private JLabel winSign;
+    private final JLabel winSign;
 
     public WinScreenPanel(MyFrame frame, MyTimer timer) {
         this.setLayout(new BorderLayout());
@@ -41,24 +41,10 @@ public class WinScreenPanel extends JPanel {
         botPanel.add(timer, BorderLayout.CENTER);
         botPanel.add(buttonPanel, BorderLayout.SOUTH);
         botPanel.setOpaque(false);
+
         this.add(botPanel, BorderLayout.SOUTH);
-
-//        this.add(buttonPanel, BorderLayout.SOUTH);
-
-
         this.setPreferredSize(new Dimension(800, 600));
         this.setVisible(true);
-        // Create a separate thread and start it
-//        Thread t = new Thread(new WinScreenAnimation(this, imageIcon));
-//        t.start();
-    }
-
-    public JLabel getWinSign() {
-        return winSign;
-    }
-
-    public void setWinSign(JLabel winSign) {
-        this.winSign = winSign;
     }
 
     @Override

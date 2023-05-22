@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChoosePanel {
-    public int difficulty = -1;
-    private JButton easy;
-    private JButton normal;
+    private final JButton easy;
+    private final JButton normal;
     private final JButton hard;
+    public int difficulty = -1;
 
     public ChoosePanel() {
         easy = new JButton(new ImageIcon(getClass().getResource("/image/Easy Button.png")));
@@ -45,23 +45,14 @@ public class ChoosePanel {
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-
     }
 
     public JButton getEasy() {
         return easy;
     }
 
-    public void setEasy(JButton easy) {
-        this.easy = easy;
-    }
-
     public JButton getNormal() {
         return normal;
-    }
-
-    public void setNormal(JButton normal) {
-        this.normal = normal;
     }
 
     public JButton getHard() {

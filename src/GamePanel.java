@@ -18,7 +18,9 @@ import java.util.List;
 
 public class GamePanel extends JPanel {
     private Image bg1;
-
+    public GamePanel(MyFrame frame) {
+        this(4, frame);
+    }
     public GamePanel(int rows, MyFrame frame) {
         GameBoard.resetCount();
         // Load Background images

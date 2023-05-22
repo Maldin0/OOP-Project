@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class CardPanel extends JPanel {
     private final BufferedImage hiddenImage;
     ImageCard card;
+
     public CardPanel(ImageCard card, int cardSize, BufferedImage hiddenImage) {
         this.card = card;
         this.hiddenImage = hiddenImage;
@@ -30,10 +31,5 @@ public class CardPanel extends JPanel {
         }
         int margin = 2;
         g.drawImage(displayImage, margin, margin, getWidth() - 2 * margin, getHeight() - 2 * margin, this);
-
-//         if (!card.isRevealed() && !card.isMatched()) {
-//             g.setColor(Color.BLACK);
-//             g.fillRect(margin + 1, margin + 1, getWidth() - 2 * margin - 2, getHeight() - 2 * margin - 2);
-//         }
     }
 }

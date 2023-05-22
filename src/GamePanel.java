@@ -20,6 +20,7 @@ public class GamePanel extends JPanel {
     private Image bg1;
 
     public GamePanel(int rows, MyFrame frame) {
+        GameBoard.resetCount();
         // Load Background images
         if (rows == 4) {
             bg1 = new ImageIcon(getClass().getResource("/image/easybackground.png")).getImage();

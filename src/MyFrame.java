@@ -5,11 +5,15 @@ import java.awt.event.WindowListener;
 
 public class MyFrame extends JFrame {
     public static ScoreTime scoreTime;
-    private JButton startBtn, scoreBtn, creditBtn, exitBtn, helpBtn, soundBtn, pauseBtn;
-    private JLabel logoName;
-    private JPanel menuPanel;
+    private final JButton startBtn;
+    private final JButton scoreBtn;
+    private final JButton creditBtn;
+    private final JButton exitBtn;
+    private final JButton helpBtn;
+    private final JButton soundBtn;
+    private final JPanel menuPanel;
+    private final MusicPlayer p;
     private boolean soundOn = true;
-    private MusicPlayer p;
     private int check;
 
     public MyFrame() {
@@ -79,7 +83,7 @@ public class MyFrame extends JFrame {
         menuPanel.add(soundBtn);
 
         //  Logo
-        logoName = new JLabel(new ImageIcon(getClass().getResource("/image/Finished logo.png")));
+        JLabel logoName = new JLabel(new ImageIcon(getClass().getResource("/image/Finished logo.png")));
         logoName.setBounds(40, 110, 250, 150);
         menuPanel.add(logoName);
 
@@ -97,7 +101,6 @@ public class MyFrame extends JFrame {
         this.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
-
             }
 
             @Override
@@ -107,27 +110,22 @@ public class MyFrame extends JFrame {
 
             @Override
             public void windowClosed(WindowEvent e) {
-
             }
 
             @Override
             public void windowIconified(WindowEvent e) {
-
             }
 
             @Override
             public void windowDeiconified(WindowEvent e) {
-
             }
 
             @Override
             public void windowActivated(WindowEvent e) {
-
             }
 
             @Override
             public void windowDeactivated(WindowEvent e) {
-
             }
         });
         this.setTitle("Slime Connector");
@@ -137,7 +135,6 @@ public class MyFrame extends JFrame {
         this.setVisible(true);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
-
     }
 
     public static void main(String[] args) {
@@ -148,72 +145,28 @@ public class MyFrame extends JFrame {
         return menuPanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
-        this.menuPanel = menuPanel;
-    }
-
     public JButton getStartBtn() {
         return startBtn;
-    }
-
-    public void setStartBtn(JButton startBtn) {
-        this.startBtn = startBtn;
     }
 
     public JButton getScoreBtn() {
         return scoreBtn;
     }
 
-    public void setScoreBtn(JButton scoreBtn) {
-        this.scoreBtn = scoreBtn;
-    }
-
     public JButton getCreditBtn() {
         return creditBtn;
-    }
-
-    public void setCreditBtn(JButton creditBtn) {
-        this.creditBtn = creditBtn;
     }
 
     public JButton getExitBtn() {
         return exitBtn;
     }
 
-    public void setExitBtn(JButton exitBtn) {
-        this.exitBtn = exitBtn;
-    }
-
     public JButton getHelpBtn() {
         return helpBtn;
     }
 
-    public void setHelpBtn(JButton helpBtn) {
-        this.helpBtn = helpBtn;
-    }
-
     public JButton getSoundBtn() {
         return soundBtn;
-    }
-
-    public void setSoundBtn(JButton soundBtn) {
-        this.soundBtn = soundBtn;
-    }
-
-    public JButton getPauseBtn() {
-        return pauseBtn;
-    }
-
-    public void setPauseBtn(JButton pauseBtn) {
-        this.pauseBtn = pauseBtn;
-    }
-
-    public JLabel getLogoName() {
-        return logoName;
-    }
-
-    public void setLogoName(JLabel logoName) {
-        this.logoName = logoName;
     }
 
     public boolean isSoundOn() {
@@ -226,10 +179,6 @@ public class MyFrame extends JFrame {
 
     public MusicPlayer getP() {
         return p;
-    }
-
-    public void setP(MusicPlayer p) {
-        this.p = p;
     }
 
     public int getCheck() {

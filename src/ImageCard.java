@@ -9,7 +9,7 @@ public class ImageCard extends BaseCard {
     private final BufferedImage image;
 
     public ImageCard(BufferedImage image) {
-        super(null);
+        super();
         this.image = image;
     }
 

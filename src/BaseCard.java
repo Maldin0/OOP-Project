@@ -4,21 +4,13 @@
  * @project OOP-Project
  */
 
-import java.awt.*;
-
 public abstract class BaseCard {
-    protected Color color;
     protected boolean isMatched;
     protected boolean isRevealed;
 
-    public BaseCard(Color color) {
-        this.color = color;
+    public BaseCard() {
         this.isMatched = false;
         this.isRevealed = false;
-    }
-
-    public Color getColor() {
-        return color;
     }
 
     public boolean isMatched() {

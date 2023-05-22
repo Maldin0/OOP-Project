@@ -5,7 +5,6 @@ import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public class MusicPlayer {
-    private Clip clip;
     private FloatControl volumeControl;
     private boolean isMuted = false;
 
@@ -13,7 +12,7 @@ public class MusicPlayer {
         try {
             URL url = this.getClass().getResource(filename);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
-            clip = AudioSystem.getClip();
+            Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
 
@@ -45,5 +44,4 @@ public class MusicPlayer {
         VolumeAdjuster volumeAdjuster = new VolumeAdjuster(volumeControl, direction);
         new Thread(volumeAdjuster).start();
     }
-
 }

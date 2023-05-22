@@ -54,44 +54,20 @@ public class PausePanel {
 
     }
 
-    public MyFrame getMyFrame() {
-        return myFrame;
-    }
-
-    public void setMyFrame(MyFrame myFrame) {
-        this.myFrame = myFrame;
-    }
-
     public JButton getCon() {
         return con;
-    }
-
-    public void setCon(JButton con) {
-        this.con = con;
     }
 
     public JButton getRetry() {
         return retry;
     }
 
-    public void setRetry(JButton retry) {
-        this.retry = retry;
-    }
-
     public JButton getExits() {
         return exits;
     }
 
-    public void setExits(JButton exits) {
-        this.exits = exits;
-    }
-
     public JDialog getDialog() {
         return dialog;
-    }
-
-    public void setDialog(JDialog dialog) {
-        this.dialog = dialog;
     }
 
     public MyTimer getTimer() {

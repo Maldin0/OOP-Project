@@ -26,12 +26,12 @@ public class PausePanelEvent implements ActionListener {
             } else if (check == 1) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.setCheck(0);
+                myFrame.setCheck(1);
                 myFrame.add(new GamePanel(6, myFrame));
             } else if (check == 2) {
                 myFrame.getContentPane().removeAll();
                 myFrame.revalidate();
-                myFrame.setCheck(0);
+                myFrame.setCheck(2);
                 myFrame.add(new GamePanel(8, myFrame));
             }
             pausePanel.getDialog().dispose();

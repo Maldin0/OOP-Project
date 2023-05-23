@@ -104,9 +104,6 @@ public class GamePanel extends JPanel {
             imagePairs.add(uniqueImages.get(index));
 
             index++;
-            if (index >= uniqueImages.size()) {
-                index = 0;
-            }
         }
 
         return imagePairs;

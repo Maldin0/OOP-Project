@@ -34,7 +34,6 @@ public class GamePanel extends JPanel {
         setLayout(new BorderLayout());
         setSize(800, 600);
         setOpaque(true);
-//        setBackground(Color.BLUE);
 
         int windowHeight = this.getHeight();
 

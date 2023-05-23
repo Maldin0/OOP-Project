@@ -26,7 +26,6 @@ public class MyTimer extends JLabel implements Runnable {
 
     public synchronized void pauseTimer() {
         isEnable = false;
-
     }
 
     private synchronized void checkPause() {
@@ -63,7 +62,4 @@ public class MyTimer extends JLabel implements Runnable {
             }
         }
     }
-
-
 }
-
